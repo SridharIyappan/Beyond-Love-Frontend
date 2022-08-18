@@ -13,6 +13,8 @@ import CustomerRegister from './Customer/CustomerRegister';
 import CustomerLogin from './Customer/CustomerLogin';
 import router from 'next/router';
 import axios from 'axios';
+import { FaLanguage } from 'react-icons/fa';
+
 resetIdCounter();
 
 const NavbarTwo = ({ text }) => {
@@ -169,13 +171,13 @@ const NavbarTwo = ({ text }) => {
                     </Link>
                   </li>
 
-                  <li className='nav-item'>
+                  {/* <li className='nav-item'>
                     <Link href='/' activeClassName='active'>
                       <a href='#' className='dropdown-toggle nav-link'>
-                        Homedfsdfsdf
+                        Home
                       </a>
                     </Link>
-                  </li>
+                  </li> */}
 
                   <li className='nav-item'>
                     <Link href='' activeClassName='active'>
@@ -370,6 +372,10 @@ const NavbarTwo = ({ text }) => {
                       </div>
                     </div>)}
                 </div>
+
+
+
+
 
               </div>
             </nav>

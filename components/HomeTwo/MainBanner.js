@@ -303,7 +303,7 @@ const Banner = () => {
                 <ToastContainer />
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-6 col-sm-12 col-md-12">
+                        <div className="col-lg-8 col-sm-12 col-md-12">
                             <div className="banner-content banner-form">
                                 <h1 className="banner-two-heading">
                                     <span className="typewrite">{t("Find Nearby")}</span>
@@ -456,7 +456,7 @@ const Banner = () => {
                         </div>
 
                         {contactForm && (
-                            <div className="col-lg-6 col-sm-12 col-md-12">
+                            <div className="col-lg-4 col-sm-12 col-md-12">
                                 <div className="contact-form mt-5">
                                     <form id="contactForm" onSubmit={appointmentFormSubmit}>
                                         <div className="row">
