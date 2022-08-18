@@ -121,13 +121,13 @@ export const locations = [
   },
   {
     id: "21",
-    Geo_Name: "K K Nagar",
+    Geo_Name: "KK Nagar",
     Geo_Head: "33",
     Geo_City: "42",
   },
   {
     id: "22",
-    Geo_Name: "K K Nagar West",
+    Geo_Name: "KK Nagar West",
     Geo_Head: "33",
     Geo_City: "42",
   },
@@ -398,12 +398,6 @@ export const locations = [
   {
     id: "68",
     Geo_Name: "Korukkupet",
-    Geo_Head: "33",
-    Geo_City: "42",
-  },
-  {
-    id: "69",
-    Geo_Name: "KK Nagar",
     Geo_Head: "33",
     Geo_City: "42",
   },
@@ -811,12 +805,6 @@ export const locations = [
     Geo_City: 939,
   },
   {
-    id: 139,
-    Geo_Name: "As Rao Nagar",
-    Geo_Head: 36,
-    Geo_City: 939,
-  },
-  {
     id: 140,
     Geo_Name: "Asif Nagar",
     Geo_Head: 36,
@@ -955,12 +943,6 @@ export const locations = [
     Geo_City: 939,
   },
   {
-    id: 163,
-    Geo_Name: "Bodupal",
-    Geo_Head: 36,
-    Geo_City: 939,
-  },
-  {
     id: 164,
     Geo_Name: "Boduppal",
     Geo_Head: 36,
@@ -986,7 +968,7 @@ export const locations = [
   },
   {
     id: 168,
-    Geo_Name: "Chaderghat",
+    Geo_Name: "Chanderghat",
     Geo_Head: 36,
     Geo_City: 939,
   },
@@ -1053,12 +1035,6 @@ export const locations = [
   {
     id: 179,
     Geo_Name: "Dammaiguda",
-    Geo_Head: 36,
-    Geo_City: 939,
-  },
-  {
-    id: 180,
-    Geo_Name: "Dilsukh Nagar",
     Geo_Head: 36,
     Geo_City: 939,
   },
@@ -1209,12 +1185,6 @@ export const locations = [
   {
     id: 205,
     Geo_Name: "Hasthinapuram",
-    Geo_Head: 36,
-    Geo_City: 939,
-  },
-  {
-    id: 206,
-    Geo_Name: "Hayat Nagar",
     Geo_Head: 36,
     Geo_City: 939,
   },
@@ -1471,12 +1441,6 @@ export const locations = [
     Geo_City: 939,
   },
   {
-    id: 249,
-    Geo_Name: "Lingampalli",
-    Geo_Head: 36,
-    Geo_City: 939,
-  },
-  {
     id: 250,
     Geo_Name: "Lingampally",
     Geo_Head: 36,
@@ -1694,7 +1658,7 @@ export const locations = [
   },
   {
     id: 286,
-    Geo_Name: "Near Venkatadri Township",
+    Geo_Name: "Venkatadri Township",
     Geo_Head: 36,
     Geo_City: 939,
   },
@@ -1778,7 +1742,7 @@ export const locations = [
   },
   {
     id: 300,
-    Geo_Name: "Pet Basheerabad",
+    Geo_Name: "Basheerabad",
     Geo_Head: 36,
     Geo_City: 939,
   },
@@ -18383,8 +18347,122 @@ export const locations = [
   },
   {
     id: 3062,
-    Geo_Name: "",
+    Geo_Name: "VP Road",
+    Geo_Head: 28,
+    Geo_City: 774,
+  },
+  {
+    id: 3063,
+    Geo_Name: "Royapuram",
     Geo_Head: 33,
     Geo_City: 42,
+  },
+  {
+    id: 3064,
+    Geo_Name: "Kottivakkam",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3065,
+    Geo_Name: "New Mallepally",
+    Geo_Head: 36,
+    Geo_City: 939,
+  },
+  {
+    id: 3066,
+    Geo_Name: "Tirumurthy Nagar",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3067,
+    Geo_Name: "Shalibanda",
+    Geo_Head: 36,
+    Geo_City: 939,
+  },
+  {
+    id: 3068,
+    Geo_Name: "Icf Colony",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3069,
+    Geo_Name: "Tirumullaivayal",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3070,
+    Geo_Name: "Muttukadu",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3071,
+    Geo_Name: "Egmore",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3072,
+    Geo_Name: "Kamarajapuram",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3073,
+    Geo_Name: "Perungalathur",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3074,
+    Geo_Name: "Avadi",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3075,
+    Geo_Name: "Venkatapuram",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3076,
+    Geo_Name: "Vijayaragavapurams",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3077,
+    Geo_Name: "JJ Nagar",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3078,
+    Geo_Name: "Alwarpet",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3078,
+    Geo_Name: "Kattupakkam",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3079,
+    Geo_Name: "Vivekananda Nagar",
+    Geo_Head: 33,
+    Geo_City: 42,
+  },
+  {
+    id: 3080,
+    Geo_Name: "Quthbullapur",
+    Geo_Head: 36,
+    Geo_City: 939,
   },
 ];
