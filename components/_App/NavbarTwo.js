@@ -172,7 +172,7 @@ const NavbarTwo = ({ text }) => {
                   <li className='nav-item'>
                     <Link href='/' activeClassName='active'>
                       <a href='#' className='dropdown-toggle nav-link'>
-                        Home
+                        Homedfsdfsdf
                       </a>
                     </Link>
                   </li>
