@@ -890,7 +890,7 @@ const GridListingsWithLeftSidebar = () => {
                   let profileImg = `${process.env.DOMAIN_NAME}/api/business/get-photos/${bus.profileImage}`;
                   return (
                     <div className="col-xl-6 col-lg-6 col-md-6" key={bus._id}>
-                      <div className="single-listings-box">
+                      <div className="single-listings-box" style={{ height: "92%" }}>
                         <div
                           className="listings-image"
                           onClick={(e) =>

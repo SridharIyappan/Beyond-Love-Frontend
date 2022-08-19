@@ -79,60 +79,60 @@ const Category = ({ titleOne, titleTwo }) => {
           )}
           <div className="row" style={{ justifyContent: "space-between" }}>
             <div
-              className="col-lg-2 col-sm-6 col-md-4"
+              className="col-lg-3 col-sm-6 col-md-6"
               onClick={(e) => getSpecificCategoryServices(e, "PetClinic")}
             >
               <div className="single-category-box">
                 <div className="icon">
-                  <FaClinicMedical />
+                  <FaClinicMedical size='2.5rem' />
                 </div>
                 <h3>{t("Pet Clinic")}</h3>
-                <span>{petClinicCount}</span>
+                <span>3622</span>
                 {/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}
               </div>
             </div>
             <div
-              className="col-lg-2 col-sm-6 col-md-4"
+              className="col-lg-3 col-sm-6 col-md-6"
               onClick={(e) => getSpecificCategoryServices(e, "PetGrooming")}
             >
               <div className="single-category-box">
                 <div className="icon">
-                  <GiHairStrands />
+                  <GiHairStrands size='2.5rem' />
                 </div>
                 <h3>{t("Pet Grooming")}</h3>
-                <span>{petGroomingCount}</span>
+                <span>2199</span>
                 {/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}
               </div>
             </div>
             <div
-              className="col-lg-2 col-sm-6 col-md-4"
+              className="col-lg-3 col-sm-6 col-md-6"
               onClick={(e) => getSpecificCategoryServices(e, "PetTraining")}
             >
               <div className="single-category-box">
                 <div className="icon">
-                  <TbBone />
+                  <TbBone size='2.5rem' />
                 </div>
                 <h3>{t("Pet Training")}</h3>
-                <span>{petTrainingCount}</span>
+                <span>2881</span>
                 {/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}
               </div>
             </div>
             <div
-              className="col-lg-2 col-sm-6 col-md-4"
+              className="col-lg-3 col-sm-6 col-md-6"
               onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}
             >
               <div className="single-category-box">
                 <div className="icon">
-                  <MdPets />
+                  <MdPets size='2.5rem' />
                 </div>
                 <h3>{t("Pet Boarding")}</h3>
-                <span>{petBoardingCount}</span>
+                <span>1673</span>
                 {/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}

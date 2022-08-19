@@ -23,7 +23,7 @@ const Footer = ({ bgColor }) => {
         <div className="container">
           <div className="row">
 
-            <div className="col-lg-3 col-sm-6 col-md-6">
+            <div className="col-lg-3 col-sm-6 col-md-6 pt-4">
               <div className="single-footer-widget">
                 <h6>Pet Clinics</h6>
                 <ul className="link-list">
@@ -94,7 +94,7 @@ const Footer = ({ bgColor }) => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-sm-6 col-md-6">
+            <div className="col-lg-3 col-sm-6 col-md-6 pt-4">
               <div className="single-footer-widget">
                 <h6>Pet Grooming</h6>
                 <ul className="link-list">
@@ -167,7 +167,7 @@ const Footer = ({ bgColor }) => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-sm-6 col-md-6">
+            <div className="col-lg-3 col-sm-6 col-md-6 pt-4">
               <div className="single-footer-widget">
                 <h6> Pet Boarding</h6>
                 <ul className="link-list">
@@ -239,7 +239,7 @@ const Footer = ({ bgColor }) => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-sm-6 col-md-6">
+            <div className="col-lg-3 col-sm-6 col-md-6 pt-4">
               <div className="single-footer-widget">
                 <h6>Pet Training</h6>
                 <ul className="link-list">
@@ -317,6 +317,18 @@ const Footer = ({ bgColor }) => {
             <a>
               <img src="/images/black-logo2.png" alt="logo" />
             </a>
+          </div>
+
+          <div className="about-term-sec pb-2">
+            <div>
+              <a href="/" >About US</a>
+            </div>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+            <div>
+              <a href="/" >Privacy Policy and Terms & Conditions</a>
+            </div>
+          </div>
+          <div className="made-india pt-2">
+            Made With 💙 In India – For the Pets, By Pet Lovers.
           </div>
 
           <div className="copyright-area">

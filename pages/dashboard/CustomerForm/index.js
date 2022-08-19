@@ -1024,7 +1024,7 @@ const Profile = () => {
                                 className="form-radio"
                                 onChange={(e) => setTrainedPet(e.target.value)}
                               />
-                              <span> Yes</span>
+                              <span> Trained </span>
                             </label>
                           </div>
                           <div class="col-lg-4">
@@ -1035,7 +1035,7 @@ const Profile = () => {
                                 value={false}
                                 onChange={(e) => setTrainedPet(e.target.value)}
                               />
-                              <span> No</span>
+                              <span> Not Trained</span>
                             </label>
                           </div>
                         </div>
@@ -1057,7 +1057,7 @@ const Profile = () => {
 
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <h3 id="address">vaccination Details</h3>
+                        <h3 id="address" style={{ paddingLeft: "0px" }}>Vaccination Details</h3>
                       </div>
                     </div>
 
@@ -1432,7 +1432,7 @@ const Profile = () => {
 
                     <div className="col-xl-12 col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Active</label>
+                        <label>Activity</label>
                         <div class="row">
                           <div class="col-lg-4">
                             <label className="checkbox radio-btn">
@@ -1443,7 +1443,7 @@ const Profile = () => {
                                 checked={active == "High"}
                                 onChange={(e) => setActive(e.target.value)}
                               />
-                              <span> High</span>
+                              <span>Active</span>
                             </label>
                           </div>
                           <div class="col-lg-4">
@@ -1455,10 +1455,11 @@ const Profile = () => {
                                 checked={active == "Medium"}
                                 onChange={(e) => setActive(e.target.value)}
                               />
-                              <span> Medium</span>
+                              <span>Not Active</span>
                             </label>
                           </div>
-                          <div class="col-lg-4">
+
+                          {/* <div class="col-lg-4">
                             <label className="checkbox radio-btn">
                               <input
                                 type="radio"
@@ -1469,7 +1470,7 @@ const Profile = () => {
                               />
                               <span> Low</span>
                             </label>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -1488,7 +1489,7 @@ const Profile = () => {
                                 checked={trainedPet == true}
                                 onChange={(e) => setTrainedPet(true)}
                               />
-                              <span> Yes</span>
+                              <span> Trained</span>
                             </label>
                           </div>
                           <div class="col-lg-4">
@@ -1499,7 +1500,7 @@ const Profile = () => {
                                 checked={trainedPet == false}
                                 onChange={() => setTrainedPet(false)}
                               />
-                              <span> No</span>
+                              <span> Not Trained</span>
                             </label>
                           </div>
                         </div>
@@ -1522,7 +1523,7 @@ const Profile = () => {
 
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <h3 id="address">vaccination Details</h3>
+                        <h3 id="address" style={{ paddingLeft: "0px" }}>Vaccination Details</h3>
                       </div>
                     </div>
 

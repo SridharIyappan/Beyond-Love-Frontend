@@ -305,7 +305,7 @@ const Banner = () => {
                     <div className="row">
                         <div className="col-lg-8 col-sm-12 col-md-12">
                             <div className="banner-content banner-form">
-                                <h1 className="banner-two-heading">
+                                <h1 className="banner-two-heading" style={{ height: "14vh" }}>
                                     <span className="typewrite">{t("Find Nearby")}</span>
                                     <Typist>
                                         <span>{t("Pet Clinic")}</span>
@@ -449,7 +449,7 @@ const Banner = () => {
                                 </div> */}
                                 <div className="search-btn">
                                     <button onClick={contactFormShow}>
-                                        Do Search Leave to us
+                                        Leave Your Search To Us
                                     </button>
                                 </div>
                             </div>

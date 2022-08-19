@@ -20,6 +20,7 @@
     "react-dropzone": "^11.3.4",
     "react-icons": "^4.4.0",
     "react-loading": "^2.0.3",
+    "react-modal": "^3.15.1",
     "react-owl-carousel3": "^2.2.5",
     "react-redux": "^8.0.2",
     "react-share": "^4.4.0",

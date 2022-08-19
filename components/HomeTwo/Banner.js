@@ -224,8 +224,8 @@ const Banner = () => {
     <>
       <section className="banner-wrapper-area-main-banner background-img">
         <div className="container">
-          <div className="sec-count-head mt-4">
-            <h4>Look at our numbers!</h4>
+          <div className="sec-count-head pt-4">
+            {/* <h4>Look at our numbers!</h4> */}
             <h1>Best Place for all your Pet needs!</h1>
           </div>
           <div className="row">
@@ -233,17 +233,17 @@ const Banner = () => {
             <div className="col-lg-8 col-sm-12 col-md-12 sec-count">
               <div className="row mt-5">
                 <div class="col-lg-3 col-sm-6 col-md-6 text-center countUp-main">
-                  <img src="/images/state.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <img src="/images/state.png"></img><br />
                   <CountUp
                     start={0}
                     end={14}
                     duration={3}
                     className="countUp"
                   />
-                  <p>&nbsp;&nbsp;&nbsp;&nbsp;State</p>
+                  <p>State</p>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-6 text-center countUp-main">
-                  <img src="/images/city.png"></img>&nbsp;&nbsp;&nbsp;
+                  <img src="/images/city.png"></img><br />
                   <CountUp
                     start={0}
                     end={21}
@@ -253,7 +253,7 @@ const Banner = () => {
                   <p>Cities</p>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-6 text-center countUp-main">
-                  <img src="/images/locations.png"></img>
+                  <img src="/images/locations.png"></img><br />
                   <CountUp
                     start={0}
                     end={3065}
@@ -263,7 +263,7 @@ const Banner = () => {
                   <p>Locations</p>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-6 text-center countUp-main">
-                  <img src="/images/services.png"></img>
+                  <img src="/images/services.png"></img><br />
                   <CountUp
                     start={0}
                     end={10375}

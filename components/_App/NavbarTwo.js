@@ -14,7 +14,7 @@ import CustomerLogin from './Customer/CustomerLogin';
 import router from 'next/router';
 import axios from 'axios';
 import { FaLanguage } from 'react-icons/fa';
-
+import Modal from 'react-modal';
 resetIdCounter();
 
 const NavbarTwo = ({ text }) => {
@@ -28,7 +28,8 @@ const NavbarTwo = ({ text }) => {
   const [categoryProfile, setCategoryProfile] = useState("");
   const [profile, setProfile] = useState();
   const [run, setRun] = useState(false);
-  const [languages, setLanguages] = useState("")
+  const [languages, setLanguages] = useState(false)
+  const [languagesMobile, setLanguagesMobile] = useState(false)
 
   //sticky menu
   const showStickyMenu = () => {
@@ -107,16 +108,26 @@ const NavbarTwo = ({ text }) => {
     }
   }
 
-  const languagesChange = (e) => {
+  const languagesChange = (e, lang) => {
     // setLanguages(e.target.value)
-    console.log(e.target.value);
-    localStorage.setItem("lang", e.target.value);
+    console.log(lang);
+    localStorage.setItem("lang", lang);
     router.push(router.route, router.asPath, {
-      locale: e.target.value,
+      locale: lang,
     });
     // <getStaticProps loc={e.target.value} />;
     // window.location.reload(false);
   };
+
+  const clickLanguage = () => {
+    setLanguages(true)
+    setshowMenu(false)
+  }
+
+  const clickLanguageMobile = () => {
+    setLanguagesMobile(true)
+    setshowMenu(false)
+  }
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -163,13 +174,13 @@ const NavbarTwo = ({ text }) => {
               </Link>
               <div className='collapse navbar-collapse mean-menu' style={{ flexBasis: "none" }}>
                 <ul className='navbar-nav'>
-                  <li className='nav-item'>
+                  {/* <li className='nav-item'>
                     <Link href='/' activeClassName='active'>
                       <a href='#' className='dropdown-toggle nav-link'>
                         {text}
                       </a>
                     </Link>
-                  </li>
+                  </li> */}
 
                   {/* <li className='nav-item'>
                     <Link href='/' activeClassName='active'>
@@ -186,29 +197,53 @@ const NavbarTwo = ({ text }) => {
                       </a>
                     </Link>
                   </li>
-                  <li className='nav-item' style={{ display: "flex", alignItems: "end" }}>
-                    <div className="form-group">
-                      <select
-                        className="dashbaord-category-select"
-                        placeholder="Select the state"
-                        style={{ background: "none" }}
-                        onChange={languagesChange}
+
+                  <li className='nav-item drop-down-mobile'>
+                    <a>
+                      <FaLanguage size="4rem" onClick={clickLanguageMobile} className='language-icon' />
+
+                      <Modal isOpen={languagesMobile} onRequestClose={() => setLanguagesMobile(false)}
+                        style={{
+                          overlay: {
+                            position: 'fixed',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                          },
+                          content: {
+                            position: 'absolute',
+                            top: '40px',
+                            left: '40px',
+                            right: '40px',
+                            width: '79%',
+                            height: '27%',
+                            inset: '40px',
+                            bottom: '40px',
+                            border: '1px solid #ccc',
+                            background: '#fff',
+                            overflow: 'auto',
+                            WebkitOverflowScrolling: 'touch',
+                            borderRadius: '4px',
+                            outline: 'none',
+                            padding: '20px'
+                          }
+                        }}
                       >
-                        <option>Languages</option>
-                        <option value="en">English</option>
-                        <option value="mr-IN">Marathi</option>
-                        <option value="hi-IN">Hindi</option>
-                        <option value="kn-IN">Karnataka</option>
-                        <option value="ml-IN">Malayalam</option>
-                        <option value="gu-IN">Gujarati</option>
-                        <option value="ta-IN">Tamil</option>
-                        <option value="te-IN">Telugu</option>
-                      </select>
-                    </div>
+                        <div className='drpdown-popup'>
+                          <p onClick={(e) => languagesChange(e, "en")}>English</p>
+                          <p onClick={(e) => languagesChange(e, "mr-IN")}>Marathi</p>
+                          <p onClick={(e) => languagesChange(e, "hi-IN")}>Hindi</p>
+                          <p onClick={(e) => languagesChange(e, "kn-IN")}>Kannada</p>
+                          <p onClick={(e) => languagesChange(e, "ml-IN")}>Malayalam</p>
+                          <p onClick={(e) => languagesChange(e, "gu-IN")}>Gujarati</p>
+                          <p onClick={(e) => languagesChange(e, "ta-IN")}>Tamil</p>
+                          <p onClick={(e) => languagesChange(e, "te-IN")}>Telugu</p>
+                        </div>
+                      </Modal>
+                    </a>
                   </li>
-
-
-
 
                   {/* <div className='donate-btn'>
                     <Link
@@ -374,9 +409,66 @@ const NavbarTwo = ({ text }) => {
                 </div>
 
 
+                {/* <li className='nav-item' style={{ display: "flex", alignItems: "end" }}>
+                  <div className="form-group">
+                    <select
+                      className="dashbaord-category-select"
+                      placeholder="Select the state"
+                      style={{ background: "none" }}
+                      onChange={languagesChange}
+                    >
+                      <h3 onClick={(e) => languagesChange(e, "ta-In")}>Tamil</h3>
+                      <option>Languages</option>
+                      <option value="en">English</option>
+                      <option value="mr-IN">Marathi</option>
+                      <option value="hi-IN">Hindi</option>
+                      <option value="kn-IN">Karnataka</option>
+                      <option value="ml-IN">Malayalam</option>
+                      <option value="gu-IN">Gujarati</option>
+                      <option value="ta-IN">Tamil</option>
+                      <option value="te-IN">Telugu</option>
+                    </select>
+                  </div>
+                </li> */}
 
+                <FaLanguage size="4rem" onClick={clickLanguage} className='language-icon' />
 
-
+                <Modal isOpen={languages} onRequestClose={() => setLanguages(false)}
+                  style={{
+                    overlay: {
+                      position: 'fixed',
+                      right: 0,
+                      bottom: 0,
+                      left: '1140px',
+                      top: '38px',
+                      backgroundColor: 'unset'
+                    },
+                    content: {
+                      position: 'absolute',
+                      width: '79%',
+                      inset: '40px',
+                      border: '1px solid rgb(204, 204, 204)',
+                      overflow: 'auto',
+                      borderradius: ' 4px',
+                      outline: 'none',
+                      left: '1240px',
+                      top: '58px',
+                      height: '38%',
+                      padding: '20px',
+                    }
+                  }}
+                >
+                  <div className='drpdown-popup'>
+                    <p onClick={(e) => languagesChange(e, "en")}>English</p>
+                    <p onClick={(e) => languagesChange(e, "mr-IN")}>Marathi</p>
+                    <p onClick={(e) => languagesChange(e, "hi-IN")}>Hindi</p>
+                    <p onClick={(e) => languagesChange(e, "kn-IN")}>Kannada</p>
+                    <p onClick={(e) => languagesChange(e, "ml-IN")}>Malayalam</p>
+                    <p onClick={(e) => languagesChange(e, "gu-IN")}>Gujarati</p>
+                    <p onClick={(e) => languagesChange(e, "ta-IN")}>Tamil</p>
+                    <p onClick={(e) => languagesChange(e, "te-IN")}>Telugu</p>
+                  </div>
+                </Modal>
               </div>
             </nav>
           </div>
@@ -391,7 +483,6 @@ const NavbarTwo = ({ text }) => {
                 <div className='circle circle-three'></div>
               </div>
             </div>
-
             <div className={displayMiniAuth ? 'container active' : 'container'}>
               <div className='option-inner'>
                 {token == null || token == "" ?
