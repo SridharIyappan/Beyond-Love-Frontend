@@ -971,7 +971,7 @@ const Profile = () => {
 
                     <div className="col-xl-12 col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Active</label>
+                        <label>Activity</label>
                         <div class="row">
                           <div class="col-lg-4">
                             <label className="checkbox">
@@ -981,7 +981,7 @@ const Profile = () => {
                                 value="High"
                                 onChange={(e) => setActive(e.target.value)}
                               />
-                              <span> High</span>
+                              <span> Active</span>
                             </label>
                           </div>
                           <div class="col-lg-4">
@@ -992,10 +992,10 @@ const Profile = () => {
                                 value="Medium"
                                 onChange={(e) => setActive(e.target.value)}
                               />
-                              <span> Medium</span>
+                              <span> Not Active</span>
                             </label>
                           </div>
-                          <div class="col-lg-4">
+                          {/* <div class="col-lg-4">
                             <label className="checkbox">
                               <input
                                 type="radio"
@@ -1005,7 +1005,7 @@ const Profile = () => {
                               />
                               <span> Low</span>
                             </label>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>

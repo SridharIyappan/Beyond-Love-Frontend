@@ -240,7 +240,7 @@ const Banner = () => {
                     duration={3}
                     className="countUp"
                   />
-                  <p>State</p>
+                  <p>States</p>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-6 text-center countUp-main">
                   <img src="/images/city.png"></img><br />
