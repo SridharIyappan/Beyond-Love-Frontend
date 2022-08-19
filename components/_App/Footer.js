@@ -1,8 +1,9 @@
 import React from "react";
 import { useRouter } from "next/router";
-
+import { useTranslation } from "next-i18next";
 const Footer = ({ bgColor }) => {
   let router = useRouter();
+  const { t } = useTranslation("home");
   const handleFilter = (category, state, city) => {
     // e.preventDefault();
     router.push({
@@ -25,7 +26,7 @@ const Footer = ({ bgColor }) => {
 
             <div className="col-lg-3 col-sm-6 col-md-6 pt-4">
               <div className="single-footer-widget">
-                <h6>Pet Clinics</h6>
+                <h6>{t("Pet Clinic")}</h6>
                 <ul className="link-list">
                   <li
                     onClick={() =>
@@ -37,8 +38,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Clinic in
-                      Chennai
+                      <i className="flaticon-left-chevron"></i> {t("Pet Clinic")} {t("In Chennai")}
                     </a>
                   </li>
                   <li
@@ -51,8 +51,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Clinic in
-                      Delhi
+                      <i className="flaticon-left-chevron"></i> {t("Pet Clinic")} {t("In Delhi")}
                     </a>
                   </li>
                   <li
@@ -66,7 +65,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Clinic in Hyderabad
+                      <i className="flaticon-left-chevron"></i> {t("Pet Clinic")} {t("In Hyderabad")}
                     </a>
                   </li>
                   <li
@@ -80,8 +79,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Clinic in
-                      Mumbai
+                      <i className="flaticon-left-chevron"></i> {t("Pet Clinic")} {t("In Mubai")}
                     </a>
                   </li>
                   {/* <li>
@@ -96,7 +94,7 @@ const Footer = ({ bgColor }) => {
 
             <div className="col-lg-3 col-sm-6 col-md-6 pt-4">
               <div className="single-footer-widget">
-                <h6>Pet Grooming</h6>
+                <h6>{t("Pet Grooming")}</h6>
                 <ul className="link-list">
                   <li
                     onClick={() =>
@@ -109,8 +107,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Grooming in
-                      Chennai
+                      <i className="flaticon-left-chevron"></i> {t("Pet Grooming")} {t("In Chennai")}
                     </a>
                   </li>
                   <li
@@ -123,8 +120,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Grooming in
-                      Delhi
+                      <i className="flaticon-left-chevron"></i> {t("Pet Grooming")} {t("In Delhi")}
                     </a>
                   </li>
                   <li
@@ -138,8 +134,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Grooming in
-                      Hyderabad
+                      <i className="flaticon-left-chevron"></i> {t("Pet Grooming")} {t("In Hyderabad")}
                     </a>
                   </li>
                   <li
@@ -153,8 +148,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Grooming in
-                      Mumbai
+                      <i className="flaticon-left-chevron"></i> {t("Pet Grooming")} {t("In Mubai")}
                     </a>
                   </li>
                   {/* <li>
@@ -169,7 +163,7 @@ const Footer = ({ bgColor }) => {
 
             <div className="col-lg-3 col-sm-6 col-md-6 pt-4">
               <div className="single-footer-widget">
-                <h6> Pet Boarding</h6>
+                <h6>{t("Pet Boarding")}</h6>
                 <ul className="link-list">
                   <li
                     onClick={() =>
@@ -182,8 +176,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Boarding in
-                      Chennai
+                      <i className="flaticon-left-chevron"></i> {t("Pet Boarding")} {t("In Chennai")}
                     </a>
                   </li>
                   <li
@@ -197,8 +190,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Boarding in Delhi
-                    </a>
+                      <i className="flaticon-left-chevron"></i> {t("Pet Boarding")} {t("In Delhi")} </a>
                   </li>
                   <li
                     onClick={() =>
@@ -210,8 +202,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Boarding in
-                      Hyderabad
+                      <i className="flaticon-left-chevron"></i> {t("Pet Boarding")} {t("In Hyderabad")}
                     </a>
                   </li>
                   <li
@@ -225,8 +216,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Boarding in
-                      Mumbai
+                      <i className="flaticon-left-chevron"></i> {t("Pet Boarding")} {t("In Mubai")}
                     </a>
                   </li>
                   {/* <li>
@@ -241,7 +231,7 @@ const Footer = ({ bgColor }) => {
 
             <div className="col-lg-3 col-sm-6 col-md-6 pt-4">
               <div className="single-footer-widget">
-                <h6>Pet Training</h6>
+                <h6>{t("Pet Training")}</h6>
                 <ul className="link-list">
                   <li
                     onClick={() =>
@@ -254,8 +244,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Training in
-                      Chennai
+                      <i className="flaticon-left-chevron"></i> {t("Pet Training")} {t("In Chennai")}
                     </a>
                   </li>
                   <li
@@ -268,8 +257,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i>Pet Training in
-                      Delhi
+                      <i className="flaticon-left-chevron"></i>{t("Pet Training")} {t("In Delhi")}
                     </a>
                   </li>
                   <li
@@ -283,8 +271,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i>Pet Training in
-                      Hyderabad
+                      <i className="flaticon-left-chevron"></i>{t("Pet Training")} {t("In Hyderabad")}
                     </a>
                   </li>
                   <li
@@ -297,8 +284,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i>Pet Training in
-                      Mumbai
+                      <i className="flaticon-left-chevron"></i>{t("Pet Training")} {t("In Mubai")}
                     </a>
                   </li>
                   {/* <li>
@@ -321,10 +307,10 @@ const Footer = ({ bgColor }) => {
 
           <div className="about-term-sec pb-2">
             <div>
-              <a href="/" >About US</a>
+              <a href="/" >{t("About US")}</a>
             </div>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
             <div>
-              <a href="/" >Privacy Policy and Terms & Conditions</a>
+              <a href="/" >{t("Privacy Policy And Terms & Conditions")}</a>
             </div>
           </div>
           <div className="made-india pt-2">

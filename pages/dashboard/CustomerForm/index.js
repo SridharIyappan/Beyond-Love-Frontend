@@ -53,6 +53,8 @@ const Profile = () => {
   const [profile, setProfile] = useState();
   const [showVaccinationCertificate, setShowVaccinationCertificate] = useState([]);
   const [apivaccinationDocsUpload, setApiVaccinationDocsUpload] = useState("");
+  const [selectDog, setSelectDog] = useState(false)
+  const [selectCat, setSelectCat] = useState(false)
 
   useEffect(() => {
     if (typeof window != "undefined") {
@@ -78,6 +80,29 @@ const Profile = () => {
       setPetId(pet._id);
     });
   }, [run]);
+
+  const onSelectBreed = (e) => {
+    if (e.target.value == "Dog") {
+      setSelectDog(true)
+      setSelectCat(false)
+    }
+    if (e.target.value == "Cat") {
+      setSelectCat(true)
+      setSelectDog(false)
+    }
+    // if (e.target.value !== "Cat" && e.target.value !== "Dog") {
+    //   setSelectCat(false)
+    //   setSelectDog(false)
+    // }
+  }
+
+  // const clickDog = () => {
+  //   setSelectDog(true)
+  // }
+
+  // const clickCat = () => {
+  //   setSelectCat(true)
+  // }
 
   const handleClickState = (e) => {
     const stay = e.target.value;
@@ -624,7 +649,7 @@ const Profile = () => {
                   </div>
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <h3 id="address">ADDRESS</h3>
+                      <h3 id="address" style={{ paddingLeft: "0px" }}>ADDRESS</h3>
                     </div>
                   </div>
                   <div className="col-xl-6 col-lg-12 col-md-12">
@@ -845,67 +870,138 @@ const Profile = () => {
                         />
                       </div>
                     </div>
-                    <div className="col-xl-6 col-lg-12 col-md-12 ">
+
+
+                    <div className="col-xl-12 col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>
-                          <i className="bx bx-menu-alt-left"></i> Breed:
+                          <i className="bx bx-menu-alt-left"></i> Pet You Own
                         </label>
                         <select
                           className="dashbaord-category-select form-color"
-                          onChange={(e) => handleBreed(e)}
-                          value={breed}
+                          placeholder="Select the state"
+                          onChange={(e) => onSelectBreed(e)}
                         >
-                          <option>Select the Breed </option>
-                          <option>Labrador Retriever</option>
-                          <option>Golden Retriever</option>
-                          <option>Indian Spitz</option>
-                          <option>Chippiparai</option>
-                          <option>Kombai</option>
-                          <option>Rajapalayam</option>
-                          <option>Indian Pariah</option>
-                          <option>Mudhol Hound</option>
-                          <option>Bully Kutta</option>
-                          <option>Dachshund</option>
-                          <option>Beagle</option>
-                          <option>German Shepherd</option>
-                          <option>Great Dane</option>
-                          <option>Boxer</option>
-                          <option>Rottweiler</option>
-                          <option>Pug</option>
-                          <option>Cocker Spaniel</option>
-                          <option>Dalmation</option>
-                          <option>Tibetan Mastiff</option>
-                          <option>Doberman</option>
-                          <option>Pomeranian</option>
-                          <option>Akita</option>
-                          <option>French Bulldog</option>
-                          <option>Shih Tzu</option>
-                          <option>English Bulldog</option>
-                          <option>Siberian Husky</option>
-                          <option>Chihuahua</option>
-                          <option>Chow Chow</option>
-                          <option>Corgi</option>
-                          <option>Jack Russell Terrier</option>
-                          <option>Dogo Arghentino</option>
-                          <option>Lahasa Apso</option>
-                          <option value="others">Others</option>
+                          <option>Select the Pet</option>
+                          <option >Dog</option>
+                          <option >Cat</option>
                         </select>
                       </div>
                     </div>
 
-                    <div className="col-xl-6 col-lg-12 col-md-12">
-                      {showOptionalBreed && (
-                        <div className="form-group">
-                          <label>option:</label>
-                          <input
-                            type="text"
-                            className="form-control form-color"
-                            placeholder="Breed Name"
-                            onChange={(e) => setBreed(e.target.value)}
-                          ></input>
+                    {selectDog && (
+                      <>
+                        <div className="col-xl-6 col-lg-12 col-md-12 ">
+                          <div className="form-group">
+                            <label>
+                              <i className="bx bx-menu-alt-left"></i> Breed:
+                            </label>
+                            <select
+                              className="dashbaord-category-select form-color"
+                              onChange={(e) => handleBreed(e)}
+                              value={breed}
+                            >
+                              <option>Select the Breed </option>
+                              <option>Labrador Retriever</option>
+                              <option>Golden Retriever</option>
+                              <option>Indian Spitz</option>
+                              <option>Chippiparai</option>
+                              <option>Kombai</option>
+                              <option>Rajapalayam</option>
+                              <option>Indian Pariah</option>
+                              <option>Indie</option>
+                              <option>Mudhol Hound</option>
+                              <option>Bully Kutta</option>
+                              <option>Dachshund</option>
+                              <option>Beagle</option>
+                              <option>German Shepherd</option>
+                              <option>Great Dane</option>
+                              <option>Boxer</option>
+                              <option>Rottweiler</option>
+                              <option>Pug</option>
+                              <option>Cocker Spaniel</option>
+                              <option>Dalmation</option>
+                              <option>Tibetan Mastiff</option>
+                              <option>Doberman</option>
+                              <option>Pomeranian</option>
+                              <option>Akita</option>
+                              <option>French Bulldog</option>
+                              <option>Shih Tzu</option>
+                              <option>English Bulldog</option>
+                              <option>Siberian Husky</option>
+                              <option>Chihuahua</option>
+                              <option>Chow Chow</option>
+                              <option>Corgi</option>
+                              <option>Jack Russell Terrier</option>
+                              <option>Dogo Arghentino</option>
+                              <option>Lahasa Apso</option>
+                              <option value="others">Others</option>
+                            </select>
+                          </div>
                         </div>
-                      )}
-                    </div>
+
+                        <div className="col-xl-6 col-lg-12 col-md-12">
+                          {showOptionalBreed && (
+                            <div className="form-group">
+                              <label>option:</label>
+                              <input
+                                type="text"
+                                className="form-control form-color"
+                                placeholder="Breed Name"
+                                value={breed}
+                                onChange={(e) => setBreed(e.target.value)}
+                              ></input>
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    )}
+
+                    {selectCat && (<>
+                      <div className="col-xl-6 col-lg-12 col-md-12 ">
+                        <div className="form-group">
+                          <label>
+                            <i className="bx bx-menu-alt-left"></i> Breed:
+                          </label>
+                          <select
+                            className="dashbaord-category-select form-color"
+                            onChange={(e) => handleBreed(e)}
+                            value={breed}
+                          >
+                            <option>Select the Breed </option>
+                            <option>Persian Cat</option>
+                            <option>British Short Hair</option>
+                            <option>Siamese Cat</option>
+                            <option>RagDoll</option>
+                            <option>American Bobtail</option>
+                            <option>Singapura Cat</option>
+                            <option>Bombay Cat</option>
+                            <option>Himalayan Cat</option>
+                            <option>Maine Coon</option>
+                            <option>Spotted Cat</option>
+                            <option value="others">Others</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="col-xl-6 col-lg-12 col-md-12">
+                        {showOptionalBreed && (
+                          <div className="form-group">
+                            <label>option:</label>
+                            <input
+                              type="text"
+                              className="form-control form-color"
+                              placeholder="Breed Name"
+                              value={breed}
+                              onChange={(e) => setBreed(e.target.value)}
+                            ></input>
+                          </div>
+                        )}
+                      </div>
+                    </>
+                    )}
+
+
                     <div className="col-xl-6 col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>DOB</label>
@@ -1176,7 +1272,7 @@ const Profile = () => {
           <div className="my-profile-box p-3">
             <div className="add-pet-sec">
               <div>
-                <h3>Your Pet</h3>
+                <h3 >Your Pet</h3>
               </div>
               <div className="form-group add-pet-btn">
                 <button onClick={addPetForm} type="submit">
@@ -1290,76 +1386,137 @@ const Profile = () => {
                         />
                       </div>
                     </div>
-                    <div className="col-xl-6 col-lg-12 col-md-12 ">
+
+
+                    <div className="col-xl-12 col-lg-12 col-md-12">
                       <div className="form-group">
                         <label>
-                          <i className="bx bx-menu-alt-left"></i> Breed:
+                          <i className="bx bx-menu-alt-left"></i> Pet You Own
                         </label>
-                        {/* <select
-                          className="dashbaord-category-select form-color"
-                          onChange={(e) => handleBreed(e)}
-                        >
-                          <option>Select the Breed </option>
-                          <option value="others">Others</option>
-                          
-                        </select> */}
                         <select
                           className="dashbaord-category-select form-color"
-                          onChange={(e) => handleBreed(e)}
-                          value={breed}
+                          placeholder="Select the state"
+                          onChange={(e) => onSelectBreed(e)}
                         >
-                          <option>Select the Breed </option>
-                          <option>Labrador Retriever</option>
-                          <option>Golden Retriever</option>
-                          <option>Indian Spitz</option>
-                          <option>Chippiparai</option>
-                          <option>Kombai</option>
-                          <option>Rajapalayam</option>
-                          <option>Indian Pariah</option>
-                          <option>Mudhol Hound</option>
-                          <option>Bully Kutta</option>
-                          <option>Dachshund</option>
-                          <option>Beagle</option>
-                          <option>German Shepherd</option>
-                          <option>Great Dane</option>
-                          <option>Boxer</option>
-                          <option>Rottweiler</option>
-                          <option>Pug</option>
-                          <option>Cocker Spaniel</option>
-                          <option>Dalmation</option>
-                          <option>Tibetan Mastiff</option>
-                          <option>Doberman</option>
-                          <option>Pomeranian</option>
-                          <option>Akita</option>
-                          <option>French Bulldog</option>
-                          <option>Shih Tzu</option>
-                          <option>English Bulldog</option>
-                          <option>Siberian Husky</option>
-                          <option>Chihuahua</option>
-                          <option>Chow Chow</option>
-                          <option>Corgi</option>
-                          <option>Jack Russell Terrier</option>
-                          <option>Dogo Arghentino</option>
-                          <option>Lahasa Apso</option>
-                          <option value="others">Others</option>
+                          <option>Select the Pet</option>
+                          <option >Dog</option>
+                          <option >Cat</option>
                         </select>
                       </div>
                     </div>
 
-                    <div className="col-xl-6 col-lg-12 col-md-12">
-                      {showOptionalBreed && (
-                        <div className="form-group">
-                          <label>option:</label>
-                          <input
-                            type="text"
-                            className="form-control form-color"
-                            placeholder="Breed Name"
-                            value={breed}
-                            onChange={(e) => setBreed(e.target.value)}
-                          ></input>
+                    {selectDog && (
+                      <>
+                        <div className="col-xl-6 col-lg-12 col-md-12 ">
+                          <div className="form-group">
+                            <label>
+                              <i className="bx bx-menu-alt-left"></i> Breed:
+                            </label>
+                            <select
+                              className="dashbaord-category-select form-color"
+                              onChange={(e) => handleBreed(e)}
+                              value={breed}
+                            >
+                              <option>Select the Breed </option>
+                              <option>Labrador Retriever</option>
+                              <option>Golden Retriever</option>
+                              <option>Indian Spitz</option>
+                              <option>Chippiparai</option>
+                              <option>Kombai</option>
+                              <option>Rajapalayam</option>
+                              <option>Indian Pariah</option>
+                              <option>Indie</option>
+                              <option>Mudhol Hound</option>
+                              <option>Bully Kutta</option>
+                              <option>Dachshund</option>
+                              <option>Beagle</option>
+                              <option>German Shepherd</option>
+                              <option>Great Dane</option>
+                              <option>Boxer</option>
+                              <option>Rottweiler</option>
+                              <option>Pug</option>
+                              <option>Cocker Spaniel</option>
+                              <option>Dalmation</option>
+                              <option>Tibetan Mastiff</option>
+                              <option>Doberman</option>
+                              <option>Pomeranian</option>
+                              <option>Akita</option>
+                              <option>French Bulldog</option>
+                              <option>Shih Tzu</option>
+                              <option>English Bulldog</option>
+                              <option>Siberian Husky</option>
+                              <option>Chihuahua</option>
+                              <option>Chow Chow</option>
+                              <option>Corgi</option>
+                              <option>Jack Russell Terrier</option>
+                              <option>Dogo Arghentino</option>
+                              <option>Lahasa Apso</option>
+                              <option value="others">Others</option>
+                            </select>
+                          </div>
                         </div>
-                      )}
-                    </div>
+
+                        <div className="col-xl-6 col-lg-12 col-md-12">
+                          {showOptionalBreed && (
+                            <div className="form-group">
+                              <label>option:</label>
+                              <input
+                                type="text"
+                                className="form-control form-color"
+                                placeholder="Breed Name"
+                                value={breed}
+                                onChange={(e) => setBreed(e.target.value)}
+                              ></input>
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    )}
+
+                    {selectCat && (<>
+                      <div className="col-xl-6 col-lg-12 col-md-12 ">
+                        <div className="form-group">
+                          <label>
+                            <i className="bx bx-menu-alt-left"></i> Breed:
+                          </label>
+                          <select
+                            className="dashbaord-category-select form-color"
+                            onChange={(e) => handleBreed(e)}
+                            value={breed}
+                          >
+                            <option>Select the Breed </option>
+                            <option>Persian Cat</option>
+                            <option>British Short Hair</option>
+                            <option>Siamese Cat</option>
+                            <option>RagDoll</option>
+                            <option>American Bobtail</option>
+                            <option>Singapura Cat</option>
+                            <option>Bombay Cat</option>
+                            <option>Himalayan Cat</option>
+                            <option>Maine Coon</option>
+                            <option>Spotted Cat</option>
+                            <option value="others">Others</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="col-xl-6 col-lg-12 col-md-12">
+                        {showOptionalBreed && (
+                          <div className="form-group">
+                            <label>option:</label>
+                            <input
+                              type="text"
+                              className="form-control form-color"
+                              placeholder="Breed Name"
+                              value={breed}
+                              onChange={(e) => setBreed(e.target.value)}
+                            ></input>
+                          </div>
+                        )}
+                      </div>
+                    </>
+                    )}
+
 
                     <div className="col-xl-6 col-lg-12 col-md-12">
                       <div className="form-group">
@@ -1695,7 +1852,7 @@ const Profile = () => {
 
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
-                        <h3 id="address">Vaccination Certificate</h3>
+                        <h3 id="address" style={{ paddingLeft: "0px" }}>Vaccination Certificate</h3>
                       </div>
                     </div>
 

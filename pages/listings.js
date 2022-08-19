@@ -12,6 +12,7 @@ import Footer from "../components/_App/Footer";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Pagination from "../components/Pagination";
+import { useTranslation } from "next-i18next";
 
 const options = {
   loop: true,
@@ -49,7 +50,7 @@ const GridListingsWithLeftSidebar = () => {
   const [loading, setLoading] = useState(false);
   // const [run, setRun] = useState(false);
   let router = useRouter();
-
+  const { t } = useTranslation("home");
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -573,7 +574,7 @@ const GridListingsWithLeftSidebar = () => {
       <NavbarTwo />
       <div className="page-title-bg">
         <div className="container">
-          <h2>Find Popular Services</h2>
+          <h2>{t("States")}</h2>
           <form
             onSubmit={handleSubmit}
             style={{ maxWidth: "1080px !important", paddingRight: 0 }}

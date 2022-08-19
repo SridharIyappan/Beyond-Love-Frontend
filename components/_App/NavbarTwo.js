@@ -15,6 +15,7 @@ import router from 'next/router';
 import axios from 'axios';
 import { FaLanguage } from 'react-icons/fa';
 import Modal from 'react-modal';
+import { useTranslation } from "next-i18next";
 resetIdCounter();
 
 const NavbarTwo = ({ text }) => {
@@ -30,7 +31,7 @@ const NavbarTwo = ({ text }) => {
   const [run, setRun] = useState(false);
   const [languages, setLanguages] = useState(false)
   const [languagesMobile, setLanguagesMobile] = useState(false)
-
+  const { t } = useTranslation("home");
   //sticky menu
   const showStickyMenu = () => {
     if (window.scrollY >= 80) {
@@ -193,7 +194,7 @@ const NavbarTwo = ({ text }) => {
                   <li className='nav-item'>
                     <Link href='' activeClassName='active'>
                       <a href='https://invisiblesuperhumans.org/' target="_blank" className='dropdown-toggle nav-link'>
-                        Donate
+                        {t("Donate")}
                       </a>
                     </Link>
                   </li>
@@ -289,7 +290,7 @@ const NavbarTwo = ({ text }) => {
                         onClick={toggleAuthRegister}
                         className='auth-one'
                       >
-                        <i className='flaticon-user'></i> Login / Register
+                        <i className='flaticon-user'></i> {t("Login")} /  {t("Register")}
                       </span>
                     </div>
                     <div className="option-item">
@@ -299,7 +300,7 @@ const NavbarTwo = ({ text }) => {
                         className="active"
                       >
                         <a className="default-btn button-one">
-                          <i className="flaticon-more"></i> Business Registeration
+                          <i className="flaticon-more"></i> {t("Business Registeration")}
                         </a>
                       </span>
                     </div>
@@ -328,7 +329,7 @@ const NavbarTwo = ({ text }) => {
                                     className='rounded-circle'
                                     alt='image'
                                   />)}
-                              <span className='name' onClick={toggleDropdownProfile}>My Account</span>
+                              <span className='name' onClick={toggleDropdownProfile}>{t("My Account")}</span>
                             </div>
                           </a>
 
@@ -366,14 +367,14 @@ const NavbarTwo = ({ text }) => {
                                 {userDetail.userType == "Business" ? (<li className='nav-item'>
                                   <Link href={`/dashboard/category/${categoryProfile}`}>
                                     <a className='nav-link'>
-                                      <i className='bx bx-user'></i> <span>Profile</span>
+                                      <i className='bx bx-user'></i> <span>{t("Profile")}</span>
                                     </a>
                                   </Link>
                                 </li>) : (
                                   <li className='nav-item'>
                                     <Link href={`/dashboard/CustomerForm/`}>
                                       <a className='nav-link'>
-                                        <i className='bx bx-user'></i> <span>Profile</span>
+                                        <i className='bx bx-user'></i> <span>{t("Profile")}</span>
                                       </a>
                                     </Link>
                                   </li>
@@ -397,7 +398,7 @@ const NavbarTwo = ({ text }) => {
                                   <a className='nav-link'
                                     onClick={handleLogout}
                                   >
-                                    <i className='bx bx-log-out'></i> <span>Logout</span>
+                                    <i className='bx bx-log-out'></i> <span>{t("Logout")}</span>
                                   </a>
                                 </li>
                               </ul>
@@ -493,7 +494,7 @@ const NavbarTwo = ({ text }) => {
                         data-target='#loginRegisterModal'
                         onClick={toggleAuthRegister}
                       >
-                        <i className='flaticon-user'></i> Login / Register
+                        <i className='flaticon-user'></i>  {t("Login")} /  {t("Register")}
                       </span>
                     </div>
                     <div className="option-item">
@@ -503,7 +504,7 @@ const NavbarTwo = ({ text }) => {
                         className="active"
                       >
                         <a className="default-btn button-one">
-                          <i className="flaticon-more"></i> Business Registeration
+                          <i className="flaticon-more"></i> {t("Business Registeration")}
                         </a>
                       </span>
                     </div>
@@ -531,7 +532,7 @@ const NavbarTwo = ({ text }) => {
                                     className='rounded-circle'
                                     alt='image'
                                   />)}
-                              <span className='name' onClick={toggleDropdownProfile}>My Account</span>
+                              <span className='name' onClick={toggleDropdownProfile}>{t("My Account")}</span>
                             </div>
                           </a>
 
@@ -569,14 +570,14 @@ const NavbarTwo = ({ text }) => {
                                 {userDetail.userType == "Business" ? (<li className='nav-item'>
                                   <Link href={`/dashboard/category/${categoryProfile}`}>
                                     <a className='nav-link'>
-                                      <i className='bx bx-user'></i> <span>Profile</span>
+                                      <i className='bx bx-user'></i> <span>{t("Profile")}</span>
                                     </a>
                                   </Link>
                                 </li>) : (
                                   <li className='nav-item'>
                                     <Link href={`/dashboard/CustomerForm/`}>
                                       <a className='nav-link'>
-                                        <i className='bx bx-user'></i> <span>Profile</span>
+                                        <i className='bx bx-user'></i> <span>{t("Profile")}</span>
                                       </a>
                                     </Link>
                                   </li>
@@ -600,7 +601,7 @@ const NavbarTwo = ({ text }) => {
                                   <a className='nav-link'
                                     onClick={handleLogout}
                                   >
-                                    <i className='bx bx-log-out'></i> <span>Logout</span>
+                                    <i className='bx bx-log-out'></i> <span>{t("Logout")}</span>
                                   </a>
                                 </li>
                               </ul>
@@ -634,20 +635,20 @@ const NavbarTwo = ({ text }) => {
 
               <ul className='nav nav-tabs' id='myTab'>
                 <h3 className="vendor-register-head">
-                  Sign up as Business Register
+                  {t("Sign up as Business Register")}
                 </h3>
                 <TabList>
                   <Tab className="nav-item">
 
                     <a className='nav-link' id='login-tab'>
-                      Login
+                      {t("Login")}
                     </a>
 
                   </Tab>
                   <Tab className="nav-item">
 
                     <a className='nav-link' id='register-tab'>
-                      Register
+                      {t("Register")}
                     </a>
 
                   </Tab>
@@ -686,17 +687,17 @@ const NavbarTwo = ({ text }) => {
 
               <ul className='nav nav-tabs' id='myTab'>
                 <h3 className="vendor-register-head">
-                  Welcome Back! Customer
+                  {t("Welcome Back! Customer")}
                 </h3>
                 <TabList>
                   <Tab className="nav-item">
                     <a className='nav-link' id='login-tab'>
-                      Login
+                      {t("Login")}
                     </a>
                   </Tab>
                   <Tab className="nav-item">
                     <a className='nav-link' id='register-tab'>
-                      Register
+                      {t("Register")}
                     </a>
                   </Tab>
                 </TabList>

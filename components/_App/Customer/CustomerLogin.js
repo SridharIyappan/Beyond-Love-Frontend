@@ -4,6 +4,7 @@ import axios from "axios";
 import "react-toastify/ReactToastify.min.css";
 import router from "next/router";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useTranslation } from "next-i18next";
 
 const CustomerLogin = () => {
     const [mobile, setMobile] = useState("");
@@ -17,6 +18,8 @@ const CustomerLogin = () => {
     const [resetPasswordChange, setResetPasswordChange] = useState("");
     const [confirmPasswordChange, setConfirmPasswordChange] = useState("")
     const [otp, setOtp] = useState("");
+
+    const { t } = useTranslation("home");
 
     const loginPasswordVisibility = () => {
         setShowLogingPassword(!showLoginPassword)
@@ -234,9 +237,9 @@ const CustomerLogin = () => {
 
                     </div>
                     <div className="forgot-pass">
-                        <p onClick={forgotPasswordPopUp}>Forgot Password</p>
+                        <p onClick={forgotPasswordPopUp}>{t("Forgot Password")}</p>
                     </div>
-                    <button type='submit'>Login</button>
+                    <button type='submit'>{t("Login")}</button>
                 </form>
                 {/* <span className='dont-account'>
                     Don't have an account? <a href='#'>Register Now</a>
@@ -245,7 +248,7 @@ const CustomerLogin = () => {
         </div>
 
 
-        {/* ------------ Forgot password sectoin ------- */}
+        {/* ------------ {t("Forgot Password")} sectoin ------- */}
         <div
             className={
                 fotgotPopup
@@ -259,7 +262,7 @@ const CustomerLogin = () => {
                     {/* <button type="button" className="close" onClick={forgotClose}>
                         <i className="bx bx-x"></i>
                     </button> */}
-                    <h2 className="vendor-register-head">Forgot Password</h2>
+                    <h2 className="vendor-register-head">{t("Forgot Password")}</h2>
 
                     <form onSubmit={forgotPasswordSubmit}>
                         <div className="form-group">

@@ -6,6 +6,7 @@ import { addBusiness } from "../../../Redux/businessSlice";
 import "react-toastify/ReactToastify.min.css";
 import router from "next/router";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useTranslation } from "next-i18next";
 
 const BusinessRegister = () => {
   const [businessName, setBusinessName] = useState("");
@@ -17,6 +18,8 @@ const BusinessRegister = () => {
   const [showLoginPassword, setShowLogingPassword] = useState(false);
   const [otpPopUp, setPopUp] = useState(false);
   const [otp, setOtp] = useState("");
+
+  const { t } = useTranslation("home");
 
   let dispatch = useDispatch();
 
@@ -201,7 +204,7 @@ const BusinessRegister = () => {
               )}
             </div>
 
-            <button type="submit">Register</button>
+            <button type="submit">{t("Register")}</button>
           </form>
           {/* <span className="already-account">
             Already have an account? <a href="#">Login Now</a>

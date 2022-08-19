@@ -4,9 +4,9 @@ import axios from "axios";
 import "react-toastify/ReactToastify.min.css";
 import router from "next/router";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useTranslation } from "next-i18next";
 
 const CustomerRegister = () => {
-
 
     useEffect(() => {
         console.log("working")
@@ -21,6 +21,8 @@ const CustomerRegister = () => {
     const [showLoginPassword, setShowLogingPassword] = useState(false);
     const [otpPopUp, setOtpPopUp] = useState(false);
     const [otp, setOtp] = useState("");
+
+    const { t } = useTranslation("home");
 
     const loginPasswordVisibility = () => {
         setShowLogingPassword(!showLoginPassword)
@@ -171,7 +173,7 @@ const CustomerRegister = () => {
                             <> </>
                         )}
                     </div>
-                    <button type='submit'>Register</button>
+                    <button type='submit'>{t("Register")}</button>
                 </form>
                 {/* <span className='already-account'>
                     Already have an account? <a href='#'>Login Now</a>

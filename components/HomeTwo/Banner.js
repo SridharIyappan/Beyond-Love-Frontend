@@ -226,7 +226,7 @@ const Banner = () => {
         <div className="container">
           <div className="sec-count-head pt-4">
             {/* <h4>Look at our numbers!</h4> */}
-            <h1>Best Place for all your Pet needs!</h1>
+            <h1>{t("Best Place For All Your Pet Needs")}!</h1>
           </div>
           <div className="row">
             <div className="col-lg-4 col-sm-12 col-md-12"></div>
@@ -240,7 +240,7 @@ const Banner = () => {
                     duration={3}
                     className="countUp"
                   />
-                  <p>States</p>
+                  <p>{t("States")}</p>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-6 text-center countUp-main">
                   <img src="/images/city.png"></img><br />
@@ -250,7 +250,7 @@ const Banner = () => {
                     duration={3}
                     className="countUp"
                   />
-                  <p>Cities</p>
+                  <p>{t("Cities")}</p>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-6 text-center countUp-main">
                   <img src="/images/locations.png"></img><br />
@@ -260,7 +260,7 @@ const Banner = () => {
                     duration={3}
                     className="countUp"
                   />
-                  <p>Locations</p>
+                  <p>{t("Locations")}</p>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-6 text-center countUp-main">
                   <img src="/images/services.png"></img><br />
@@ -270,7 +270,7 @@ const Banner = () => {
                     duration={3}
                     className="countUp"
                   />
-                  <p>Service Provider</p>
+                  <p>{t("Service Providers")}</p>
                 </div>
               </div>
             </div>

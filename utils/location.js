@@ -2813,7 +2813,7 @@ export const locations = [
 	},
 	{
 		id: 477,
-		Geo_Name: "in Lambha",
+		Geo_Name: "Lambha",
 		Geo_Head: 25,
 		Geo_City: 544,
 	},
@@ -18488,5 +18488,11 @@ export const locations = [
 		Geo_Name: "Kavundachipalayam",
 		Geo_Head: 33,
 		Geo_City: 47,
+	},
+	{
+		id: 3085,
+		Geo_Name: "Nehru Nagar",
+		Geo_Head: 25,
+		Geo_City: 544,
 	},
 ];

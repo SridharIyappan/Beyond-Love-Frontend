@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addBusiness } from "../../../Redux/businessSlice";
 import router from "next/router";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useTranslation } from "next-i18next";
 
 const BusinessLogin = () => {
   const [mobile, setMobile] = useState("");
@@ -22,6 +23,8 @@ const BusinessLogin = () => {
   const [resetPasswordChange, setResetPasswordChange] = useState("");
   const [confirmPasswordChange, setConfirmPasswordChange] = useState("")
   const [passwordDidntMatch, setPasswordDidntMatch] = useState(false);
+
+  const { t } = useTranslation("home");
 
   const loginPasswordVisibility = () => {
     setShowLogingPassword(!showLoginPassword)
@@ -272,9 +275,9 @@ const BusinessLogin = () => {
               )}
             </div>
             <div className="forgot-pass">
-              <p onClick={forgotPasswordPopUp}>Forgot Password</p>
+              <p onClick={forgotPasswordPopUp}>{t("Forgot Password")}</p>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit">{t("Login")}</button>
           </form>
           {/* <span className="dont-account">
             Don't have an account? <a href="#">Register Now</a>
@@ -297,7 +300,7 @@ const BusinessLogin = () => {
             {/* <button type="button" className="close" onClick={forgotClose}>
               <i className="bx bx-x"></i>
             </button> */}
-            <h2 className="vendor-register-head">Forgot Password</h2>
+            <h2 className="vendor-register-head">{t("Forgot Password")}</h2>
 
             <form onSubmit={forgotPasswordSubmit}>
               <div className="form-group">

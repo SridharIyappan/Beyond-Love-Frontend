@@ -334,7 +334,7 @@ const Banner = () => {
                                                     value={stateName}
                                                     onChange={handleStateChange}
                                                 >
-                                                    <option>State</option>
+                                                    <option>{t("States")}</option>
 
                                                     {allStates.map((state) => {
                                                         return (
@@ -360,8 +360,8 @@ const Banner = () => {
                                                     onFocus={handleClickCity}
                                                     onChange={handleChangeCity}
                                                 >
-                                                    <option>
-                                                        {cityName.length > 0 ? cityName[0] : "City"}
+                                                    <option>{t("City")}
+                                                        {/* {cityName.length > 0 ? cityName[0] : <span>{t("City")}</span>} */}
                                                     </option>
                                                     {selectedCity.map((city) => {
                                                         return (
@@ -387,10 +387,10 @@ const Banner = () => {
                                                     onFocus={handleClickLocation}
                                                     onChange={handleChangeLocation}
                                                 >
-                                                    <option>
-                                                        {locationName.length > 0
+                                                    <option>{t("Location")}
+                                                        {/* {locationName.length > 0
                                                             ? locationName[0]
-                                                            : "Location"}
+                                                            : <span>{t("Location")}</span>} */}
                                                     </option>
                                                     {selectedLocation.map((location) => {
                                                         return (
@@ -449,7 +449,7 @@ const Banner = () => {
                                 </div> */}
                                 <div className="search-btn">
                                     <button onClick={contactFormShow}>
-                                        Leave Your Search To Us
+                                        {t("Leave Your Search to Us")}
                                     </button>
                                 </div>
                             </div>
