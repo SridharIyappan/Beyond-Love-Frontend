@@ -22,7 +22,6 @@ import NavbarTwo from "../components/_App/NavbarTwo";
 import PopularPlacesFilter from "../components/Common/PopularPlacesFilter";
 import Footer from "../components/_App/Footer";
 import { useRouter } from "next/router";
-import cli from "../public/images/clinic.png"
 
 const options = {
   loop: true,
@@ -316,7 +315,7 @@ const SingleListings = () => {
         <div className="listings-details-image">
           <ToastContainer />
           {coverImg !== null && (
-            <img src="/images/clinic.png" alt="image" className="cover-img" />
+            <img src={coverImg} alt="image" className="cover-img" />
           )}
 
           <div className="container">

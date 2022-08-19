@@ -574,7 +574,7 @@ const GridListingsWithLeftSidebar = () => {
       <NavbarTwo />
       <div className="page-title-bg">
         <div className="container">
-          <h2>{t("States")}</h2>
+          <h2>{t("Find Popular Services")}</h2>
           <form
             onSubmit={handleSubmit}
             style={{ maxWidth: "1080px !important", paddingRight: 0 }}
