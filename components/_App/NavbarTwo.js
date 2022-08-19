@@ -362,7 +362,7 @@ const NavbarTwo = ({ text }) => {
                             </div>
 
                             <div className='dropdown-body'>
-                              <ul className='profile-nav p-0 pt-3'>
+                              <ul className='profile-nav p-0'>
                                 {userDetail.userType == "Business" ? (<li className='nav-item'>
                                   <Link href={`/dashboard/category/${categoryProfile}`}>
                                     <a className='nav-link'>
@@ -565,7 +565,7 @@ const NavbarTwo = ({ text }) => {
                             </div>
 
                             <div className='dropdown-body'>
-                              <ul className='profile-nav p-0 pt-3' style={{ listStyle: "none" }}>
+                              <ul className='profile-nav p-0' style={{ listStyle: "none" }}>
                                 {userDetail.userType == "Business" ? (<li className='nav-item'>
                                   <Link href={`/dashboard/category/${categoryProfile}`}>
                                     <a className='nav-link'>

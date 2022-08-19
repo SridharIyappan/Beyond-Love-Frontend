@@ -274,7 +274,7 @@ const BusinessLogin = () => {
             <div className="forgot-pass">
               <p onClick={forgotPasswordPopUp}>Forgot Password</p>
             </div>
-            <button type="submit">Login Now</button>
+            <button type="submit">Login</button>
           </form>
           {/* <span className="dont-account">
             Don't have an account? <a href="#">Register Now</a>

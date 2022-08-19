@@ -171,7 +171,7 @@ const CustomerRegister = () => {
                             <> </>
                         )}
                     </div>
-                    <button type='submit'>Register Now</button>
+                    <button type='submit'>Register</button>
                 </form>
                 {/* <span className='already-account'>
                     Already have an account? <a href='#'>Login Now</a>
