@@ -4131,7 +4131,7 @@ Listings Details Area CSS
 
 .listings-details-image .container-fluid .share-save li a:hover,
 .listings-details-image .container-fluid .share-save li .share:hover {
-  background-color: var(--whiteColor);
+  background-color: #fed023;
   color: var(--blackColor);
 }
 
