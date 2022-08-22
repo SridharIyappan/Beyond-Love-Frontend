@@ -87,7 +87,7 @@ const Category = ({ titleOne, titleTwo }) => {
                   <FaClinicMedical size='2.5rem' />
                 </div>
                 <h3>{t("Pet Clinic")}</h3>
-                <span>3622</span>
+                <span>{petClinicCount}</span>
                 {/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}
@@ -102,7 +102,7 @@ const Category = ({ titleOne, titleTwo }) => {
                   <GiHairStrands size='2.5rem' />
                 </div>
                 <h3>{t("Pet Grooming")}</h3>
-                <span>2199</span>
+                <span>{petGroomingCount}</span>
                 {/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}
@@ -117,7 +117,7 @@ const Category = ({ titleOne, titleTwo }) => {
                   <TbBone size='2.5rem' />
                 </div>
                 <h3>{t("Pet Training")}</h3>
-                <span>2881</span>
+                <span>{petTrainingCount}</span>
                 {/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}
@@ -132,7 +132,7 @@ const Category = ({ titleOne, titleTwo }) => {
                   <MdPets size='2.5rem' />
                 </div>
                 <h3>{t("Pet Boarding")}</h3>
-                <span>1673</span>
+                <span>{petBoardingCount}</span>
                 {/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}

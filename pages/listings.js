@@ -622,11 +622,13 @@ const GridListingsWithLeftSidebar = () => {
                     <option>State</option>
 
                     {allStates.map((state) => {
-                      return (
-                        <option value={[state[0], state[1]]} key={state[0]}>
-                          {state[0]}
-                        </option>
-                      );
+                      if (state[1] != null) {
+                        return (
+                          <option value={[state[0], state[1]]} key={state[0]}>
+                            {state[0]}
+                          </option>
+                        );
+                      }
                     })}
                   </select>
                 </div>
@@ -973,6 +975,11 @@ const GridListingsWithLeftSidebar = () => {
                     </div>
                   );
                 })}
+                {!loading && currentTableData.length < 1 && (
+                  <div className="d-flex justify-content-center align-items-center w-100">
+                    <h1>Data Not Found</h1>
+                  </div>
+                )}
                 <Pagination
                   className="pagination-bar"
                   currentPage={currentPage}
