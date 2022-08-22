@@ -4900,7 +4900,7 @@ export const cities = [
 		id: "1019",
 	},
 	{
-		Geo_Name: "Kanpur Nagar",
+		Geo_Name: "Kanpur",
 		Geo_Head: "10",
 		id: "1020",
 	},
