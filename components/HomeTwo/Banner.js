@@ -50,6 +50,7 @@ const Banner = () => {
       console.log("we are running server side");
     }
   }, []);
+
   const getServiceProvide = async () => {
     try {
       const { data } = await axios.get(
@@ -256,7 +257,7 @@ const Banner = () => {
                   <img src="/images/locations.png"></img><br />
                   <CountUp
                     start={0}
-                    end={3065}
+                    end={locationLength}
                     duration={3}
                     className="countUp"
                   />
@@ -266,7 +267,7 @@ const Banner = () => {
                   <img src="/images/services.png"></img><br />
                   <CountUp
                     start={0}
-                    end={10375}
+                    end={serviceProvider}
                     duration={3}
                     className="countUp"
                   />
