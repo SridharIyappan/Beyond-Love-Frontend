@@ -622,11 +622,13 @@ const GridListingsWithLeftSidebar = () => {
                     <option>State</option>
 
                     {allStates.map((state) => {
-                      return (
-                        <option value={[state[0], state[1]]} key={state[0]}>
-                          {state[0]}
-                        </option>
-                      );
+                      if (state[1] != null) {
+                        return (
+                          <option value={[state[0], state[1]]} key={state[0]}>
+                            {state[0]}
+                          </option>
+                        );
+                      }
                     })}
                   </select>
                 </div>
