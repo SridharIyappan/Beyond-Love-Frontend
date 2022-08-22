@@ -3530,7 +3530,7 @@ export const locations = [
 	},
 	{
 		id: 596,
-		Geo_Name: "Dum Dum Cantonment Railway Station-Dum Dum",
+		Geo_Name: "Dum Dum Cantonment",
 		Geo_Head: 20,
 		Geo_City: 1077,
 	},
@@ -4118,7 +4118,7 @@ export const locations = [
 	},
 	{
 		id: 694,
-		Geo_Name: "Sakherbazar in Sakherbazar ",
+		Geo_Name: "Sakherbazar",
 		Geo_Head: 20,
 		Geo_City: 1077,
 	},
@@ -10910,7 +10910,7 @@ export const locations = [
 	},
 	{
 		id: 1826,
-		Geo_Name: "Govandi Railway Station-Govandi East",
+		Geo_Name: "Govandi",
 		Geo_Head: 28,
 		Geo_City: 774,
 	},
@@ -19023,5 +19023,82 @@ export const locations = [
 		Geo_Head: 33,
 		Geo_City: 42,
 	},
-	
+	{
+		id: 3173,
+		Geo_Name: "Avishikta Spencer",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3174,
+		Geo_Name: "Naskar Para Rd",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3175,
+		Geo_Name: "Uttarpally",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3176,
+		Geo_Name: "Ultadanga Main Road",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3177,
+		Geo_Name: "Shambhu Chatterjee Street",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3178,
+		Geo_Name: "Arjunpur",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3179,
+		Geo_Name: "Rajdanga Main Road",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3180,
+		Geo_Name: "Bidhannanagar",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3181,
+		Geo_Name: "RaiMohan Banerjee Road",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3182,
+		Geo_Name: "Hindustan More",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3183,
+		Geo_Name: "Naktala",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3184,
+		Geo_Name: "Paikapara",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
+	{
+		id: 3185,
+		Geo_Name: "Ravindra Nagar",
+		Geo_Head: 20,
+		Geo_City: 1077,
+	},
 ];
