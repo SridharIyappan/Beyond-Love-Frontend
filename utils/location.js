@@ -6574,7 +6574,7 @@ export const locations = [
 	},
 	{
 		id: 1103,
-		Geo_Name: "Gurgaon Sector 10a",
+		Geo_Name: "Gurgaon Sector 10A",
 		Geo_Head: 7,
 		Geo_City: 582,
 	},
@@ -8218,13 +8218,7 @@ export const locations = [
 	},
 	{
 		id: 1377,
-		Geo_Name: "Palam Vihar Extention",
-		Geo_Head: 7,
-		Geo_City: 582,
-	},
-	{
-		id: 1378,
-		Geo_Name: "Palam Vihar Extention",
+		Geo_Name: "Palam Vihar Extension",
 		Geo_Head: 7,
 		Geo_City: 582,
 	},
