@@ -461,6 +461,7 @@ const GridListingsWithLeftSidebar = () => {
   // Get Business without category function
   const getBusinessWithoutCategory = async (id, location) => {
     try {
+      setLoading(true);
       const { data } = await axios.get(
         `${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories`
       );
@@ -481,8 +482,10 @@ const GridListingsWithLeftSidebar = () => {
           arr = data.profilesArray;
         }
         console.log(arr);
+        setLoading(false);
         setBusiness(arr);
       }
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -493,6 +496,7 @@ const GridListingsWithLeftSidebar = () => {
     console.log(category);
     console.log(id);
     console.log(location);
+    setLoading(true);
     const { data } = await axios.get(
       `${process.env.DOMAIN_NAME}/api/business/get-profiles-from-unique-category/${category}`
     );
@@ -513,8 +517,11 @@ const GridListingsWithLeftSidebar = () => {
         arr = data.business;
         // setBusiness(data.profilesArray);
       }
+      setLoading(false);
       console.log(arr);
       setBusiness(arr);
+    } else {
+      setLoading(false);
     }
   };
 
@@ -581,7 +588,7 @@ const GridListingsWithLeftSidebar = () => {
           >
             <div
               className="row m-0 align-items-center"
-            // style={{ padding: "6px" }}
+              // style={{ padding: "6px" }}
             >
               <div class="col-lg-3 col-md-6 py-1">
                 <div className="form-group category-select">
@@ -891,7 +898,10 @@ const GridListingsWithLeftSidebar = () => {
                   let profileImg = `${process.env.DOMAIN_NAME}/api/business/get-photos/${bus.profileImage}`;
                   return (
                     <div className="col-xl-6 col-lg-6 col-md-6" key={bus._id}>
-                      <div className="single-listings-box" style={{ height: "92%" }}>
+                      <div
+                        className="single-listings-box"
+                        style={{ height: "92%" }}
+                      >
                         <div
                           className="listings-image"
                           onClick={(e) =>
