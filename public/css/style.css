@@ -393,8 +393,8 @@ Navbar Area CSS
   font-weight: 500;
   padding-left: 0;
   padding-right: 0;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .miran-nav .navbar .navbar-nav .nav-item a:hover,
@@ -16397,7 +16397,7 @@ th {
 
 .countUp-main p {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .gallery {
@@ -16750,7 +16750,8 @@ th {
   }
 }
 
-@media only screen and (max-width: 767px) {
+
+@media only screen and (max-width: 768px) {
   .sec-count-head {
     margin-left: 0;
     margin-top: 55px;
@@ -16781,6 +16782,34 @@ th {
     font-size: 14px !important;
     margin-top: 10px;
   }
+
+  .footer-social-media {
+    justify-content: center;
+  }
+
+  .banner-two-heading {
+    height: 7vh !important;
+  }
+
+  .mobile-view {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-area .navbar .navbar-nav {
+    margin-left: 0px;
+    height: 175px !important;
+    overflow-y: scroll;
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    left: 0;
+    top: 56px !important;
+    right: 0;
+    margin: 0 auto;
+    z-index: 999;
+  }
 }
 
 .drop-down-mobile {
@@ -16810,4 +16839,9 @@ th {
 
 .language-icon {
   cursor: pointer;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: pink;
 }

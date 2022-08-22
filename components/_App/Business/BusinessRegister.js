@@ -121,7 +121,7 @@ const BusinessRegister = () => {
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Business Name"
+                placeholder="Business Name *"
                 className="form-control"
                 onChange={(e) => setBusinessName(e.target.value)}
               />
@@ -135,7 +135,7 @@ const BusinessRegister = () => {
             <div className="form-group">
               <input
                 type="email"
-                placeholder="Email"
+                placeholder="Email *"
                 className="form-control"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -149,7 +149,7 @@ const BusinessRegister = () => {
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Mobile"
+                placeholder="Mobile *"
                 className="form-control"
                 onChange={(e) => setMobile(e.target.value)}
               />
@@ -163,7 +163,7 @@ const BusinessRegister = () => {
             <div className="form-group reset">
               <input
                 type={showLoginPassword ? "text" : "password"}
-                placeholder="Password"
+                placeholder="Password *"
                 className="form-control"
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -186,7 +186,7 @@ const BusinessRegister = () => {
             <div className="form-group">
               <select
                 className="dashbaord-category-select"
-                placeholder="Select the state"
+                placeholder="Select the state *"
                 style={{ background: "none" }}
                 onChange={(e) => setCategory(e.target.value)}
               >

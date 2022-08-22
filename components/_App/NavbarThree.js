@@ -3,6 +3,7 @@ import Link from '../../utils/ActiveLink';
 import { IndiceContext } from "../../contexts";
 import router from 'next/router';
 import axios from 'axios';
+import { useTranslation } from "next-i18next";
 const NavbarThree = () => {
   const { toggleSideMenu } = useContext(IndiceContext);
   const [displayAuth, setDisplayAuth] = useState(false);
@@ -13,6 +14,7 @@ const NavbarThree = () => {
   const [userDetail, setUserDetail] = useState("");
   const [categoryProfile, setCategoryProfile] = useState("");
   const [profile, setProfile] = useState();
+  const { t } = useTranslation("home");
 
   useEffect(() => {
     let abortController = new AbortController();
@@ -140,7 +142,7 @@ const NavbarThree = () => {
                                   alt='image'
                                   style={{ height: "40px", width: "40px" }}
                                 />)}
-                            <span className='name' onClick={toggleDropdownProfile}>My Account</span>
+                            <span className='name' onClick={toggleDropdownProfile}>{t("My Account")}</span>
                           </div>
                         </a>
 
@@ -184,14 +186,14 @@ const NavbarThree = () => {
                               {userDetail.userType == "Business" ? (<li className='nav-item'>
                                 <Link href={`/dashboard/category/${categoryProfile}`}>
                                   <a className='nav-link'>
-                                    <i className='bx bx-user'></i> <span>Profile</span>
+                                    <i className='bx bx-user'></i> <span>{t("Profile")}</span>
                                   </a>
                                 </Link>
                               </li>) : (
                                 <li className='nav-item'>
                                   <Link href={`/dashboard/CustomerForm/`}>
                                     <a className='nav-link'>
-                                      <i className='bx bx-user'></i> <span>Profile</span>
+                                      <i className='bx bx-user'></i> <span>{t("Profile")}</span>
                                     </a>
                                   </Link>
                                 </li>
@@ -216,7 +218,7 @@ const NavbarThree = () => {
                                 <a className='nav-link'
                                   onClick={handleLogout}
                                 >
-                                  <i className='bx bx-log-out'></i> <span>Logout</span>
+                                  <i className='bx bx-log-out'></i> <span>{t("Logout")}</span>
                                 </a>
                               </li>
                             </ul>
@@ -286,7 +288,7 @@ const NavbarThree = () => {
                                 className='rounded-circle'
                                 alt='image'
                               />
-                              <span className='name' onClick={toggleDropdownProfile}>My Account</span>
+                              <span className='name' onClick={toggleDropdownProfile}>{t("My Account")}t</span>
                             </div>
                           </a>
 
@@ -323,14 +325,14 @@ const NavbarThree = () => {
                                 {userDetail.userType == "Business" ? (<li className='nav-item'>
                                   <Link href={`/dashboard/category/${categoryProfile}`}>
                                     <a className='nav-link'>
-                                      <i className='bx bx-user'></i> <span>Profile</span>
+                                      <i className='bx bx-user'></i> <span>{t("Profile")}</span>
                                     </a>
                                   </Link>
                                 </li>) : (
                                   <li className='nav-item'>
                                     <Link href={`/dashboard/CustomerForm/`}>
                                       <a className='nav-link'>
-                                        <i className='bx bx-user'></i> <span>Profile</span>
+                                        <i className='bx bx-user'></i> <span>{t("Profile")}</span>
                                       </a>
                                     </Link>
                                   </li>
@@ -354,7 +356,7 @@ const NavbarThree = () => {
                                   <a className='nav-link'
                                     onClick={handleLogout}
                                   >
-                                    <i className='bx bx-log-out'></i> <span>Logout</span>
+                                    <i className='bx bx-log-out'></i> <span>{t("Logout")}</span>
                                   </a>
                                 </li>
                               </ul>

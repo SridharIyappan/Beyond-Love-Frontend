@@ -187,8 +187,8 @@ const Banner = () => {
         const loc = e.target.value;
         setLocationName(loc.split(","));
     };
-    // Filtering Cities by State
 
+    // Filtering Cities by State
     const handleClickLocation = () => {
         console.log(cityName);
         if (cityName == "" || cityName[2] == undefined) {
@@ -212,11 +212,10 @@ const Banner = () => {
                     arr.push(loc);
                 }
             });
-
-            console.log(arr);
             setSelectedLocation(arr);
         }
     };
+
     const handleClickCity = () => {
         console.log(stateName);
         if (stateName == "" || stateName[1] == undefined) {
@@ -239,8 +238,6 @@ const Banner = () => {
                     arr.push(city);
                 }
             });
-
-            console.log(arr);
             setSelectedCity(arr);
         }
     };
@@ -251,7 +248,6 @@ const Banner = () => {
     };
 
     // State Change
-
     const handleStateChange = (e) => {
         console.log("changed");
         const stateChange = e.target.value;
@@ -263,7 +259,6 @@ const Banner = () => {
         let cityArray = [];
         let locationArray = [];
         details.map((states) => {
-            console.log(states);
             if (states.state[0] !== undefined) {
                 stateArray.push(states.state);
             }
@@ -278,8 +273,8 @@ const Banner = () => {
         let stringStateArray = stateArray.map(JSON.stringify);
         let uniqueStateString = new Set(stringStateArray);
         let uniqueStateArray = Array.from(uniqueStateString, JSON.parse);
+        console.log(uniqueStateArray)
         uniqueStateArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
-        console.log(uniqueStateArray);
 
         // unique city array
         let stringCityArray = cityArray.map(JSON.stringify);
@@ -292,7 +287,7 @@ const Banner = () => {
         let uniqueLocationString = new Set(stringLocationArray);
         let uniqueLocationArray = Array.from(uniqueLocationString, JSON.parse);
         uniqueLocationArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
-
+        console.log(uniqueStateArray)
         setAllStates(uniqueStateArray);
         setAllCities(uniqueCityArray);
         setAllLocations(uniqueLocationArray);
@@ -304,7 +299,7 @@ const Banner = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-sm-12 col-md-12">
-                            <div className="banner-content banner-form">
+                            <div className="banner-content banner-form mt-3">
                                 <h1 className="banner-two-heading" style={{ height: "14vh" }}>
                                     <span className="typewrite">{t("Find Nearby")}</span>
                                     <Typist>
