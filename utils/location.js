@@ -19101,4 +19101,22 @@ export const locations = [
 		Geo_Head: 20,
 		Geo_City: 1077,
 	},
+	{
+		id: 3186,
+		Geo_Name: "Khargar Sector 12",
+		Geo_Head: 28,
+		Geo_City: 774,
+	},
+	{
+		id: 3187,
+		Geo_Name: "Khargar",
+		Geo_Head: 28,
+		Geo_City: 774,
+	},
+	{
+		id: 3188,
+		Geo_Name: "Vashi Road",
+		Geo_Head: 28,
+		Geo_City: 774,
+	},
 ];
