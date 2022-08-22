@@ -115,7 +115,7 @@ const CustomerRegister = () => {
                     <div className='form-group'>
                         <input
                             type='text'
-                            placeholder='Name'
+                            placeholder='Name *'
                             className='form-control'
                             onChange={(e) => setName(e.target.value)}
                         />
@@ -128,7 +128,7 @@ const CustomerRegister = () => {
                     <div className='form-group'>
                         <input
                             type='email'
-                            placeholder='Email'
+                            placeholder='Email *'
                             className='form-control'
                             onChange={(e) => setEmail(e.target.value)}
                         />   {error && email == "" ? (
@@ -140,7 +140,7 @@ const CustomerRegister = () => {
                     <div className='form-group'>
                         <input
                             type='text'
-                            placeholder='Mobile No'
+                            placeholder='Mobile No *'
                             className='form-control'
                             maxlength={10}
                             onChange={(e) => setMobile(e.target.value)}
@@ -154,7 +154,7 @@ const CustomerRegister = () => {
                     <div className='form-group reset'>
                         <input
                             type={showLoginPassword ? "text" : "password"}
-                            placeholder='Password'
+                            placeholder='Password *'
                             className='form-control'
                             onChange={(e) => setPassword(e.target.value)}
                         />

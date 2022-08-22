@@ -1858,10 +1858,12 @@ const Profile = () => {
 
                     <div className="col-xl-4 col-lg-12 col-md-12">
                       <div className="form-group">
+                        <label for="files">Select a Image only</label>
                         <input
                           type="file"
                           className="form-control form-color"
                           onChange={uploadVaccinationDocsUpload}
+                          title="Choose a Image only please"
                         />
                       </div>
                     </div>

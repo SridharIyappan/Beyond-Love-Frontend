@@ -199,7 +199,7 @@ const NavbarTwo = ({ text }) => {
                     </Link>
                   </li>
 
-                  <li className='nav-item drop-down-mobile'>
+                  <li className='nav-item drop-down-mobile' style={{ marginLeft: "0px" }}>
                     <a>
                       <FaLanguage size="4rem" onClick={clickLanguageMobile} className='language-icon' />
 
@@ -282,7 +282,7 @@ const NavbarTwo = ({ text }) => {
 
 
 
-                <div style={{ marginRight: "85px" }}>
+                <div className='mobile-view' style={{ marginRight: "85px" }}>
                   {token == null || token == "" ? (<div className='others-option d-flex align-items-center'>
                     <div className='option-item'>
                       <span
@@ -383,7 +383,7 @@ const NavbarTwo = ({ text }) => {
                                 {userDetail.userType == "Business" ? (<li className='nav-item'>
                                   <Link href={`/dashboard/add-listing/${categoryProfile}`}>
                                     <a className='nav-link'>
-                                      <i className='bx bx-plus-circle'></i> <span>Portfolio</span>
+                                      <i className='bx bx-plus-circle'></i><span>{t("Portfolio")}</span>
                                     </a>
                                   </Link>
                                 </li>) : (
@@ -431,45 +431,47 @@ const NavbarTwo = ({ text }) => {
                     </select>
                   </div>
                 </li> */}
+                <div >
+                  <FaLanguage size="4rem" onClick={clickLanguage} className='language-icon' />
 
-                <FaLanguage size="4rem" onClick={clickLanguage} className='language-icon' />
+                  <Modal isOpen={languages} onRequestClose={() => setLanguages(false)}
+                    style={{
+                      overlay: {
+                        position: 'fixed',
+                        right: 0,
+                        bottom: 0,
+                        left: '1140px',
+                        top: '38px',
+                        backgroundColor: 'unset'
+                      },
+                      content: {
+                        position: 'absolute',
+                        width: '79%',
+                        inset: '40px',
+                        border: '1px solid rgb(204, 204, 204)',
+                        overflow: 'auto',
+                        borderradius: ' 4px',
+                        outline: 'none',
+                        left: '1240px',
+                        top: '58px',
+                        height: '38%',
+                        padding: '20px',
+                      }
+                    }}
+                  >
+                    <div className='drpdown-popup'>
+                      <p onClick={(e) => languagesChange(e, "en")}>English</p>
+                      <p onClick={(e) => languagesChange(e, "mr-IN")}>Marathi</p>
+                      <p onClick={(e) => languagesChange(e, "hi-IN")}>Hindi</p>
+                      <p onClick={(e) => languagesChange(e, "kn-IN")}>Kannada</p>
+                      <p onClick={(e) => languagesChange(e, "ml-IN")}>Malayalam</p>
+                      <p onClick={(e) => languagesChange(e, "gu-IN")}>Gujarati</p>
+                      <p onClick={(e) => languagesChange(e, "ta-IN")}>Tamil</p>
+                      <p onClick={(e) => languagesChange(e, "te-IN")}>Telugu</p>
+                    </div>
+                  </Modal>
+                </div>
 
-                <Modal isOpen={languages} onRequestClose={() => setLanguages(false)}
-                  style={{
-                    overlay: {
-                      position: 'fixed',
-                      right: 0,
-                      bottom: 0,
-                      left: '1140px',
-                      top: '38px',
-                      backgroundColor: 'unset'
-                    },
-                    content: {
-                      position: 'absolute',
-                      width: '79%',
-                      inset: '40px',
-                      border: '1px solid rgb(204, 204, 204)',
-                      overflow: 'auto',
-                      borderradius: ' 4px',
-                      outline: 'none',
-                      left: '1240px',
-                      top: '58px',
-                      height: '38%',
-                      padding: '20px',
-                    }
-                  }}
-                >
-                  <div className='drpdown-popup'>
-                    <p onClick={(e) => languagesChange(e, "en")}>English</p>
-                    <p onClick={(e) => languagesChange(e, "mr-IN")}>Marathi</p>
-                    <p onClick={(e) => languagesChange(e, "hi-IN")}>Hindi</p>
-                    <p onClick={(e) => languagesChange(e, "kn-IN")}>Kannada</p>
-                    <p onClick={(e) => languagesChange(e, "ml-IN")}>Malayalam</p>
-                    <p onClick={(e) => languagesChange(e, "gu-IN")}>Gujarati</p>
-                    <p onClick={(e) => languagesChange(e, "ta-IN")}>Tamil</p>
-                    <p onClick={(e) => languagesChange(e, "te-IN")}>Telugu</p>
-                  </div>
-                </Modal>
               </div>
             </nav>
           </div>
@@ -484,6 +486,7 @@ const NavbarTwo = ({ text }) => {
                 <div className='circle circle-three'></div>
               </div>
             </div>
+
             <div className={displayMiniAuth ? 'container active' : 'container'}>
               <div className='option-inner'>
                 {token == null || token == "" ?
@@ -586,7 +589,7 @@ const NavbarTwo = ({ text }) => {
                                 {userDetail.userType == "Business" ? (<li className='nav-item'>
                                   <Link href={`/dashboard/add-listing/${categoryProfile}`}>
                                     <a className='nav-link'>
-                                      <i className='bx bx-plus-circle'></i><span>Portfolio</span>
+                                      <i className='bx bx-plus-circle'></i><span>{t("Portfolio")}</span>
                                     </a>
                                   </Link>
                                 </li>) : (
@@ -609,7 +612,8 @@ const NavbarTwo = ({ text }) => {
                           </div>
                         </div>
                       </div>
-                    </div>)}
+                    </div>
+                  )}
 
               </div>
             </div>

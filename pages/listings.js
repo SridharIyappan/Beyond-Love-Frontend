@@ -581,9 +581,9 @@ const GridListingsWithLeftSidebar = () => {
           >
             <div
               className="row m-0 align-items-center"
-              style={{ padding: "6px" }}
+            // style={{ padding: "6px" }}
             >
-              <div class="col-lg-3 col-md-6 p-0">
+              <div class="col-lg-3 col-md-6 py-1">
                 <div className="form-group category-select">
                   <label className="category-icon">
                     <i className="flaticon-search"></i>
@@ -602,7 +602,7 @@ const GridListingsWithLeftSidebar = () => {
                 </div>
               </div>
 
-              <div class="col-lg-2 col-md-6 p-0">
+              <div class="col-lg-2 col-md-6 py-1">
                 <div className="form-group category-select">
                   <label className="category-icon">
                     <i className="flaticon-pin"></i>
@@ -625,7 +625,7 @@ const GridListingsWithLeftSidebar = () => {
                 </div>
               </div>
 
-              <div class="col-lg-2 col-md-6 p-0">
+              <div class="col-lg-2 col-md-6 py-1">
                 <div className="form-group category-select">
                   <label className="category-icon">
                     <i className="flaticon-pin"></i>
@@ -652,7 +652,7 @@ const GridListingsWithLeftSidebar = () => {
                 </div>
               </div>
 
-              <div class="col-lg-3 col-md-6 p-0">
+              <div class="col-lg-3 col-md-6 py-1">
                 <div className="form-group category-select">
                   <label className="category-icon">
                     <i className="flaticon-pin"></i>
@@ -686,7 +686,7 @@ const GridListingsWithLeftSidebar = () => {
                 </div>
               </div>
 
-              <div class="col-lg-2 col-md-6 p-0">
+              <div class="col-lg-2 col-md-6 py-1">
                 <div className="submit-btn">
                   <button type="submit">Search</button>
                 </div>

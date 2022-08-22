@@ -203,7 +203,7 @@ const CustomerLogin = () => {
                     <div className='form-group'>
                         <input
                             type='mobile'
-                            placeholder='Mobile No'
+                            placeholder='Mobile No *'
                             className='form-control'
                             onChange={(e) => setMobile(e.target.value)}
                         />
@@ -216,7 +216,7 @@ const CustomerLogin = () => {
                     <div className='form-group reset'>
                         <input
                             type={showLoginPassword ? "text" : "password"}
-                            placeholder='Password'
+                            placeholder='Password *'
                             className='form-control'
                             onChange={(e) => setPassword(e.target.value)}
                         />
