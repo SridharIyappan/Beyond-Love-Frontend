@@ -1071,7 +1071,7 @@ const Profile = () => {
                       <div className="form-group">
                         <label>Weight(kg)</label>
                         <input
-                          type="Number"
+                          type="text"
                           className="form-control form-color"
                           placeholder="Weight"
                           onChange={(e) => setWeight(e.target.value)}
