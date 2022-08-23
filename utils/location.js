@@ -6592,7 +6592,7 @@ export const locations = [
 	},
 	{
 		id: 1106,
-		Geo_Name: "Gurgaon Sector 15 Part 2",
+		Geo_Name: "Gurgaon Sector 15",
 		Geo_Head: 7,
 		Geo_City: 582,
 	},
@@ -8939,12 +8939,6 @@ export const locations = [
 	{
 		id: 1498,
 		Geo_Name: "Sushant Lok",
-		Geo_Head: 7,
-		Geo_City: 582,
-	},
-	{
-		id: 1499,
-		Geo_Name: "Sushant Lok Iii Extension",
 		Geo_Head: 7,
 		Geo_City: 582,
 	},
@@ -19112,5 +19106,53 @@ export const locations = [
 		Geo_Name: "Vashi Road",
 		Geo_Head: 28,
 		Geo_City: 774,
+	},
+	{
+		id: 3189,
+		Geo_Name: "Gurgaon Sector 70A",
+		Geo_Head: 7,
+		Geo_City: 582,
+	},
+	{
+		id: 3190,
+		Geo_Name: "Garat Pur Bas",
+		Geo_Head: 7,
+		Geo_City: 582,
+	},
+	{
+		id: 3191,
+		Geo_Name: "Gurgaon Sector 27 ",
+		Geo_Head: 7,
+		Geo_City: 582,
+	},
+	{
+		id: 3192,
+		Geo_Name: "Badshapur",
+		Geo_Head: 7,
+		Geo_City: 582,
+	},
+	{
+		id: 3193,
+		Geo_Name: "Hayatpur",
+		Geo_Head: 7,
+		Geo_City: 582,
+	},
+	{
+		id: 3194,
+		Geo_Name: "Sheetla Mata Rd",
+		Geo_Head: 7,
+		Geo_City: 582,
+	},
+	{
+		id: 3195,
+		Geo_Name: "Gurgaon Sector 18",
+		Geo_Head: 7,
+		Geo_City: 582,
+	},
+	{
+		id: 3196,
+		Geo_Name: "Gurgaon Sector 81",
+		Geo_Head: 7,
+		Geo_City: 582,
 	},
 ];

@@ -2465,7 +2465,7 @@ export const cities = [
 		id: "532",
 	},
 	{
-		Geo_Name: "New Delhi",
+		Geo_Name: "Delhi",
 		Geo_Head: "8",
 		id: "533",
 	},
@@ -2710,7 +2710,7 @@ export const cities = [
 		id: "581",
 	},
 	{
-		Geo_Name: "Gurugram",
+		Geo_Name: "Gurgaon",
 		Geo_Head: "7",
 		id: "582",
 	},
