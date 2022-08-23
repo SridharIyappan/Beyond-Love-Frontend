@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import ReactLoading from "react-loading";
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
 const PetBoarding = () => {
   const [files, setFiles] = useState([]);
