@@ -191,7 +191,7 @@ const NavbarTwo = ({ text }) => {
                     </Link>
                   </li> */}
 
-                  <li className='nav-item'>
+                  <li className='nav-item' style={{ marginRight: "7px" }}>
                     <Link href='' activeClassName='active'>
                       <a href='https://invisiblesuperhumans.org/' target="_blank" className='dropdown-toggle nav-link'>
                         {t("Donate")}
@@ -282,7 +282,7 @@ const NavbarTwo = ({ text }) => {
 
 
 
-                <div className='mobile-view' style={{ marginRight: "85px" }}>
+                <div className='mobile-view' style={{ marginRight: "44px" }}>
                   {token == null || token == "" ? (<div className='others-option d-flex align-items-center'>
                     <div className='option-item'>
                       <span

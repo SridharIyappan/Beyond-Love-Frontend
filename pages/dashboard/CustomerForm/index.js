@@ -1590,7 +1590,7 @@ const Profile = () => {
                     </div>
                     <div className="col-xl-12 col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Weight</label>
+                        <label>Weight(kg)</label>
                         <input
                           type="Number"
                           className="form-control form-color"
