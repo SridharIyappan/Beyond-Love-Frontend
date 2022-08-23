@@ -7,6 +7,7 @@ import Typist from "react-typist";
 import { ToastContainer, toast, TypeOptions } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
 import { useTranslation } from "next-i18next";
+import { useDispatch } from "react-redux";
 
 const Banner = () => {
   const [contactForm, setContactForm] = useState(false);
@@ -36,6 +37,7 @@ const Banner = () => {
   const { t } = useTranslation("home");
 
   let router = useRouter();
+  let dispatch = useDispatch();
 
   const contactFormShow = () => {
     if (userType == "Customer") {
@@ -230,8 +232,6 @@ const Banner = () => {
         progress: undefined,
       });
     } else {
-      console.log(allCities);
-      console.log(stateName[1]);
       let arr = [];
       allCities.map((city) => {
         if (city[1] == stateName[1]) {
@@ -330,7 +330,6 @@ const Banner = () => {
                           onChange={handleStateChange}
                         >
                           <option>{t("States")}</option>
-
                           {allStates.map((state) => {
                             console.log(state, "from return");
                             if (state[1] != null) {
@@ -339,7 +338,9 @@ const Banner = () => {
                                   value={[state[0], state[1]]}
                                   key={state[0]}
                                 >
-                                  {state[0]}
+                                  {console.log(state[0].length)}
+                                  {state[0].length > 0 ? state[0] : window.location.reload(false)}
+                                  {/* {state[0]} */}
                                 </option>
                               );
                             }

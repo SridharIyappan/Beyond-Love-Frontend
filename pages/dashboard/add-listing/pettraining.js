@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import ReactLoading from "react-loading";
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
 const PetTraining = () => {
   const [files, setFiles] = useState([]);
@@ -14,7 +15,7 @@ const PetTraining = () => {
   const [categoriesProfile, setCategoryProfile] = useState("");
   const [businessPhotos, setBusinessPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(categoriesProfile);
+  const [token, setToken] = useState("")
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
@@ -38,6 +39,8 @@ const PetTraining = () => {
   useEffect(() => {
     if (typeof window != "undefined") {
       let user = JSON.parse(localStorage.getItem("user"));
+      let token = localStorage.getItem("token")
+      setToken(token)
       setCategoryProfile(user.category);
       setBusinessid(user._id);
       console.log("we are running client side");
@@ -114,6 +117,32 @@ const PetTraining = () => {
       });
     }
   };
+
+  const deleteBusinessPhotos = async (e, pic) => {
+    e.preventDefault();
+    const d = {
+      rmImage: pic
+    }
+    try {
+      const { data } = await axios.put(`${process.env.DOMAIN_NAME}/api/business/delete-image/${categoriesProfile}/${token}`, d)
+      console.log(data)
+      if (data.success) {
+        toast.success(data.msg, {
+          theme: "light",
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setBusinessPhotos(data.businessImages);
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
@@ -271,12 +300,31 @@ const PetTraining = () => {
           )}
         </div>
 
-        <div className="gallery add-listings-btn">
+        {/* <div className="gallery add-listings-btn">
           {businessPhotos.map((photos) => {
             let photo = `${process.env.DOMAIN_NAME}/api/business/get-photos/${photos}`;
             return <img src={photo} alt="missing" className="gallery__img" />;
           })}
+        </div> */}
+
+        <div className="gallery add-listings-btn">
+          {businessPhotos.map((photos) => {
+            let photo = `${process.env.DOMAIN_NAME}/api/business/get-photos/${photos}`;
+            return (
+              <div className="delete-icon-head">
+                <img src={photo} alt="missing" className="gallery__img" />
+                <div>
+                  <form onSubmit={(e) => deleteBusinessPhotos(e, photos)}>
+                    <button className="image-trash" type="submit">
+                      <RiDeleteBin6Line color="white" size="20" />
+                    </button>
+                  </form>
+                </div>
+              </div>
+            )
+          })}
         </div>
+
         {/* <div className='add-listings-box'>
           <h3>Details</h3>
 

@@ -588,7 +588,7 @@ const GridListingsWithLeftSidebar = () => {
           >
             <div
               className="row m-0 align-items-center"
-              // style={{ padding: "6px" }}
+            // style={{ padding: "6px" }}
             >
               <div class="col-lg-3 col-md-6 py-1">
                 <div className="form-group category-select">
@@ -645,7 +645,7 @@ const GridListingsWithLeftSidebar = () => {
                     onChange={handleChangeCity}
                   >
                     <option>
-                      {cityName.length > 0 ? cityName[0] : "Select City"}
+                      {cityName.length > 0 ? cityName[0] : "City"}
                     </option>
                     {selectedCity.map((city) => {
                       return (
