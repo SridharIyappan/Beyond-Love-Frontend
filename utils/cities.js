@@ -3670,7 +3670,7 @@ export const cities = [
 		id: "773",
 	},
 	{
-		Geo_Name: "Mumbai City",
+		Geo_Name: "Mumbai",
 		Geo_Head: "28",
 		id: "774",
 	},
