@@ -587,10 +587,10 @@ const GridListingsWithLeftSidebar = () => {
             style={{ maxWidth: "1080px !important", paddingRight: 0 }}
           >
             <div
-              className="row m-0 align-items-center"
-              // style={{ padding: "6px" }}
+              className="row m-0 align-items-center py-2"
+            // style={{ padding: "6px" }}
             >
-              <div class="col-lg-3 col-md-6 py-1">
+              <div class="col-lg-2 col-md-6 py-1">
                 <div className="form-group category-select">
                   <label className="category-icon">
                     <i className="flaticon-search"></i>
@@ -609,7 +609,7 @@ const GridListingsWithLeftSidebar = () => {
                 </div>
               </div>
 
-              <div class="col-lg-2 col-md-6 py-1">
+              <div class="col-lg-3 col-md-6 py-1">
                 <div className="form-group category-select">
                   <label className="category-icon">
                     <i className="flaticon-pin"></i>
@@ -634,7 +634,7 @@ const GridListingsWithLeftSidebar = () => {
                 </div>
               </div>
 
-              <div class="col-lg-2 col-md-6 py-1">
+              <div class="col-lg-3 col-md-6 py-1">
                 <div className="form-group category-select">
                   <label className="category-icon">
                     <i className="flaticon-pin"></i>
@@ -645,7 +645,7 @@ const GridListingsWithLeftSidebar = () => {
                     onChange={handleChangeCity}
                   >
                     <option>
-                      {cityName.length > 0 ? cityName[0] : "Select City"}
+                      {cityName.length > 0 ? cityName[0] : "City"}
                     </option>
                     {selectedCity.map((city) => {
                       return (
@@ -674,7 +674,7 @@ const GridListingsWithLeftSidebar = () => {
                     <option>
                       {locationName.length > 0
                         ? locationName[0]
-                        : "Select Location"}
+                        : "Location"}
                     </option>
                     {selectedLocation.map((location) => {
                       return (
@@ -694,12 +694,21 @@ const GridListingsWithLeftSidebar = () => {
                   </select>
                 </div>
               </div>
+              <div class="col-lg-1 col-md-6 p-0">
+                <div className="submit-btn ">
+                  <button type="submit">
+                    {" "}
+                    <i className="flaticon-search"></i>
+                  </button>
+                  {/* <i className="flaticon-search"></i> */}
+                </div>
+              </div>
 
-              <div class="col-lg-2 col-md-6 py-1">
+              {/* <div class="col-lg-2 col-md-6 py-1">
                 <div className="submit-btn">
                   <button type="submit">Search</button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </form>
         </div>

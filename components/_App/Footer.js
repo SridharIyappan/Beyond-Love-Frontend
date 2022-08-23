@@ -310,7 +310,10 @@ const Footer = ({ bgColor }) => {
               <a href="/" >{t("About US")}</a>
             </div>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
             <div>
-              <a href="/" >{t("Privacy Policy And Terms & Conditions")}</a>
+              <a href="/" >{t("Privacy Policy")}</a>
+            </div>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+            <div>
+              <a href="/" >{t("Terms & Conditions")}</a>
             </div>
           </div>
           <div className="made-india pt-2">

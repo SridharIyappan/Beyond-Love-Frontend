@@ -55,6 +55,7 @@ const Profile = () => {
   const [apivaccinationDocsUpload, setApiVaccinationDocsUpload] = useState("");
   const [selectDog, setSelectDog] = useState(false)
   const [selectCat, setSelectCat] = useState(false)
+  const [imgPdfValidation, setImgPdfValidation] = useState("")
 
   useEffect(() => {
     if (typeof window != "undefined") {
@@ -533,7 +534,8 @@ const Profile = () => {
   const uploadVaccinationDocsUpload = (e) => {
     // setShowVaccinationCertificate(URL.createObjectURL(e.target.files[0]));
     setApiVaccinationDocsUpload(e.target.files[0]);
-    console.log(e.target.files[0])
+    setImgPdfValidation(e.target.files[0].type)
+    console.log(e.target.files[0].type)
     console.log(e.target.files)
   }
 
@@ -541,7 +543,7 @@ const Profile = () => {
     e.preventDefault();
     console.log(apivaccinationDocsUpload)
     if (apivaccinationDocsUpload == "") {
-      return toast.warning("Please Upload Vaccination Certificate", {
+      return toast.error("Please Upload Vaccination Certificate", {
         theme: "light",
         position: "top-right",
         autoClose: 2000,
@@ -551,7 +553,19 @@ const Profile = () => {
         draggable: true,
         progress: undefined,
       });
-    } else {
+    } else if (imgPdfValidation !== "image/png") {
+      return toast.error("Please Upload Image only", {
+        theme: "light",
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    else {
       const formData = new FormData();
       formData.append("file", apivaccinationDocsUpload);
       try {
@@ -1576,7 +1590,7 @@ const Profile = () => {
                     </div>
                     <div className="col-xl-12 col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label>Weight</label>
+                        <label>Weight(kg)</label>
                         <input
                           type="Number"
                           className="form-control form-color"
@@ -1858,7 +1872,7 @@ const Profile = () => {
 
                     <div className="col-xl-4 col-lg-12 col-md-12">
                       <div className="form-group">
-                        <label for="files">Select a Image only</label>
+                        <label for="files">Select Image</label>
                         <input
                           type="file"
                           className="form-control form-color"

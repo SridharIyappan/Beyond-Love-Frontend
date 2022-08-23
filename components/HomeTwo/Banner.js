@@ -263,7 +263,7 @@ const Banner = () => {
                   />
                   <p>{t("Locations")}</p>
                 </div>
-                <div class="col-lg-3 col-sm-6 col-md-6 text-center countUp-main">
+                <div class="col-lg-3 col-sm-6 col-md-6 text-center countUp-main" style={{ borderRight: "unset" }}>
                   <img src="/images/services.png"></img><br />
                   <CountUp
                     start={0}

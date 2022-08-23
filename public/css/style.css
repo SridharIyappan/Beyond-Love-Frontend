@@ -2007,7 +2007,7 @@ Main Banner Area CSS
 }
 
 .banner-wrapper-area-main-banner {
-  padding-bottom: 50px;
+  padding-bottom: 100px;
   height: 87vh;
   background-image: url(../images/main-banner-bg3.png);
   background-position: center center;
@@ -12749,8 +12749,8 @@ Dashboard CSS
 }
 
 .menu-profile img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   display: inline-block;
   margin-right: 8px;
 }
@@ -16713,7 +16713,7 @@ th {
 }
 
 .background-img {
-  background-image: url(../images/section2.png);
+  background-image: url(../images/section2.jpg);
   height: 100%;
 }
 
@@ -16722,7 +16722,7 @@ th {
 }
 
 .sec-count-head {
-  margin-left: 190px;
+  margin-left: 288px;
   margin-top: 0px;
 
 }
@@ -16844,4 +16844,15 @@ th {
 ::-moz-placeholder {
   /* Firefox 19+ */
   color: pink;
+}
+
+.listings-widget-area .widget .widget-title::before {
+  font-family: Flaticon;
+  content: "\f106";
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+  font-size: 19px;
+  color: var(--blackColor);
 }

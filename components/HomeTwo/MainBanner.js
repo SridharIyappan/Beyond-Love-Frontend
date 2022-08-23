@@ -1,12 +1,13 @@
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
+import { addAllBusiness } from "../../Redux/allBusinessSlice";
 import { useRouter } from "next/router";
 import Typist from "react-typist";
 import { ToastContainer, toast, TypeOptions } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
 import { useTranslation } from "next-i18next";
+import { useDispatch } from "react-redux";
 
 const Banner = () => {
   const [contactForm, setContactForm] = useState(false);
@@ -36,6 +37,7 @@ const Banner = () => {
   const { t } = useTranslation("home");
 
   let router = useRouter();
+  let dispatch = useDispatch();
 
   const contactFormShow = () => {
     if (userType == "Customer") {
@@ -230,8 +232,6 @@ const Banner = () => {
         progress: undefined,
       });
     } else {
-      console.log(allCities);
-      console.log(stateName[1]);
       let arr = [];
       allCities.map((city) => {
         if (city[1] == stateName[1]) {
@@ -250,6 +250,9 @@ const Banner = () => {
   // State Change
   const handleStateChange = (e) => {
     console.log("changed");
+    if (e.target.value == "") {
+      setRun(!run)
+    }
     const stateChange = e.target.value;
     console.log({ stateChange });
     setStateName(stateChange.split(","));
@@ -298,17 +301,17 @@ const Banner = () => {
         <ToastContainer />
         <div className="container">
           <div className="row">
-            <div className="col-lg-8 col-sm-12 col-md-12">
-              <div className="banner-content banner-form mt-3">
+            <div className="col-lg-8 col-sm-12 col-md-12 mt-5">
+              <div className="banner-content banner-form mt-4">
                 <h1 className="banner-two-heading" style={{ height: "14vh" }}>
                   <span className="typewrite">{t("Find Nearby")}</span>
                   <Typist>
                     <span>{t("Pet Clinic")}</span>
-                    <Typist.Backspace count={15} delay={200} />
+                    <Typist.Backspace count={20} delay={1000} />
                     <span>{t("Pet Grooming")}</span>
-                    <Typist.Backspace count={15} delay={200} />
+                    <Typist.Backspace count={20} delay={1000} />
                     <span>{t("Pet Training")}</span>
-                    <Typist.Backspace count={15} delay={200} />
+                    <Typist.Backspace count={20} delay={1000} />
                     <span>{t("Pet Boarding")}</span>
                   </Typist>
                   <span className="wrap"></span>
@@ -319,7 +322,7 @@ const Banner = () => {
                     className="row m-0 align-items-center"
                     style={{ padding: "6px" }}
                   >
-                    <div class="col-lg-2 col-md-6 p-0">
+                    <div class="col-lg-3 col-md-6 p-0">
                       <div className="form-group category-select">
                         <label className="category-icon">
                           <i className="flaticon-pin"></i>
@@ -330,7 +333,6 @@ const Banner = () => {
                           onChange={handleStateChange}
                         >
                           <option>{t("States")}</option>
-
                           {allStates.map((state) => {
                             console.log(state, "from return");
                             if (state[1] != null) {
@@ -339,7 +341,9 @@ const Banner = () => {
                                   value={[state[0], state[1]]}
                                   key={state[0]}
                                 >
-                                  {state[0]}
+                                  {console.log(state[0])}
+                                  {state[0] != "" ? state[0] : window.location.reload(false)}
+                                  {/* {state[0]} */}
                                 </option>
                               );
                             }
@@ -429,7 +433,7 @@ const Banner = () => {
                       </div>
                     </div>
 
-                    <div class="col-lg-2 col-md-6 p-0">
+                    <div class="col-lg-1 col-md-6 p-0">
                       <div className="submit-btn ">
                         <button type="submit">
                           {" "}
