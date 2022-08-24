@@ -21,9 +21,6 @@ const Banner = () => {
 	const [location, setLocation] = useState("");
 	const [dateTime, setDateTime] = useState("");
 	const [error, setError] = useState(false);
-	// const [serviceProvider, setServiceProvider] = useState("");
-	// const [citiesLength, setCitiesLength] = useState("");
-	// const [locationLength, setLocationLength] = useState("");
 	const [stateName, setStateName] = useState("");
 	const [cityName, setCityName] = useState("");
 	const [selectedCity, setSelectedCity] = useState([]);
@@ -42,6 +39,7 @@ const Banner = () => {
 	let router = useRouter();
 	let dispatch = useDispatch();
 
+	// Contact Form Function
 	const contactFormShow = () => {
 		if (userType == "Customer") {
 			setContactForm(!contactForm);
@@ -64,9 +62,6 @@ const Banner = () => {
 			console.log("we are running the client");
 			const token = localStorage.getItem("token");
 			const user = JSON.parse(localStorage.getItem("user"));
-			// let stateArray = dataState.sort((a, b) => (a[0] < b[0] ? -1 : 1));
-			// console.log(stateArray);
-			// setAllStates(stateArray);
 			console.log(user);
 			if (user != null && user != undefined) {
 				setName(user.customerName);
@@ -77,26 +72,16 @@ const Banner = () => {
 			}
 			setToken(token);
 			getAllBusinessProfiles();
-			setAllCities(dataCity);
-			setAllLocations(dataLocation);
-
-			// setCitiesLength(cities.length);
-			// setLocationLength(locations.length);
+			let sArray = dataState.sort((a, b) => (a.Geo_Name < b.Geo_Name ? -1 : 1));
+			console.log(sArray);
+			setAllCities(dataCity.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
+			setAllLocations(dataLocation.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
 		} else {
 			console.log("we are running server side");
 		}
 	}, []);
 
-	// const handleClickCty = () => {
-	//     if (state == undefined) {
-	//         console.log("Please select the state")
-	//     } else {
-	//         console.log("this is else statement")
-	//     }
-	// }
-
 	// All Business Profiles Function
-
 	const getAllBusinessProfiles = async () => {
 		try {
 			const { data } = await axios.get(
@@ -111,7 +96,7 @@ const Banner = () => {
 			console.log(error);
 		}
 	};
-
+	// Appointment Form Function
 	const appointmentFormSubmit = async (e) => {
 		e.preventDefault();
 		const d = {
@@ -174,6 +159,7 @@ const Banner = () => {
 		}
 	};
 
+	// Move to All Listings page
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log(
@@ -188,17 +174,20 @@ const Banner = () => {
 			query: { categoryName, stateName, cityName, locationName },
 		});
 	};
+
+	// Category Change Function
 	const handleChangeCategory = (e) => {
 		console.log(e.target.value);
 		setCategoryName(e.target.value);
 	};
-	// location Change
+
+	// Location Change Function
 	const handleChangeLocation = (e) => {
 		const loc = e.target.value;
 		setLocationName(loc.split(","));
 	};
 
-	// Filtering Cities by State
+	// Filtering Locations by City
 	const handleClickLocation = () => {
 		console.log(cityName);
 		if (cityName == "" || cityName[2] == undefined) {
@@ -217,7 +206,7 @@ const Banner = () => {
 			console.log(cityName);
 			let arr = [];
 			allLocations.map((loc) => {
-				console.log(loc);
+				// console.log(loc);
 				if (loc[2] == cityName[2]) {
 					arr.push(loc);
 				}
@@ -226,6 +215,7 @@ const Banner = () => {
 		}
 	};
 
+	// Filtering Cities by State
 	const handleClickCity = () => {
 		console.log(stateName);
 		if (stateName == "" || stateName[1] == undefined) {
@@ -249,13 +239,15 @@ const Banner = () => {
 			setSelectedCity(arr);
 		}
 	};
+
+	// City Change Function
 	const handleChangeCity = (e) => {
 		const cty = e.target.value;
 		console.log(cty.split(","));
 		setCityName(cty.split(","));
 	};
 
-	// State Change
+	// State Change Function
 	const handleStateChange = (e) => {
 		console.log(e.target.value);
 		if (e.target.value == "") {
@@ -304,6 +296,7 @@ const Banner = () => {
 	//   setAllCities(uniqueCityArray);
 	//   setAllLocations(uniqueLocationArray);
 	// };
+
 	return (
 		<>
 			<section className="banner-wrapper-area-main-banner">
@@ -373,10 +366,7 @@ const Banner = () => {
 													onFocus={handleClickCity}
 													onChange={handleChangeCity}
 												>
-													<option>
-														{t("City")}
-														{/* {cityName.length > 0 ? cityName[0] : <span>{t("City")}</span>} */}
-													</option>
+													<option>{t("City")}</option>
 													{selectedCity.map((city) => {
 														return (
 															<option
@@ -401,12 +391,7 @@ const Banner = () => {
 													onFocus={handleClickLocation}
 													onChange={handleChangeLocation}
 												>
-													<option>
-														{t("Location")}
-														{/* {locationName.length > 0
-                                                            ? locationName[0]
-                                                            : <span>{t("Location")}</span>} */}
-													</option>
+													<option>{t("Location")}</option>
 													{selectedLocation.map((location) => {
 														return (
 															<option
@@ -450,7 +435,6 @@ const Banner = () => {
 													{" "}
 													<i className="flaticon-search"></i>
 												</button>
-												{/* <i className="flaticon-search"></i> */}
 											</div>
 										</div>
 									</div>

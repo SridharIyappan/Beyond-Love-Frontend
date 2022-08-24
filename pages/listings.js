@@ -7,7 +7,6 @@ import { ToastContainer, toast, TypeOptions } from "react-toastify";
 
 //components
 import NavbarTwo from "../components/_App/NavbarTwo";
-import PopularPlacesFilter from "../components/Common/PopularPlacesFilter";
 import Footer from "../components/_App/Footer";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -18,25 +17,7 @@ import { dataCity } from "../utils/dataCity";
 import { dataLocation } from "../utils/dataLocation";
 import { dataState } from "../utils/dataState";
 
-const options = {
-	loop: true,
-	margin: 0,
-	nav: true,
-	mouseDrag: false,
-	items: 1,
-	dots: false,
-	autoplay: true,
-	smartSpeed: 500,
-
-	navText: [
-		"<i class='flaticon-left-chevron'></i>",
-		"<i class='flaticon-right-chevron'></i>",
-	],
-};
-
 const GridListingsWithLeftSidebar = () => {
-	const [display, setDisplay] = useState(false);
-	const [isMounted, setisMounted] = useState(false);
 	const [categories, setCategories] = useState([]);
 	const [business, setBusiness] = useState([]);
 
@@ -52,9 +33,9 @@ const GridListingsWithLeftSidebar = () => {
 	const [selectedLocation, setSelectedLocation] = useState([]);
 	const [categoryName, setCategoryName] = useState("");
 	const [loading, setLoading] = useState(false);
-	// const [run, setRun] = useState(false);
 	let router = useRouter();
 	const { t } = useTranslation("home");
+
 	// Pagination
 	const [currentPage, setCurrentPage] = useState(1);
 
@@ -68,10 +49,9 @@ const GridListingsWithLeftSidebar = () => {
 	}, [currentPage, business]);
 
 	useEffect(() => {
-		setAllCities(dataCity);
-		setAllLocations(dataLocation);
-		// setisMounted(true);
-		// setDisplay(true);
+		dataState.sort((a, b) => (a.Geo_Name < b.Geo_Name ? -1 : 1));
+		setAllCities(dataCity.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
+		setAllLocations(dataLocation.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
 		let categoryFilter = router.query.categoryName;
 		let stateFilter = router.query.stateName;
 		let cityFilter = router.query.cityName;
@@ -80,22 +60,6 @@ const GridListingsWithLeftSidebar = () => {
 		console.log(stateFilter);
 		console.log(cityFilter);
 		console.log(locationFilter);
-
-		// console.log(router.query, "router query");
-		// if (router.query == "") {
-		//   console.log(router.query.categoryName);
-		//   console.log("empty");
-		// } else if (router.query == undefined) {
-		//   console.log(router.query.categoryName);
-		//   console.log("have value");
-		// } else if (router.query == "undefined") {
-		//   console.log(router.query.categoryName);
-		//   console.log("have value");
-		// } else {
-		//   console.log(router.query.categoryName);
-		//   console.log("nothing comed");
-		// }
-		// setisMounted(false);
 
 		// All Business filter
 		if (
@@ -200,71 +164,8 @@ const GridListingsWithLeftSidebar = () => {
 			getBusinessWithCategory(categoryFilter, locationFilter[3], "location");
 		}
 	}, []);
-	useEffect(() => {
-		if (typeof window != "undefined") {
-			// getAllBusinessProfiles();
-			console.log("we are running client side");
-		} else {
-			console.log("we are running server side");
-		}
-	}, []);
 
-	// const getAllBusinessProfiles = async () => {
-	//   try {
-	//     const { data } = await axios.get(
-	//       `${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories`
-	//     );
-	//     console.log(data);
-	//     setAllBusinessDetail(data.profilesArray);
-	//     getStateandCities(data.profilesArray);
-	//     // dispatch(addAllBusiness(data.profilesArray));
-	//     setRun(!run);
-	//   } catch (error) {
-	//     console.log(error);
-	//   }
-	// };
-
-	// const getStateandCities = (details) => {
-	//   let stateArray = [];
-	//   let cityArray = [];
-	//   let locationArray = [];
-	//   details.map((states) => {
-	//     // console.log(states);
-	//     if (states.state[0] !== undefined) {
-	//       stateArray.push(states.state);
-	//     }
-	//     if (states.city[0] !== undefined) {
-	//       cityArray.push(states.city);
-	//     }
-	//     if (states.location[0] !== undefined) {
-	//       locationArray.push(states.location);
-	//     }
-	//   });
-	//   // unique state array
-	//   let stringStateArray = stateArray.map(JSON.stringify);
-	//   let uniqueStateString = new Set(stringStateArray);
-	//   let uniqueStateArray = Array.from(uniqueStateString, JSON.parse);
-	//   uniqueStateArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
-	//   console.log(uniqueStateArray);
-
-	//   // unique city array
-	//   let stringCityArray = cityArray.map(JSON.stringify);
-	//   let uniqueCityString = new Set(stringCityArray);
-	//   let uniqueCityArray = Array.from(uniqueCityString, JSON.parse);
-	//   uniqueCityArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
-
-	//   // unique location array
-	//   let stringLocationArray = locationArray.map(JSON.stringify);
-	//   let uniqueLocationString = new Set(stringLocationArray);
-	//   let uniqueLocationArray = Array.from(uniqueLocationString, JSON.parse);
-	//   uniqueLocationArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
-
-	//   setAllStates(uniqueStateArray);
-	//   setAllCities(uniqueCityArray);
-	//   setAllLocations(uniqueLocationArray);
-	// };
-
-	// State Change
+	// State Change Function
 
 	const handleStateChange = (e) => {
 		console.log("changed");
@@ -273,13 +174,14 @@ const GridListingsWithLeftSidebar = () => {
 		setStateName(stateChange.split(","));
 	};
 
-	// City Change
+	// City Change Function
 
 	const handleChangeCity = (e) => {
 		const cty = e.target.value;
 		console.log(cty.split(","));
 		setCityName(cty.split(","));
 	};
+
 	// Filtering Cities by State
 
 	const handleClickCity = () => {
@@ -310,11 +212,12 @@ const GridListingsWithLeftSidebar = () => {
 		}
 	};
 
-	// location Change
+	// Location Change Function
 	const handleChangeLocation = (e) => {
 		const loc = e.target.value;
 		setLocationName(loc.split(","));
 	};
+
 	// Filtering Cities by State
 
 	const handleClickLocation = () => {
@@ -346,13 +249,14 @@ const GridListingsWithLeftSidebar = () => {
 		}
 	};
 
-	// Category Change
+	// Category Change Function
 
 	const handleChangeCategory = (e) => {
 		console.log(e.target.value);
 		setCategoryName(e.target.value);
 	};
 
+	// Filter Listings
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
@@ -531,6 +435,7 @@ const GridListingsWithLeftSidebar = () => {
 		}
 	};
 
+	// Categories Filter Change
 	const categoriesChange = (e) => {
 		const available = categories.find((category) => category == e.target.value);
 		if (!available) setCategories((cate) => [...cate, e.target.value]);
@@ -540,6 +445,7 @@ const GridListingsWithLeftSidebar = () => {
 		}
 	};
 
+	// Filter Business By Categories Function
 	const getBusinessByCategories = async (e) => {
 		e.preventDefault();
 		setLoading(true);
@@ -573,6 +479,7 @@ const GridListingsWithLeftSidebar = () => {
 		}
 	};
 
+	// Move to Single Listing Page
 	const gotoSingleProfilePage = (e, category, id) => {
 		e.preventDefault();
 		console.log(id, "id");
@@ -592,10 +499,7 @@ const GridListingsWithLeftSidebar = () => {
 						onSubmit={handleSubmit}
 						style={{ maxWidth: "1080px !important", paddingRight: 0 }}
 					>
-						<div
-							className="row m-0 align-items-center py-2"
-							// style={{ padding: "6px" }}
-						>
+						<div className="row m-0 align-items-center py-2">
 							<div class="col-lg-2 col-md-6 py-1">
 								<div className="form-group category-select">
 									<label className="category-icon">
@@ -707,45 +611,18 @@ const GridListingsWithLeftSidebar = () => {
 										{" "}
 										<i className="flaticon-search"></i>
 									</button>
-									{/* <i className="flaticon-search"></i> */}
 								</div>
 							</div>
-
-							{/* <div class="col-lg-2 col-md-6 py-1">
-                <div className="submit-btn">
-                  <button type="submit">Search</button>
-                </div>
-              </div> */}
 						</div>
 					</form>
 				</div>
 			</div>
-			{/* <PopularPlacesFilter /> */}
 
 			<section className="listings-area ptb-100">
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-4 col-md-12">
 							<aside className="listings-widget-area">
-								{/* <section className='widget widget_filters'>
-                  <h3 className='widget-title'>Filters</h3>
-
-                  <ul>
-                    <li>
-                      <button type='button'>$</button>
-                    </li>
-                    <li>
-                      <button type='button'>$$</button>
-                    </li>
-                    <li>
-                      <button type='button'>$$$</button>
-                    </li>
-                    <li>
-                      <button type='button'>$$$$</button>
-                    </li>
-                  </ul>
-                </section> */}
-
 								<section className="widget widget_categories">
 									<h3 className="widget-title">Categories</h3>
 									<form onSubmit={getBusinessByCategories}>
@@ -939,12 +816,6 @@ const GridListingsWithLeftSidebar = () => {
 												</div>
 
 												<div className="listings-content">
-													{/* <div className="author">
-                            <div className="d-flex align-items-center">
-                              <img src="/images/user1.jpg" alt="image" />
-                              <span>Taylor</span>
-                            </div>
-                          </div> */}
 													<ul className="listings-meta">
 														<li>
 															<a href="#">
@@ -1003,28 +874,6 @@ const GridListingsWithLeftSidebar = () => {
 									pageSize={PageSize}
 									onPageChange={(page) => setCurrentPage(page)}
 								/>
-								{/* <div className="col-xl-12 col-lg-12 col-md-12">
-                  <div className="pagination-area text-center">
-                    <a href="#" className="prev page-numbers">
-                      <i className="bx bx-chevrons-left"></i>
-                    </a>
-                    <span className="page-numbers current" aria-current="page">
-                      1
-                    </span>
-                    <a href="#" className="page-numbers">
-                      2
-                    </a>
-                    <a href="#" className="page-numbers">
-                      3
-                    </a>
-                    <a href="#" className="page-numbers">
-                      4
-                    </a>
-                    <a href="#" className="next page-numbers">
-                      <i className="bx bx-chevrons-right"></i>
-                    </a>
-                  </div>
-                </div> */}
 							</div>
 						</div>
 					</div>
