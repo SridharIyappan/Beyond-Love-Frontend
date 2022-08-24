@@ -574,13 +574,13 @@ const Banner = () => {
 												</div>
 											</div>
 
-											<div className="col-lg-6 col-md-6">
+											{/* <div className="col-lg-6 col-md-6">
 												<div className="form-group">
 													<label>
 														<i className="bx bx-menu-alt-left"></i> Appoinment:
 													</label>
 												</div>
-											</div>
+											</div> */}
 
 											<div className="col-lg-12 col-md-6">
 												<div className="form-group">
