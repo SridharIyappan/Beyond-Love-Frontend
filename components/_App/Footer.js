@@ -76,7 +76,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> {t("Pet Clinic")} {t("In Mubai")}
+                      <i className="flaticon-left-chevron"></i> {t("Pet Clinic")} {t("In Mumbai")}
                     </a>
                   </li>
                   <li>
