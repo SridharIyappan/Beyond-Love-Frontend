@@ -957,7 +957,7 @@ const Profile = () => {
                         <div className="col-xl-6 col-lg-12 col-md-12">
                           {showOptionalBreed && (
                             <div className="form-group">
-                              <label>option:</label>
+                              <label>Breed Name</label>
                               <input
                                 type="text"
                                 className="form-control form-color"
@@ -1001,7 +1001,7 @@ const Profile = () => {
                       <div className="col-xl-6 col-lg-12 col-md-12">
                         {showOptionalBreed && (
                           <div className="form-group">
-                            <label>option:</label>
+                            <label>Breed Name</label>
                             <input
                               type="text"
                               className="form-control form-color"
@@ -1158,7 +1158,7 @@ const Profile = () => {
                         <textarea
                           cols="5"
                           rows="3"
-                          placeholder="..."
+                          placeholder="If any"
                           className="form-control form-color"
                           onChange={(e) => setAllergies(e.target.value)}
                         ></textarea>
@@ -1684,7 +1684,7 @@ const Profile = () => {
                         <textarea
                           cols="5"
                           rows="3"
-                          placeholder="..."
+                          placeholder="If any"
                           className="form-control form-color"
                           value={allergies}
                           onChange={(e) => setAllergies(e.target.value)}
