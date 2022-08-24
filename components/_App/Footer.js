@@ -143,7 +143,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> {t("Pet Grooming")} {t("In Mubai")}
+                      <i className="flaticon-left-chevron"></i> {t("Pet Grooming")} {t("In Mumbai")}
                     </a>
                   </li>
                   <li>
@@ -210,7 +210,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i> {t("Pet Boarding")} {t("In Mubai")}
+                      <i className="flaticon-left-chevron"></i> {t("Pet Boarding")} {t("In Mumbai")}
                     </a>
                   </li>
                   <li>
@@ -277,7 +277,7 @@ const Footer = ({ bgColor }) => {
                     }
                   >
                     <a>
-                      <i className="flaticon-left-chevron"></i>{t("Pet Training")} {t("In Mubai")}
+                      <i className="flaticon-left-chevron"></i>{t("Pet Training")} {t("In Mumbai")}
                     </a>
                   </li>
                   <li>
