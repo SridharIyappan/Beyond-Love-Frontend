@@ -2008,7 +2008,7 @@ Main Banner Area CSS
 
 .banner-wrapper-area-main-banner {
   padding-bottom: 100px;
-  height: 87vh;
+  height: 91vh;
   background-image: url(../images/main-banner-bg3.png);
   background-position: center center;
   background-size: cover;
@@ -16690,7 +16690,7 @@ th {
 
 /* Changed by Sridhar for Filter Form */
 .banner-form-select-two {
-  width: 80%
+  width: 90%
 }
 
 .review-reply {
