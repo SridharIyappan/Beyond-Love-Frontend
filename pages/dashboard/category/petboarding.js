@@ -139,10 +139,8 @@ const PetTraining = () => {
       (state == undefined && city == "") ||
       (city == undefined && location == "") ||
       (location == undefined && street == "") ||
-      street == undefined ||
-      (street == null && doorNumber == "") ||
-      doorNumber == undefined ||
-      doorNumber == null
+      (doorNumber == undefined && doorNumber == "") ||
+      (street == undefined && street == "")
     ) {
       setError(true);
     } else {
@@ -597,8 +595,7 @@ const PetTraining = () => {
                         onChange={(e) => setDoorNumber(e.target.value)}
                         value={doorNumber}
                       />
-                      {(error && doorNumber == "") ||
-                      doorNumber == undefined ? (
+                      {error && doorNumber == undefined ? (
                         <span className="text-danger">Please enter number</span>
                       ) : (
                         <></>
@@ -616,7 +613,7 @@ const PetTraining = () => {
                         onChange={(e) => setStreet(e.target.value)}
                         value={street}
                       />
-                      {(error && street == "") || street == undefined ? (
+                      {error && street == undefined ? (
                         <span className="text-danger">Please enter street</span>
                       ) : (
                         <></>
@@ -647,7 +644,7 @@ const PetTraining = () => {
                         onChange={(e) => setPincode(e.target.value)}
                         value={pincode}
                       />
-                      {(error && pincode == "") || pincode == undefined ? (
+                      {error && pincode == undefined ? (
                         <span className="text-danger">
                           Please enter pincode
                         </span>
