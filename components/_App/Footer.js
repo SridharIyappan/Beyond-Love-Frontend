@@ -18,12 +18,9 @@ const Footer = ({ bgColor }) => {
   };
   return (
     <>
-
       <footer className={`footer-area ${bgColor}`}>
-
         <div className="container">
           <div className="row">
-
             <div className="col-lg-3 col-sm-6 col-md-6 pt-4">
               <div className="single-footer-widget">
                 <h6>{t("Pet Clinic")}</h6>
@@ -82,12 +79,11 @@ const Footer = ({ bgColor }) => {
                       <i className="flaticon-left-chevron"></i> {t("Pet Clinic")} {t("In Mubai")}
                     </a>
                   </li>
-                  {/* <li>
+                  <li>
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Food in
-                      chennai
+                      <i className="flaticon-left-chevron"></i> {t("Pet Clinic")} {t("In Bangalore")}
                     </a>
-                  </li> */}
+                  </li>
                 </ul>
               </div>
             </div>
@@ -143,7 +139,6 @@ const Footer = ({ bgColor }) => {
                         "PetGrooming",
                         ["Maharashtra", 28],
                         ["Mumbai City", 28, 774]
-
                       )
                     }
                   >
@@ -151,12 +146,11 @@ const Footer = ({ bgColor }) => {
                       <i className="flaticon-left-chevron"></i> {t("Pet Grooming")} {t("In Mubai")}
                     </a>
                   </li>
-                  {/* <li>
+                  <li>
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Food in
-                      Delhi
+                      <i className="flaticon-left-chevron"></i> {t("Pet Grooming")} {t("In Bangalore")}
                     </a>
-                  </li> */}
+                  </li>
                 </ul>
               </div>
             </div>
@@ -219,12 +213,11 @@ const Footer = ({ bgColor }) => {
                       <i className="flaticon-left-chevron"></i> {t("Pet Boarding")} {t("In Mubai")}
                     </a>
                   </li>
-                  {/* <li>
+                  <li>
                     <a>
-                      <i className="flaticon-left-chevron"></i> Pet Food in
-                      Hyderabad
+                      <i className="flaticon-left-chevron"></i> {t("Pet Boarding")} {t("In Bangalore")}
                     </a>
-                  </li> */}
+                  </li>
                 </ul>
               </div>
             </div>
@@ -287,79 +280,90 @@ const Footer = ({ bgColor }) => {
                       <i className="flaticon-left-chevron"></i>{t("Pet Training")} {t("In Mubai")}
                     </a>
                   </li>
-                  {/* <li>
+                  <li>
                     <a>
-                      <i className="flaticon-left-chevron"></i>Pet Food in
-                      Bangalore
+                      <i className="flaticon-left-chevron"></i> {t("Pet Training")} {t("In Bangalore")}
                     </a>
-                  </li> */}
+                  </li>
                 </ul>
               </div>
               {/* <h3>Social Media</h3> */}
 
             </div>
           </div>
-          <div className="copyright-image">
-            <a>
-              <img src="/images/black-logo2.png" alt="logo" />
-            </a>
-          </div>
+        </div>
+      </footer>
 
-          <div className="about-term-sec pb-2">
-            <div>
-              <a href="/" >{t("About US")}</a>
-            </div>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
-            <div>
-              <a href="/" >{t("Privacy Policy")}</a>
-            </div>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
-            <div>
-              <a href="/" >{t("Terms & Conditions")}</a>
-            </div>
-          </div>
-          <div className="made-india pt-2">
-            Made With 💙 In India – For the Pets, By Pet Lovers.
-          </div>
-
-          <div className="copyright-area">
-            <div className="footer-social-media mt-4">
-              <div>
-                <a
-                  href="https://www.facebook.com/beyondlove.pet"
-                  target="_blank"
-                >
-                  <i className="bx bxl-facebook-square"></i>
-                </a>
-              </div>
-              <div>
-                <a href="https://twitter.com/Beyond_love26" target="_blank">
-                  <i className='bx bxl-twitter'></i>
-                </a>
-              </div>
-              <div>
-                <a
-                  href="https://www.instagram.com/beyondlove.pet/"
-                  target="_blank"
-                >
-                  <i className="bx bxl-instagram"></i>
-                </a>
-              </div>
-            </div>
-            <div >
+      <footer className="footer-new-section">
+        <div className="container">
+          <div className="row" style={{ alignItems: "normal" }}>
+            <div className="col-lg-3 col-sm-6 col-md-6 ">
               <p>
-                <span> Copyright © 2022</span>{" "}
-                <a href="/" rel="noreferrer">
-                  BEYONDLOVE.
-                </a>{" "}
-                <span>All Rights Reserved</span>
+                <img src="/images/black-logo2.png" alt="logo" />
               </p>
             </div>
+            <div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
+              <p>
+                Company
+              </p>
+              <a href="/" >About Beyond Love</a>
+              <a href="/" >Press & Investors</a>
+              <a href="/" >Beyond Love Partners</a>
+              <a href="/" >Blog</a>
+              <a href="/" >Petted</a>
+            </div>
+            <div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
+              <p>
+                Support
+              </p>
+              <a href="/" >Help Center & Safety</a>
+              <a href="/" >Trust and Safety</a>
+              <a href="/" >Community guidelines</a>
+              <a href="/" >Responsible disclosure</a>
+            </div>
+            <div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
+              <p>
+                Apply
+              </p>
+              <a href="/" >Become a Dog Walker</a>
+              <a href="/" > Careers</a>
+            </div>
           </div>
+          <hr height="1px" class="sc-dnqmqq hBuCPu"></hr>
 
+
+
+          <div className="row copy-rights-section">
+            <div className="col-lg-4 col-sm-6 col-md-6 footer-content-second">
+              <a>Copyright © 2022 BEYONDLOVE. All Rights Reserved</a>
+            </div>
+            <div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
+              <a href="/" >Privacy policy</a>
+            </div>
+            <div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
+              <a href="/" >Terms & conditions</a>
+            </div>
+            <div className="col-lg-2 col-sm-6 col-md-6 footer-icons">
+              <a
+                href="https://www.facebook.com/beyondlove.pet"
+                target="_blank"
+              >
+                <i className="bx bxl-facebook-square"></i>
+              </a>
+              <a href="https://twitter.com/Beyond_love26" target="_blank">
+                <i className='bx bxl-twitter'></i>
+              </a>
+              <a
+                href="https://www.instagram.com/beyondlove.pet/"
+                target="_blank"
+              >
+                <i className="bx bxl-instagram" style={{ color: "rgb(153, 153, 153)" }}></i>
+              </a>
+            </div>
+          </div>
+          <br />
+          <div className="made-section">Made With 💙 In India – For the Pets, By Pet Lovers.</div>
         </div>
-
-        {/* <div className="footer-image text-center">
-          <img src="/images/footer-image.png" alt="image" />
-        </div> */}
       </footer>
     </>
   );

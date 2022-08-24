@@ -210,7 +210,7 @@ const SingleListings = () => {
 
   const reviewSubmit = async (e) => {
     e.preventDefault();
-    if (reviewMsg !== " " && rating !== null) {
+    if (reviewMsg !== "" && rating !== null) {
       setError(false);
       const d = {
         customerId,
