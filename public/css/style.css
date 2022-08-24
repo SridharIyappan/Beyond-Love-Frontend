@@ -16941,3 +16941,41 @@ th {
   text-decoration: none;
   transition: none 0s ease 0s;
 }
+
+/* .nav-links:hover {
+color: yellow;
+text-decoration: underline;
+} */
+
+.nav-links {
+  position: relative;
+  text-decoration: none;
+  font-weight: 400;
+  transition: all .35s ease;
+}
+.nav-links::before {
+  content: ""; 
+      position: absolute;
+      width: 60px;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      top: 42px !important;
+      background-color: #977110;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s; 
+      transition: all 0.3s ease-in-out 0s; 
+}   
+.nav-links:hover {
+  /* bottom: 4px; */
+  color: #977110;
+
+}
+.nav-link:hover::before {
+  visibility: visible;
+  top: 10px;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}   
