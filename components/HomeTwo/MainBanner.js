@@ -12,6 +12,11 @@ import { dataState } from "../../utils/dataState";
 import { dataCity } from "../../utils/dataCity";
 import { dataLocation } from "../../utils/dataLocation";
 
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DesktopDateTimePicker } from "@mui/x-date-pickers/DesktopDateTimePicker";
+import TextField from "@mui/material/TextField";
+
 const Banner = () => {
 	const [contactForm, setContactForm] = useState(false);
 	const [name, setName] = useState("");
@@ -19,7 +24,7 @@ const Banner = () => {
 	const [category, setCategory] = useState("");
 	const [city, setCity] = useState("");
 	const [location, setLocation] = useState("");
-	const [dateTime, setDateTime] = useState("");
+	const [dateTime, setDateTime] = useState(new Date());
 	const [error, setError] = useState(false);
 	const [stateName, setStateName] = useState("");
 	const [cityName, setCityName] = useState("");
@@ -98,6 +103,10 @@ const Banner = () => {
 	};
 	// Appointment Form Function
 	const appointmentFormSubmit = async (e) => {
+		let s = new Date(dateTime).toLocaleString(undefined, {
+			timeZone: "Asia/Kolkata",
+		});
+		console.log(s);
 		e.preventDefault();
 		const d = {
 			name,
@@ -105,7 +114,7 @@ const Banner = () => {
 			category,
 			city,
 			location,
-			appointmentDate: dateTime,
+			appointmentDate: s,
 		};
 		console.log(d);
 		if (
@@ -575,13 +584,24 @@ const Banner = () => {
 
 											<div className="col-lg-12 col-md-6">
 												<div className="form-group">
-													<input
+													{/* <input
 														type="datetime-local"
 														className="form-control"
 														placeholder="Appointment"
 														value={dateTime}
 														onChange={(e) => setDateTime(e.target.value)}
-													/>
+													/> */}
+													<LocalizationProvider dateAdapter={AdapterDateFns}>
+														<DesktopDateTimePicker
+															ampm={false}
+															renderInput={(props) => <TextField {...props} />}
+															label="Appointment Date"
+															value={dateTime}
+															onChange={(newValue) => {
+																setDateTime(newValue);
+															}}
+														/>
+													</LocalizationProvider>
 													{error && dateTime == "" ? (
 														<span className="text-danger">
 															Please select date
