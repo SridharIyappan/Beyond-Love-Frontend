@@ -301,7 +301,7 @@ const Banner = () => {
 		<>
 			<section className="banner-wrapper-area-main-banner">
 				<ToastContainer />
-				<div className="container">
+				<div className="mx-4">
 					<div className="row">
 						<div className="col-lg-8 col-sm-12 col-md-12 mt-5">
 							<div className="banner-content banner-form mt-4">
@@ -356,7 +356,7 @@ const Banner = () => {
 											</div>
 										</div>
 
-										<div class="col-lg-2 col-md-6 p-0">
+										<div class="col-lg-3 col-md-6 p-0">
 											<div className="form-group category-select">
 												<label className="category-icon">
 													<i className="flaticon-pin"></i>
@@ -411,7 +411,7 @@ const Banner = () => {
 											</div>
 										</div>
 
-										<div class="col-lg-3 col-md-6 p-0">
+										<div class="col-lg-2 col-md-6 p-0">
 											<div className="form-group category-select">
 												<label className="category-icon">
 													<i className="flaticon-search"></i>
