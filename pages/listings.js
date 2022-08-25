@@ -16,6 +16,8 @@ import { useTranslation } from "next-i18next";
 import { dataCity } from "../utils/dataCity";
 import { dataLocation } from "../utils/dataLocation";
 import { dataState } from "../utils/dataState";
+import { useDispatch } from "react-redux";
+import { addfilteredBusiness } from "../Redux/filteredBusinessSlice";
 
 const GridListingsWithLeftSidebar = () => {
 	const [categories, setCategories] = useState([]);
@@ -33,20 +35,29 @@ const GridListingsWithLeftSidebar = () => {
 	const [selectedLocation, setSelectedLocation] = useState([]);
 	const [categoryName, setCategoryName] = useState("");
 	const [loading, setLoading] = useState(false);
+	// const [stateFilter, setStateFilter] = useState("");
+	// const [cityFilter, setCityFilter] = useState("");
+	// const [locationFilter, setLocationFilter] = useState("");
+	// const [categoryFilter, setCategoryFilter] = useState("");
 	let router = useRouter();
 	const { t } = useTranslation("home");
 
+	let dispatch = useDispatch();
+
 	// Pagination
-	const [currentPage, setCurrentPage] = useState(1);
+	// const [currentPage, setCurrentPage] = useState(0);
+	let currentPage = 0;
+
+	let pageCount = 60;
 
 	let PageSize = 10;
 
-	const currentTableData = useMemo(() => {
-		console.log(business);
-		const firstPageIndex = (currentPage - 1) * PageSize;
-		const lastPageIndex = firstPageIndex + PageSize;
-		return business.slice(firstPageIndex, lastPageIndex);
-	}, [currentPage, business]);
+	// const currentTableData = useMemo(() => {
+	// 	console.log(business);
+	// 	const firstPageIndex = (currentPage - 1) * PageSize;
+	// 	const lastPageIndex = firstPageIndex + PageSize;
+	// 	return business.slice(firstPageIndex, lastPageIndex);
+	// }, [currentPage, business]);
 
 	useEffect(() => {
 		dataState.sort((a, b) => (a.Geo_Name < b.Geo_Name ? -1 : 1));
@@ -56,19 +67,45 @@ const GridListingsWithLeftSidebar = () => {
 		let stateFilter = router.query.stateName;
 		let cityFilter = router.query.cityName;
 		let locationFilter = router.query.locationName;
+		console.log(router.query.stateName);
+		// setCategoryFilter(router.query.categoryName);
+		// setStateFilter(router.query.stateName);
+		// setCityFilter(router.query.cityName);
+		// setLocationFilter(router.query.locationName);
+
+		setInterval(() => {
+			// setCurrentPage(currentPage + 1);
+			currentPage++;
+			businessFilteration(
+				currentPage,
+				stateFilter,
+				cityFilter,
+				locationFilter,
+				categoryFilter
+			);
+		}, 4000);
+	}, []);
+
+	// All Business filter
+	const businessFilteration = (
+		pageNo,
+		stateFilter,
+		cityFilter,
+		locationFilter,
+		categoryFilter
+	) => {
+		console.log(pageNo);
 		console.log(categoryFilter);
 		console.log(stateFilter);
 		console.log(cityFilter);
 		console.log(locationFilter);
-
-		// All Business filter
 		if (
 			(categoryFilter == "" || categoryFilter == undefined) &&
 			(stateFilter == "" || stateFilter == undefined) &&
 			(cityFilter == "" || cityFilter == undefined) &&
 			(locationFilter == "" || locationFilter == undefined)
 		) {
-			getBusinessWithoutCategory();
+			getBusinessWithoutCategory(pageNo);
 		}
 
 		// Filter All Business by selected category
@@ -80,7 +117,7 @@ const GridListingsWithLeftSidebar = () => {
 			(locationFilter == "" || locationFilter == undefined)
 		) {
 			console.log("business");
-			getBusinessWithCategory(categoryFilter);
+			getBusinessWithCategory(pageNo, categoryFilter);
 		}
 
 		// Filter All Business by selected state
@@ -92,7 +129,8 @@ const GridListingsWithLeftSidebar = () => {
 			(locationFilter == "" || locationFilter == undefined)
 		) {
 			console.log("state");
-			getBusinessWithoutCategory(stateFilter[1], "state");
+			console.log(stateFilter);
+			getBusinessWithoutCategory(pageNo, "state", stateFilter);
 		}
 
 		// Filter All business by selected city
@@ -104,8 +142,8 @@ const GridListingsWithLeftSidebar = () => {
 			cityFilter != undefined &&
 			(locationFilter == "" || locationFilter == undefined)
 		) {
-			console.log("state");
-			getBusinessWithoutCategory(cityFilter[2], "city");
+			console.log("city");
+			getBusinessWithoutCategory(pageNo, "city", stateFilter, cityFilter);
 		}
 
 		// Filter all business by selected location
@@ -119,7 +157,13 @@ const GridListingsWithLeftSidebar = () => {
 			locationFilter != undefined
 		) {
 			console.log(locationFilter[3]);
-			getBusinessWithoutCategory(locationFilter[3], "location");
+			getBusinessWithoutCategory(
+				pageNo,
+				"location",
+				stateFilter,
+				cityFilter,
+				locationFilter
+			);
 		}
 
 		// Filter all business by category and state
@@ -132,7 +176,7 @@ const GridListingsWithLeftSidebar = () => {
 			(locationFilter == "" || locationFilter == undefined)
 		) {
 			console.log("state");
-			getBusinessWithCategory(categoryFilter, stateFilter[1], "state");
+			getBusinessWithCategory(pageNo, categoryFilter, "state", stateFilter);
 		}
 
 		// Filter all business by category and city
@@ -146,7 +190,7 @@ const GridListingsWithLeftSidebar = () => {
 			(locationFilter == "" || locationFilter == undefined)
 		) {
 			console.log("state");
-			getBusinessWithCategory(categoryFilter, cityFilter[2], "city");
+			getBusinessWithCategory(pageNo, categoryFilter, "city", cityFilter);
 		}
 
 		// Filter all business by category and city
@@ -161,9 +205,14 @@ const GridListingsWithLeftSidebar = () => {
 			locationFilter != undefined
 		) {
 			console.log("state");
-			getBusinessWithCategory(categoryFilter, locationFilter[3], "location");
+			getBusinessWithCategory(
+				pageNo,
+				categoryFilter,
+				"location",
+				locationFilter
+			);
 		}
-	}, []);
+	};
 
 	// State Change Function
 
@@ -369,70 +418,89 @@ const GridListingsWithLeftSidebar = () => {
 	};
 
 	// Get Business without category function
-	const getBusinessWithoutCategory = async (id, location) => {
+	const getBusinessWithoutCategory = async (
+		pageNo,
+		type,
+		state,
+		city,
+		location
+	) => {
+		console.log(pageNo);
 		try {
-			setLoading(true);
-			const { data } = await axios.get(
-				`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories`
-			);
-			console.log(data.profilesArray);
-			if (data.success) {
-				setBusiness([]);
-				let arr;
-				if (location === "state") {
-					arr = data.profilesArray.filter((profile) => id == profile.state[1]);
-				} else if (location === "city") {
-					arr = data.profilesArray.filter((profile) => id == profile.city[2]);
-				} else if (location === "location") {
-					arr = data.profilesArray.filter(
-						(profile) => id == profile.location[3]
-					);
-				} else {
-					console.log("running");
-					arr = data.profilesArray;
-				}
-				console.log(arr);
-				setLoading(false);
-				setBusiness(arr);
+			let arr;
+			console.log(currentPage);
+			if (type == "" || type == undefined) {
+				const { data } = await axios.get(
+					`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories/${pageNo}`
+				);
+				console.log(data.profilesArray);
+				arr = data.profilesArray;
+			} else if (type === "state") {
+				console.log(state);
+				const { data } = await axios.get(
+					`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-state/${state[0]}/${state[1]}/${pageNo}`
+				);
+				arr = data.profilesArray;
+			} else if (type === "city") {
+				console.log(city);
+				const { data } = await axios.get(
+					`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-city/${city[0]}/${city[1]}/${city[2]}/${pageNo}`
+				);
+				arr = data.profilesArray;
+			} else if (type === "location") {
+				const { data } = await axios.get(
+					`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-location/${location[0]}/${location[1]}/${location[2]}/${location[3]}/${pageNo}`
+				);
+				arr = data.profilesArray;
+			} else {
+				console.log("running");
+				arr = data.profilesArray;
 			}
-			setLoading(false);
+
+			setBusiness((businessData) => [...businessData, ...arr]);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
 	// Get Business with category function
-	const getBusinessWithCategory = async (category, id, location) => {
-		console.log(category);
-		console.log(id);
-		console.log(location);
-		setLoading(true);
-		const { data } = await axios.get(
-			`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-unique-category/${category}`
-		);
-		console.log(data);
-		if (data.success) {
-			setBusiness([]);
-			let arr;
-			if (location === "state") {
-				arr = data.business.filter((profile) => id == profile.state[1]);
-			} else if (location === "city") {
-				// console.log(id, profile.city[2]);
-				console.log(data.business.filter((profile) => id == profile.city[2]));
-				arr = data.business.filter((profile) => id == profile.city[2]);
-			} else if (location === "location") {
-				arr = data.business.filter((profile) => id == profile.location[3]);
-			} else {
-				console.log("running");
-				arr = data.business;
-				// setBusiness(data.profilesArray);
-			}
-			setLoading(false);
-			console.log(arr);
-			setBusiness(arr);
+	const getBusinessWithCategory = async (
+		pageNo,
+		category,
+		type,
+		state,
+		city,
+		location
+	) => {
+		let arr;
+		if (type == "" || type == undefined) {
+			const { data } = await axios.get(
+				`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-unique-category/${category}/${pageNo}`
+			);
+		} else if (type === "state") {
+			console.log(state);
+			const { data } = await axios.get(
+				`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-state-category/${state[0]}/${state[1]}/${category}/${pageNo}`
+			);
+			arr = data.profilesArray;
+		} else if (type === "city") {
+			console.log(city);
+			const { data } = await axios.get(
+				`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-city-category/${city[0]}/${city[1]}/${city[2]}/${category}/${pageNo}`
+			);
+			arr = data.profilesArray;
+		} else if (type === "location") {
+			const { data } = await axios.get(
+				`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-location-category/${location[0]}/${location[1]}/${location[2]}/${location[3]}/${category}/${pageNo}`
+			);
+			arr = data.profilesArray;
 		} else {
-			setLoading(false);
+			console.log("running");
+			arr = data.profilesArray;
 		}
+
+		arr = data.profilesArray;
+		setBusiness((businessData) => [...businessData, ...arr]);
 	};
 
 	// Categories Filter Change
@@ -452,6 +520,7 @@ const GridListingsWithLeftSidebar = () => {
 		setBusiness([]);
 		if (categories.length < 1) {
 			try {
+				console.log(currentPage);
 				const { data } = await axios.get(
 					`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories`
 				);
@@ -488,6 +557,12 @@ const GridListingsWithLeftSidebar = () => {
 			query: { category, id },
 		});
 	};
+
+	// const pageChange = (page) => {
+	// 	console.log(page);
+	// 	businessFilteration(page);
+	// 	setCurrentPage(page);
+	// };
 
 	return (
 		<>
@@ -788,11 +863,16 @@ const GridListingsWithLeftSidebar = () => {
 										</div>
 									</div>
 								)}
-								{currentTableData.map((bus) => {
+								{console.log(business)}
+								{business.map((bus) => {
 									console.log(bus);
 									let profileImg = `${process.env.DOMAIN_NAME}/api/business/get-photos/${bus.profileImage}`;
 									return (
-										<div className="col-xl-6 col-lg-6 col-md-6" key={bus._id}>
+										<div
+											className="col-xl-6 col-lg-6 col-md-6"
+											key={bus._id}
+											loading="lazy"
+										>
 											<div
 												className="single-listings-box"
 												style={{ height: "92%" }}
@@ -803,7 +883,7 @@ const GridListingsWithLeftSidebar = () => {
 														gotoSingleProfilePage(e, bus.category, bus._id)
 													}
 												>
-													<img src={profileImg} alt="image" />
+													<img src={profileImg} alt="image" loading="lazy" />
 													{/* <Link href="/single-listings">
                             <a className="link-btn"></a>
                           </Link> */}
@@ -862,18 +942,19 @@ const GridListingsWithLeftSidebar = () => {
 										</div>
 									);
 								})}
-								{!loading && currentTableData.length < 1 && (
+								{!loading && business.length < 1 && (
 									<div className="d-flex justify-content-center align-items-center w-100">
 										<h1>Data Not Found</h1>
 									</div>
 								)}
-								<Pagination
+								{/* <Pagination
 									className="pagination-bar"
 									currentPage={currentPage}
-									totalCount={business.length}
+									// totalCount={business.length}
+									totalCount={pageCount}
 									pageSize={PageSize}
-									onPageChange={(page) => setCurrentPage(page)}
-								/>
+									onPageChange={(page) => pageChange(page)}
+								/> */}
 							</div>
 						</div>
 					</div>
