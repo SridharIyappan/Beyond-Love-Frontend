@@ -1101,7 +1101,7 @@ const GridListingsWithLeftSidebar = () => {
 										</div>
 									);
 								})}
-								{loading && (
+								{loading && business.length < 1 && (
 									<div className="d-flex justify-content-center align-items-center w-100">
 										<h1>Data Not Found</h1>
 									</div>
