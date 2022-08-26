@@ -17,7 +17,7 @@ import { dataCity } from "../utils/dataCity";
 import { dataLocation } from "../utils/dataLocation";
 import { dataState } from "../utils/dataState";
 import { useDispatch } from "react-redux";
-import { addfilteredBusiness } from "../Redux/filteredBusinessSlice";
+// import { addfilteredBusiness } from "../Redux/filteredBusinessSlice";
 
 const GridListingsWithLeftSidebar = () => {
 	const [categories, setCategories] = useState([]);
@@ -477,6 +477,7 @@ const GridListingsWithLeftSidebar = () => {
 			const { data } = await axios.get(
 				`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-unique-category/${category}/${pageNo}`
 			);
+			arr = data.profilesArray;
 		} else if (type === "state") {
 			console.log(state);
 			const { data } = await axios.get(
@@ -499,7 +500,6 @@ const GridListingsWithLeftSidebar = () => {
 			arr = data.profilesArray;
 		}
 
-		arr = data.profilesArray;
 		setBusiness((businessData) => [...businessData, ...arr]);
 	};
 
