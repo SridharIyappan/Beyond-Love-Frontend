@@ -5249,4 +5249,9 @@ export const cities = [
 		Geo_Head: "37",
 		id: "1089",
 	},
+	{
+		Geo_Name: "Noida",
+		Geo_Head: "10",
+		id: "1090",
+	},
 ];

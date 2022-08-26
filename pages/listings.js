@@ -17,7 +17,6 @@ import { dataCity } from "../utils/dataCity";
 import { dataLocation } from "../utils/dataLocation";
 import { dataState } from "../utils/dataState";
 import { useDispatch } from "react-redux";
-// import { addfilteredBusiness } from "../Redux/filteredBusinessSlice";
 
 const GridListingsWithLeftSidebar = () => {
 	const [categories, setCategories] = useState([]);
@@ -35,33 +34,22 @@ const GridListingsWithLeftSidebar = () => {
 	const [selectedLocation, setSelectedLocation] = useState([]);
 	const [categoryName, setCategoryName] = useState("");
 	const [loading, setLoading] = useState(false);
-	const [stopPagination, setStopPagination] = useState(true);
-	// const [stateFilter, setStateFilter] = useState("");
-	// const [cityFilter, setCityFilter] = useState("");
-	// const [locationFilter, setLocationFilter] = useState("");
-	// const [categoryFilter, setCategoryFilter] = useState("");
+	const [businessInterval, setbusinessInterval] = useState(true);
+	const [filterBusinessInterval, setFilterBusinessInterval] = useState(true);
+	const [categoryFilterInterval, setCategoryFilterInterval] = useState(true);
+
 	let router = useRouter();
 	const { t } = useTranslation("home");
 
 	let dispatch = useDispatch();
 
 	// Pagination
-	// const [currentPage, setCurrentPage] = useState(0);
+
 	let interval;
 	let filterInterval;
+	let categoryInterval;
 
 	let currentPage = 0;
-
-	let pageCount = 60;
-
-	let PageSize = 10;
-
-	// const currentTableData = useMemo(() => {
-	// 	console.log(business);
-	// 	const firstPageIndex = (currentPage - 1) * PageSize;
-	// 	const lastPageIndex = firstPageIndex + PageSize;
-	// 	return business.slice(firstPageIndex, lastPageIndex);
-	// }, [currentPage, business]);
 
 	useEffect(() => {
 		dataState.sort((a, b) => (a.Geo_Name < b.Geo_Name ? -1 : 1));
@@ -82,6 +70,7 @@ const GridListingsWithLeftSidebar = () => {
 				categoryFilter
 			);
 		}, 4000);
+		setbusinessInterval(interval);
 	}, []);
 
 	// All Business filter
@@ -93,10 +82,7 @@ const GridListingsWithLeftSidebar = () => {
 		categoryFilter
 	) => {
 		console.log({ interval });
-		// console.log(categoryFilter);
-		// console.log(stateFilter);
-		// console.log(cityFilter);
-		// console.log(locationFilter);
+
 		if (
 			(categoryFilter == "" || categoryFilter == undefined) &&
 			(stateFilter == "" || stateFilter == undefined) &&
@@ -224,6 +210,12 @@ const GridListingsWithLeftSidebar = () => {
 
 	const handleStateChange = (e) => {
 		console.log("changed");
+		console.log("before", { interval });
+		clearInterval(businessInterval);
+		clearInterval(filterBusinessInterval);
+		clearInterval(categoryFilterInterval);
+
+		console.log("after", { interval });
 		const stateChange = e.target.value;
 		console.log({ stateChange });
 		setStateName(stateChange.split(","));
@@ -232,6 +224,9 @@ const GridListingsWithLeftSidebar = () => {
 	// City Change Function
 
 	const handleChangeCity = (e) => {
+		clearInterval(businessInterval);
+		clearInterval(filterBusinessInterval);
+		clearInterval(categoryFilterInterval);
 		const cty = e.target.value;
 		console.log(cty.split(","));
 		setCityName(cty.split(","));
@@ -269,6 +264,9 @@ const GridListingsWithLeftSidebar = () => {
 
 	// Location Change Function
 	const handleChangeLocation = (e) => {
+		clearInterval(businessInterval);
+		clearInterval(filterBusinessInterval);
+		clearInterval(categoryFilterInterval);
 		const loc = e.target.value;
 		setLocationName(loc.split(","));
 	};
@@ -307,27 +305,20 @@ const GridListingsWithLeftSidebar = () => {
 	// Category Change Function
 
 	const handleChangeCategory = (e) => {
+		clearInterval(businessInterval);
+		clearInterval(filterBusinessInterval);
+		clearInterval(categoryFilterInterval);
 		console.log(e.target.value);
 		setCategoryName(e.target.value);
 	};
 
-	// Filter Listings
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		console.log("filter");
-		clearInterval(interval);
-		console.log({ interval });
-		setBusiness([]);
-		let categoryFilter = categoryName;
-		let stateFilter = stateName;
-		let cityFilter = cityName;
-		let locationFilter = locationName;
-		console.log({ categoryFilter });
-		console.log({ stateFilter });
-		console.log({ cityFilter });
-		console.log({ locationFilter });
-		let pageNo = currentPage + 1;
-
+	const filterListings = (
+		pageNo,
+		stateFilter,
+		cityFilter,
+		locationFilter,
+		categoryFilter
+	) => {
 		if (
 			(categoryFilter == "" || categoryFilter == undefined) &&
 			(stateFilter == "" || stateFilter == undefined) &&
@@ -451,6 +442,39 @@ const GridListingsWithLeftSidebar = () => {
 		}
 	};
 
+	// Filter Listings
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		console.log("filter");
+		clearInterval(businessInterval);
+		clearInterval(filterBusinessInterval);
+		clearInterval(categoryFilterInterval);
+		console.log({ interval });
+		setBusiness([]);
+		let categoryFilter = categoryName;
+		let stateFilter = stateName;
+		let cityFilter = cityName;
+		let locationFilter = locationName;
+		console.log({ categoryFilter });
+		console.log({ stateFilter });
+		console.log({ cityFilter });
+		console.log({ locationFilter });
+		// let pageNo = currentPage + 1
+		currentPage = 0;
+
+		filterInterval = setInterval(() => {
+			currentPage++;
+			filterListings(
+				currentPage,
+				stateFilter,
+				cityFilter,
+				locationFilter,
+				categoryFilter
+			);
+		}, 4000);
+		setFilterBusinessInterval(filterInterval);
+	};
+
 	// Get Business without category function
 	const getBusinessWithoutCategory = async (
 		pageNo,
@@ -468,9 +492,12 @@ const GridListingsWithLeftSidebar = () => {
 					`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories/${pageNo}`
 				);
 				if (data.success) {
+					setLoading(false);
 					arr = data.profilesArray;
 				} else {
+					setLoading(true);
 					clearInterval(interval);
+					clearInterval(filterInterval);
 					console.log("success false");
 				}
 			} else if (type === "state") {
@@ -479,10 +506,13 @@ const GridListingsWithLeftSidebar = () => {
 					`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-state/${state[0]}/${state[1]}/${pageNo}`
 				);
 				if (data.success) {
+					setLoading(false);
 					arr = data.profilesArray;
 				} else {
+					setLoading(true);
 					console.log({ interval }, { filterInterval });
 					clearInterval(interval);
+					clearInterval(filterInterval);
 					console.log("success false");
 				}
 			} else if (type === "city") {
@@ -491,9 +521,12 @@ const GridListingsWithLeftSidebar = () => {
 					`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-city/${city[0]}/${city[1]}/${city[2]}/${pageNo}`
 				);
 				if (data.success) {
+					setLoading(false);
 					arr = data.profilesArray;
 				} else {
+					setLoading(true);
 					clearInterval(interval);
+					clearInterval(filterInterval);
 					console.log("success false");
 				}
 			} else if (type === "location") {
@@ -501,13 +534,17 @@ const GridListingsWithLeftSidebar = () => {
 					`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-location/${location[0]}/${location[1]}/${location[2]}/${location[3]}/${pageNo}`
 				);
 				if (data.success) {
+					setLoading(false);
 					arr = data.profilesArray;
 				} else {
+					setLoading(true);
 					clearInterval(interval);
+					clearInterval(filterInterval);
 					console.log("success false");
 				}
 			} else {
 				console.log("running");
+				setLoading(false);
 				arr = data.profilesArray;
 			}
 
@@ -532,9 +569,12 @@ const GridListingsWithLeftSidebar = () => {
 				`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-unique-category/${category}/${pageNo}`
 			);
 			if (data.success) {
+				setLoading(false);
 				arr = data.profilesArray;
 			} else {
+				setLoading(true);
 				clearInterval(interval);
+				clearInterval(filterInterval);
 				console.log("success false");
 			}
 		} else if (type === "state") {
@@ -543,9 +583,12 @@ const GridListingsWithLeftSidebar = () => {
 				`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-state-category/${state[0]}/${state[1]}/${category}/${pageNo}`
 			);
 			if (data.success) {
+				setLoading(false);
 				arr = data.profilesArray;
 			} else {
+				setLoading(true);
 				clearInterval(interval);
+				clearInterval(filterInterval);
 				console.log("success false");
 			}
 		} else if (type === "city") {
@@ -554,9 +597,12 @@ const GridListingsWithLeftSidebar = () => {
 				`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-city-category/${city[0]}/${city[1]}/${city[2]}/${category}/${pageNo}`
 			);
 			if (data.success) {
+				setLoading(false);
 				arr = data.profilesArray;
 			} else {
+				setLoading(true);
 				clearInterval(interval);
+				clearInterval(filterInterval);
 				console.log("success false");
 			}
 		} else if (type === "location") {
@@ -564,13 +610,17 @@ const GridListingsWithLeftSidebar = () => {
 				`${process.env.DOMAIN_NAME}/api/business/get-profiles-by-location-category/${location[0]}/${location[1]}/${location[2]}/${location[3]}/${category}/${pageNo}`
 			);
 			if (data.success) {
+				setLoading(false);
 				arr = data.profilesArray;
 			} else {
+				setLoading(true);
 				clearInterval(interval);
+				clearInterval(filterInterval);
 				console.log("success false");
 			}
 		} else {
 			console.log("running");
+			setLoading(false);
 			arr = data.profilesArray;
 		}
 
@@ -579,7 +629,13 @@ const GridListingsWithLeftSidebar = () => {
 
 	// Categories Filter Change
 	const categoriesChange = (e) => {
+		clearInterval(businessInterval);
+		clearInterval(filterBusinessInterval);
+		clearInterval(categoryFilterInterval);
+		console.log(e.target.value);
 		const available = categories.find((category) => category == e.target.value);
+		console.log(categories);
+		console.log(available);
 		if (!available) setCategories((cate) => [...cate, e.target.value]);
 		if (available) {
 			const filtered = categories.filter((cate) => cate !== e.target.value);
@@ -587,38 +643,74 @@ const GridListingsWithLeftSidebar = () => {
 		}
 	};
 
+	const callAllCategories = async (currentPage) => {
+		let arr = [];
+		try {
+			console.log(currentPage);
+			const { data } = await axios.get(
+				`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories/${currentPage}`
+			);
+			console.log(data);
+			if (data.success) {
+				setLoading(false);
+				arr = data.profilesArray;
+				setBusiness((businessData) => [...businessData, ...arr]);
+			} else {
+				setLoading(true);
+				clearInterval(categoryInterval);
+			}
+		} catch (error) {
+			return console.log(error);
+		}
+	};
+
+	const callUniqueCategory = async (category, currentPage) => {
+		let arr = [];
+		try {
+			console.log(currentPage);
+			console.log(category);
+			const { data } = await axios.get(
+				`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-unique-category/${category}/${currentPage}`
+			);
+			console.log(data);
+			if (data.success) {
+				setLoading(false);
+				arr = data.profilesArray;
+				setBusiness((businessData) => [...businessData, ...arr]);
+			} else {
+				setLoading(true);
+				clearInterval(categoryInterval);
+			}
+		} catch (error) {
+			return console.log(error);
+		}
+	};
+
 	// Filter Business By Categories Function
 	const getBusinessByCategories = async (e) => {
 		e.preventDefault();
-		setLoading(true);
 		setBusiness([]);
+		clearInterval(businessInterval);
+		clearInterval(filterBusinessInterval);
+		console.log(categories);
 		if (categories.length < 1) {
-			try {
-				console.log(currentPage);
-				const { data } = await axios.get(
-					`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories`
-				);
-				console.log(data);
-				setLoading(false);
-				return setBusiness(data.profilesArray);
-			} catch (error) {
-				return console.log(error);
-			}
+			categoryInterval = setInterval(() => {
+				currentPage++;
+				callAllCategories(currentPage);
+			}, 4000);
+			setCategoryFilterInterval(categoryInterval);
 		} else {
-			for (var i = 0; i < categories.length; i++) {
-				try {
-					const { data } = await axios.get(
-						`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-unique-category/${categories[i]}`
-					);
-					if (data.success) {
-						setLoading(false);
-						data.business.map((buss) => setBusiness((prev) => [...prev, buss]));
-					}
-					// console.log(business);
-				} catch (error) {
-					console.log(error);
+			categoryInterval = setInterval(() => {
+				currentPage++;
+				for (var i = 0; i < categories.length; i++) {
+					console.log(categories[i]);
+					let cat = categories[i];
+
+					console.log(cat);
+					callUniqueCategory(cat, currentPage);
 				}
-			}
+			}, 4000);
+			setCategoryFilterInterval(categoryInterval);
 		}
 	};
 
@@ -930,13 +1022,6 @@ const GridListingsWithLeftSidebar = () => {
               </div> */}
 
 							<div className="row">
-								{loading && (
-									<div className="d-flex justify-content-center align-items-center w-100">
-										<div class="spinner-border" role="status">
-											<span class="sr-only">Loading...</span>
-										</div>
-									</div>
-								)}
 								{/* {console.log(business)} */}
 								{business.map((bus) => {
 									//   console.log(bus);
@@ -1016,7 +1101,7 @@ const GridListingsWithLeftSidebar = () => {
 										</div>
 									);
 								})}
-								{!loading && business.length < 1 && (
+								{loading && (
 									<div className="d-flex justify-content-center align-items-center w-100">
 										<h1>Data Not Found</h1>
 									</div>
