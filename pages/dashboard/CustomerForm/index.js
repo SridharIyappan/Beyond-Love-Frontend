@@ -553,7 +553,7 @@ const Profile = () => {
         draggable: true,
         progress: undefined,
       });
-    } else if (imgPdfValidation !== "image/png") {
+    } else if (imgPdfValidation !== "image/png" || imgPdfValidation == "image/jpeg") {
       return toast.error("Please Upload Image only", {
         theme: "light",
         position: "top-right",
