@@ -318,11 +318,11 @@ const Banner = () => {
 									<span className="typewrite">{t("Find Nearby")}</span>
 									<Typist>
 										<span>{t("Pet Clinic")}</span>
-										<Typist.Backspace count={20} delay={1000} />
+										<Typist.Backspace count={25} delay={1000} />
 										<span>{t("Pet Grooming")}</span>
-										<Typist.Backspace count={20} delay={1000} />
+										<Typist.Backspace count={25} delay={1000} />
 										<span>{t("Pet Training")}</span>
-										<Typist.Backspace count={20} delay={1000} />
+										<Typist.Backspace count={25} delay={1000} />
 										<span>{t("Pet Boarding")}</span>
 									</Typist>
 									<span className="wrap"></span>
