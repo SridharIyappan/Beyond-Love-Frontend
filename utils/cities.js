@@ -2701,7 +2701,7 @@ export const cities = [
 	},
 	{
 		Geo_Name: "Faridabad",
-		Geo_Head: "7",
+		Geo_Head: "8",
 		id: "580",
 	},
 	{
@@ -4836,7 +4836,7 @@ export const cities = [
 	},
 	{
 		Geo_Name: "Ghaziabad",
-		Geo_Head: "10",
+		Geo_Head: "8",
 		id: "1007",
 	},
 	{
