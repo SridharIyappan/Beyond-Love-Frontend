@@ -543,7 +543,7 @@ const Profile = () => {
     e.preventDefault();
     console.log(apivaccinationDocsUpload)
     if (apivaccinationDocsUpload == "") {
-      return toast.error("Please Upload Vaccination Certificate", {
+      return toast.error("Please Upload Vaccination Image", {
         theme: "light",
         position: "top-right",
         autoClose: 2000,
@@ -553,19 +553,7 @@ const Profile = () => {
         draggable: true,
         progress: undefined,
       });
-    } else if (imgPdfValidation !== "image/png" || imgPdfValidation == "image/jpeg") {
-      return toast.error("Please Upload Image only", {
-        theme: "light",
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-    else {
+    } else if (imgPdfValidation == "image/png" || imgPdfValidation == "image/jpeg") {
       const formData = new FormData();
       formData.append("file", apivaccinationDocsUpload);
       try {
@@ -589,6 +577,18 @@ const Profile = () => {
       } catch (error) {
         console.log(error)
       }
+    }
+    else {
+      return toast.error("Please Upload Image only", {
+        theme: "light",
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 
