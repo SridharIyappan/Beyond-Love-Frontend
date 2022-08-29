@@ -18,563 +18,577 @@ import { DesktopDateTimePicker } from "@mui/x-date-pickers/DesktopDateTimePicker
 import TextField from "@mui/material/TextField";
 
 const Banner = () => {
-	const [contactForm, setContactForm] = useState(false);
-	const [name, setName] = useState("");
-	const [mobile, setMobile] = useState("");
-	const [category, setCategory] = useState("");
-	const [city, setCity] = useState("");
-	const [location, setLocation] = useState("");
-	const [dateTime, setDateTime] = useState(new Date());
-	const [error, setError] = useState(false);
-	const [stateName, setStateName] = useState("");
-	const [cityName, setCityName] = useState("");
-	const [selectedCity, setSelectedCity] = useState([]);
-	const [locationName, setLocationName] = useState("");
-	const [selectedLocation, setSelectedLocation] = useState([]);
-	const [categoryName, setCategoryName] = useState("");
-	const [allBusinessDetail, setAllBusinessDetail] = useState([]);
-	const [allStates, setAllStates] = useState([]);
-	const [allCities, setAllCities] = useState([]);
-	const [allLocations, setAllLocations] = useState([]);
-	const [run, setRun] = useState(false);
-	const [token, setToken] = useState("");
-	const [userType, setUserType] = useState("");
-	const { t } = useTranslation("home");
+  const [contactForm, setContactForm] = useState(false);
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [category, setCategory] = useState("");
+  const [city, setCity] = useState("");
+  const [location, setLocation] = useState("");
+  const [dateTime, setDateTime] = useState(new Date());
+  const [error, setError] = useState(false);
+  const [stateName, setStateName] = useState("");
+  const [cityName, setCityName] = useState("");
+  const [selectedCity, setSelectedCity] = useState([]);
+  const [locationName, setLocationName] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState([]);
+  const [categoryName, setCategoryName] = useState("");
+  const [allBusinessDetail, setAllBusinessDetail] = useState([]);
+  const [allStates, setAllStates] = useState([]);
+  const [allCities, setAllCities] = useState([]);
+  const [allLocations, setAllLocations] = useState([]);
+  const [run, setRun] = useState(false);
+  const [token, setToken] = useState("");
+  const [userType, setUserType] = useState("");
+  const { t } = useTranslation("home");
 
-	let router = useRouter();
-	let dispatch = useDispatch();
+  let router = useRouter();
+  let dispatch = useDispatch();
 
-	// Contact Form Function
-	const contactFormShow = () => {
-		if (userType == "Customer") {
-			setContactForm(!contactForm);
-		} else {
-			toast.error("Please login as a customer", {
-				theme: "light",
-				position: "top-center",
-				autoClose: 2000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-		}
-	};
+  // Contact Form Function
+  const contactFormShow = () => {
+    if (userType == "Customer") {
+      setContactForm(!contactForm);
+    } else {
+      toast.error("Please login as a customer", {
+        theme: "light",
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
-	useEffect(() => {
-		if (typeof window != "undefined") {
-			console.log("we are running the client");
-			const token = localStorage.getItem("token");
-			const user = JSON.parse(localStorage.getItem("user"));
-			console.log(user);
-			if (user != null && user != undefined) {
-				setName(user.customerName);
-				setMobile(user.mobile);
-				setCity(user.city[0]);
-				setLocation(user.location[0]);
-				setUserType(user.userType);
-			}
-			setToken(token);
-			getAllBusinessProfiles();
-			let sArray = dataState.sort((a, b) => (a.Geo_Name < b.Geo_Name ? -1 : 1));
-			console.log(sArray);
-			setAllCities(dataCity.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
-			setAllLocations(dataLocation.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
-		} else {
-			console.log("we are running server side");
-		}
-	}, []);
+  useEffect(() => {
+    if (typeof window != "undefined") {
+      console.log("we are running the client");
+      const token = localStorage.getItem("token");
+      const user = JSON.parse(localStorage.getItem("user"));
+      console.log(user);
+      if (user != null && user != undefined) {
+        setName(user.customerName);
+        setMobile(user.mobile);
+        setCity(user.city[0]);
+        setLocation(user.location[0]);
+        setUserType(user.userType);
+      }
+      setToken(token);
+      // getAllBusinessProfiles();
+      let sArray = dataState.sort((a, b) => (a.Geo_Name < b.Geo_Name ? -1 : 1));
+      console.log(sArray);
+      setAllCities(dataCity.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
+      setAllLocations(dataLocation.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
+      const interval = localStorage.getItem("interval");
+      console.log(interval);
+      if (interval !== undefined || interval !== null) {
+        clearInterval(interval);
+        localStorage.removeItem("interval");
+      }
 
-	// All Business Profiles Function
-	const getAllBusinessProfiles = async () => {
-		try {
-			const { data } = await axios.get(
-				`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories`
-			);
-			console.log(data);
-			setAllBusinessDetail(data.profilesArray);
-			getStateandCities(data.profilesArray);
-			dispatch(addAllBusiness(data.profilesArray));
-			setRun(!run);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-	// Appointment Form Function
-	const appointmentFormSubmit = async (e) => {
-		let s = new Date(dateTime).toLocaleString(undefined, {
-			timeZone: "Asia/Kolkata",
-		});
-		console.log(s);
-		e.preventDefault();
-		const d = {
-			name,
-			mobile,
-			category,
-			city,
-			location,
-			appointmentDate: s,
-		};
-		console.log(d);
-		if (
-			name === "" ||
-			mobile === "" ||
-			category === "" ||
-			city === "" ||
-			location === "" ||
-			dateTime === ""
-		) {
-			setError(true);
-		} else {
-			try {
-				const { data } = await axios.post(
-					`${process.env.DOMAIN_NAME}/api/customer/appointment-booking/${token}`,
-					d
-				);
-				console.log(data);
-				if (data.success) {
-					toast.success(data.msg, {
-						theme: "light",
-						position: "top-right",
-						autoClose: 2000,
-						hideProgressBar: false,
-						closeOnClick: true,
-						pauseOnHover: true,
-						draggable: true,
-						progress: undefined,
-					});
-					setName("");
-					setMobile("");
-					setCategory("");
-					setCity("");
-					setLocation("");
-					setDateTime("");
-				} else {
-					toast.error(data.msg, {
-						theme: "light",
-						position: "top-right",
-						autoClose: 2000,
-						hideProgressBar: false,
-						closeOnClick: true,
-						pauseOnHover: true,
-						draggable: true,
-						progress: undefined,
-					});
-				}
-			} catch (error) {
-				console.log(error);
-			}
-		}
-	};
+      console.log("we are running server side");
+    }
+  }, []);
 
-	// Move to All Listings page
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		console.log(
-			{ categoryName },
-			{ stateName },
-			{ cityName },
-			{ locationName }
-		);
+  // All Business Profiles Function
+  // const getAllBusinessProfiles = async () => {
+  // 	try {
+  // 		const { data } = await axios.get(
+  // 			`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories`
+  // 		);
+  // 		console.log(data);
+  // 		setAllBusinessDetail(data.profilesArray);
+  // 		getStateandCities(data.profilesArray);
+  // 		dispatch(addAllBusiness(data.profilesArray));
+  // 		setRun(!run);
+  // 	} catch (error) {
+  // 		console.log(error);
+  // 	}
+  // };
+  // Appointment Form Function
+  const appointmentFormSubmit = async (e) => {
+    let s = new Date(dateTime).toLocaleString(undefined, {
+      timeZone: "Asia/Kolkata",
+    });
+    console.log(s);
+    e.preventDefault();
+    const d = {
+      name,
+      mobile,
+      category,
+      city,
+      location,
+      appointmentDate: s,
+    };
+    console.log(d);
+    if (
+      name === "" ||
+      mobile === "" ||
+      category === "" ||
+      city === "" ||
+      location === "" ||
+      dateTime === ""
+    ) {
+      setError(true);
+    } else {
+      try {
+        const { data } = await axios.post(
+          `${process.env.DOMAIN_NAME}/api/customer/appointment-booking/${token}`,
+          d
+        );
+        console.log(data);
+        if (data.success) {
+          toast.success(data.msg, {
+            theme: "light",
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          setName("");
+          setMobile("");
+          setCategory("");
+          setCity("");
+          setLocation("");
+          setDateTime("");
+        } else {
+          toast.error(data.msg, {
+            theme: "light",
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
-		router.push({
-			pathname: "/listings",
-			query: { categoryName, stateName, cityName, locationName },
-		});
-	};
+  // Move to All Listings page
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(
+      { categoryName },
+      { stateName },
+      { cityName },
+      { locationName }
+    );
 
-	// Category Change Function
-	const handleChangeCategory = (e) => {
-		console.log(e.target.value);
-		setCategoryName(e.target.value);
-	};
+    router.push({
+      pathname: "/listings",
+      query: { categoryName, stateName, cityName, locationName },
+    });
+  };
 
-	// Location Change Function
-	const handleChangeLocation = (e) => {
-		const loc = e.target.value;
-		setLocationName(loc.split(","));
-	};
+  // Category Change Function
+  const handleChangeCategory = (e) => {
+    console.log(e.target.value);
+    setCategoryName(e.target.value);
+  };
 
-	// Filtering Locations by City
-	const handleClickLocation = () => {
-		console.log(cityName);
-		if (cityName == "" || cityName[2] == undefined) {
-			toast.error("Please Select City", {
-				theme: "light",
-				position: "top-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-		} else {
-			console.log(allCities);
-			console.log(cityName);
-			let arr = [];
-			allLocations.map((loc) => {
-				// console.log(loc);
-				if (loc[2] == cityName[2]) {
-					arr.push(loc);
-				}
-			});
-			setSelectedLocation(arr);
-		}
-	};
+  // Location Change Function
+  const handleChangeLocation = (e) => {
+    const loc = e.target.value;
+    setLocationName(loc.split(","));
+  };
 
-	// Filtering Cities by State
-	const handleClickCity = () => {
-		console.log(stateName);
-		if (stateName == "" || stateName[1] == undefined) {
-			toast.error("Please Select State", {
-				theme: "light",
-				position: "top-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-		} else {
-			let arr = [];
-			allCities.map((city) => {
-				if (city[1] == stateName[1]) {
-					arr.push(city);
-				}
-			});
-			setSelectedCity(arr);
-		}
-	};
+  // Filtering Locations by City
+  const handleClickLocation = () => {
+    console.log(cityName);
+    if (cityName == "" || cityName[2] == undefined) {
+      toast.error("Please Select City", {
+        theme: "light",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      console.log(allCities);
+      console.log(cityName);
+      let arr = [];
+      allLocations.map((loc) => {
+        // console.log(loc);
+        if (loc[2] == cityName[2]) {
+          arr.push(loc);
+        }
+      });
+      setSelectedLocation(arr);
+    }
+  };
 
-	// City Change Function
-	const handleChangeCity = (e) => {
-		const cty = e.target.value;
-		console.log(cty.split(","));
-		setCityName(cty.split(","));
-	};
+  // Filtering Cities by State
+  const handleClickCity = () => {
+    console.log(stateName);
+    if (stateName == "" || stateName[1] == undefined) {
+      toast.error("Please Select State", {
+        theme: "light",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      let arr = [];
+      allCities.map((city) => {
+        if (city[1] == stateName[1]) {
+          arr.push(city);
+        }
+      });
+      setSelectedCity(arr);
+    }
+  };
 
-	// State Change Function
-	const handleStateChange = (e) => {
-		console.log(e.target.value);
-		if (e.target.value == "") {
-			setRun(!run);
-		}
-		const stateChange = e.target.value;
-		console.log({ stateChange });
-		setStateName(stateChange.split(","));
-	};
+  // City Change Function
+  const handleChangeCity = (e) => {
+    const cty = e.target.value;
+    console.log(cty.split(","));
+    setCityName(cty.split(","));
+  };
 
-	// const getStateandCities = (details) => {
-	//   let stateArray = [];
-	//   let cityArray = [];
-	//   let locationArray = [];
-	//   details.map((states) => {
-	//     if (states.state[0] !== undefined) {
-	//       stateArray.push(states.state);
-	//     }
-	//     if (states.city[0] !== undefined) {
-	//       cityArray.push(states.city);
-	//     }
-	//     if (states.location[0] !== undefined) {
-	//       locationArray.push(states.location);
-	//     }
-	//   });
-	//   // unique state array
-	//   let stringStateArray = stateArray.map(JSON.stringify);
-	//   let uniqueStateString = new Set(stringStateArray);
-	//   let uniqueStateArray = Array.from(uniqueStateString, JSON.parse);
-	//   console.log(uniqueStateArray);
-	//   uniqueStateArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
+  // State Change Function
+  const handleStateChange = (e) => {
+    console.log(e.target.value);
+    if (e.target.value == "") {
+      setRun(!run);
+    }
+    const stateChange = e.target.value;
+    console.log({ stateChange });
+    setStateName(stateChange.split(","));
+  };
 
-	//   // unique city array
-	//   let stringCityArray = cityArray.map(JSON.stringify);
-	//   let uniqueCityString = new Set(stringCityArray);
-	//   let uniqueCityArray = Array.from(uniqueCityString, JSON.parse);
-	//   uniqueCityArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
+  // const getStateandCities = (details) => {
+  //   let stateArray = [];
+  //   let cityArray = [];
+  //   let locationArray = [];
+  //   details.map((states) => {
+  //     if (states.state[0] !== undefined) {
+  //       stateArray.push(states.state);
+  //     }
+  //     if (states.city[0] !== undefined) {
+  //       cityArray.push(states.city);
+  //     }
+  //     if (states.location[0] !== undefined) {
+  //       locationArray.push(states.location);
+  //     }
+  //   });
+  //   // unique state array
+  //   let stringStateArray = stateArray.map(JSON.stringify);
+  //   let uniqueStateString = new Set(stringStateArray);
+  //   let uniqueStateArray = Array.from(uniqueStateString, JSON.parse);
+  //   console.log(uniqueStateArray);
+  //   uniqueStateArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
 
-	//   // unique location array
-	//   let stringLocationArray = locationArray.map(JSON.stringify);
-	//   let uniqueLocationString = new Set(stringLocationArray);
-	//   let uniqueLocationArray = Array.from(uniqueLocationString, JSON.parse);
-	//   uniqueLocationArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
-	//   console.log(uniqueStateArray);
-	//   setAllStates(uniqueStateArray);
-	//   setAllCities(uniqueCityArray);
-	//   setAllLocations(uniqueLocationArray);
-	// };
+  //   // unique city array
+  //   let stringCityArray = cityArray.map(JSON.stringify);
+  //   let uniqueCityString = new Set(stringCityArray);
+  //   let uniqueCityArray = Array.from(uniqueCityString, JSON.parse);
+  //   uniqueCityArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
 
-	return (
-		<>
-			<section className="banner-wrapper-area-main-banner">
-				<ToastContainer />
-				<div className="mx-4">
-					<div className="row">
-						<div className="col-lg-8 col-sm-12 col-md-12 mt-5">
-							<div className="banner-content banner-form mt-4">
-								<h1 className="banner-two-heading" style={{ height: "14vh" }}>
-									<span className="typewrite">{t("Find Nearby")}</span>
-									<Typist>
-										<span>{t("Pet Clinic")}</span>
-										<Typist.Backspace count={25} delay={1000} />
-										<span>{t("Pet Grooming")}</span>
-										<Typist.Backspace count={25} delay={1000} />
-										<span>{t("Pet Training")}</span>
-										<Typist.Backspace count={25} delay={1000} />
-										<span>{t("Pet Boarding")}</span>
-									</Typist>
-									<span className="wrap"></span>
-								</h1>
+  //   // unique location array
+  //   let stringLocationArray = locationArray.map(JSON.stringify);
+  //   let uniqueLocationString = new Set(stringLocationArray);
+  //   let uniqueLocationArray = Array.from(uniqueLocationString, JSON.parse);
+  //   uniqueLocationArray.sort((a, b) => (a[0] < b[0] ? -1 : 1));
+  //   console.log(uniqueStateArray);
+  //   setAllStates(uniqueStateArray);
+  //   setAllCities(uniqueCityArray);
+  //   setAllLocations(uniqueLocationArray);
+  // };
 
-								<form onSubmit={handleSubmit}>
-									<div
-										className="row m-0 align-items-center"
-										style={{ padding: "6px" }}
-									>
-										<div class="col-lg-3 col-md-6 p-0">
-											<div className="form-group category-select">
-												<label className="category-icon">
-													<i className="flaticon-pin"></i>
-												</label>
-												<select
-													className="banner-form-select-two"
-													value={stateName}
-													onChange={handleStateChange}
-												>
-													<option>{t("States")}</option>
-													{dataState.map((state) => {
-														console.log(state, "from return");
-														// if (state[1] != null) {
-														return (
-															<option
-																value={[state.Geo_Name, state.id]}
-																key={state.id}
-															>
-																{console.log(state.Geo_Name)}
-																{state.Geo_Name != ""
-																	? state.Geo_Name
-																	: window.location.reload(false)}
-																{/* {state[0]} */}
-															</option>
-														);
-														// }
-													})}
-												</select>
-											</div>
-										</div>
+  return (
+    <>
+      <section className="banner-wrapper-area-main-banner">
+        <ToastContainer />
+        <div className="mx-4">
+          <div className="row">
+            <div className="col-lg-8 col-sm-12 col-md-12 mt-5">
+              <div className="banner-content banner-form mt-4">
+                <h1 className="banner-two-heading" style={{ height: "14vh" }}>
+                  <span className="typewrite">{t("Find Nearby")}</span>
+                  <Typist>
+                    <span> </span>
+                    <Typist.Backspace count={0} delay={1000} />
+                    <span>{t("Pet Clinic")}</span>
+                    <Typist.Backspace count={20} delay={750} />
+                    <span> </span>
+                    <Typist.Backspace count={20} delay={150} />
+                    <span>{t("Pet Grooming")}</span>
+                    <Typist.Backspace count={25} delay={750} />
+                    <span> </span>
+                    <Typist.Backspace count={25} delay={150} />
+                    <span>{t("Pet Training")}</span>
+                    <Typist.Backspace count={22} delay={750} />
+                    <span> </span>
+                    <Typist.Backspace count={22} delay={150} />
+                    <span>{t("Pet Boarding")}</span>
+                  </Typist>
+                  <span className="wrap"></span>
+                </h1>
 
-										<div class="col-lg-3 col-md-6 p-0">
-											<div className="form-group category-select">
-												<label className="category-icon">
-													<i className="flaticon-pin"></i>
-												</label>
-												<select
-													className="banner-form-select-two"
-													onFocus={handleClickCity}
-													onChange={handleChangeCity}
-												>
-													<option>{t("City")}</option>
-													{selectedCity.map((city) => {
-														return (
-															<option
-																value={[city[0], city[1], city[2]]}
-																key={city[0]}
-															>
-																{city[0]}
-															</option>
-														);
-													})}
-												</select>
-											</div>
-										</div>
+                <form onSubmit={handleSubmit}>
+                  <div
+                    className="row m-0 align-items-center"
+                    style={{ padding: "6px" }}
+                  >
+                    <div class="col-lg-3 col-md-6 p-0">
+                      <div className="form-group category-select">
+                        <label className="category-icon">
+                          <i className="flaticon-pin"></i>
+                        </label>
+                        <select
+                          className="banner-form-select-two"
+                          value={stateName}
+                          onChange={handleStateChange}
+                        >
+                          <option>{t("States")}</option>
+                          {dataState.map((state) => {
+                            console.log(state, "from return");
+                            // if (state[1] != null) {
+                            return (
+                              <option
+                                value={[state.Geo_Name, state.id]}
+                                key={state.id}
+                              >
+                                {console.log(state.Geo_Name)}
+                                {state.Geo_Name != ""
+                                  ? state.Geo_Name
+                                  : window.location.reload(false)}
+                                {/* {state[0]} */}
+                              </option>
+                            );
+                            // }
+                          })}
+                        </select>
+                      </div>
+                    </div>
 
-										<div class="col-lg-3 col-md-6 p-0">
-											<div className="form-group category-select">
-												<label className="category-icon">
-													<i className="flaticon-pin"></i>
-												</label>
-												<select
-													className="banner-form-select-two"
-													onFocus={handleClickLocation}
-													onChange={handleChangeLocation}
-												>
-													<option>{t("Location")}</option>
-													{selectedLocation.map((location) => {
-														return (
-															<option
-																value={[
-																	location[0],
-																	location[1],
-																	location[2],
-																	location[3],
-																]}
-																key={location[0]}
-															>
-																{location[0]}
-															</option>
-														);
-													})}
-												</select>
-											</div>
-										</div>
+                    <div class="col-lg-3 col-md-6 p-0">
+                      <div className="form-group category-select">
+                        <label className="category-icon">
+                          <i className="flaticon-pin"></i>
+                        </label>
+                        <select
+                          className="banner-form-select-two"
+                          onFocus={handleClickCity}
+                          onChange={handleChangeCity}
+                        >
+                          <option>{t("City")}</option>
+                          {selectedCity.map((city) => {
+                            return (
+                              <option
+                                value={[city[0], city[1], city[2]]}
+                                key={city[0]}
+                              >
+                                {city[0]}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    </div>
 
-										<div class="col-lg-2 col-md-6 p-0">
-											<div className="form-group category-select">
-												<label className="category-icon">
-													<i className="flaticon-search"></i>
-												</label>
-												<select
-													className="banner-form-select-two"
-													onChange={handleChangeCategory}
-												>
-													<option>Categories</option>
-													<option value={"PetClinic"}>Pet Clinic</option>
-													<option value={"PetGrooming"}>Pet Grooming</option>
-													<option value={"PetBoarding"}>Pet Boarding</option>
-													<option value={"PetTraining"}>Pet Training</option>
-												</select>
-											</div>
-										</div>
+                    <div class="col-lg-3 col-md-6 p-0">
+                      <div className="form-group category-select">
+                        <label className="category-icon">
+                          <i className="flaticon-pin"></i>
+                        </label>
+                        <select
+                          className="banner-form-select-two"
+                          onFocus={handleClickLocation}
+                          onChange={handleChangeLocation}
+                        >
+                          <option>{t("Location")}</option>
+                          {selectedLocation.map((location) => {
+                            return (
+                              <option
+                                value={[
+                                  location[0],
+                                  location[1],
+                                  location[2],
+                                  location[3],
+                                ]}
+                                key={location[0]}
+                              >
+                                {location[0]}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    </div>
 
-										<div class="col-lg-1 col-md-6 p-0">
-											<div className="submit-btn ">
-												<button type="submit">
-													{" "}
-													<i className="flaticon-search"></i>
-												</button>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-							<div style={{ display: "flex" }}>
-								{/* <div className='search-btn mr-2'>
+                    <div class="col-lg-2 col-md-6 p-0">
+                      <div className="form-group category-select">
+                        <label className="category-icon">
+                          <i className="flaticon-search"></i>
+                        </label>
+                        <select
+                          className="banner-form-select-two"
+                          onChange={handleChangeCategory}
+                        >
+                          <option>Categories</option>
+                          <option value={"PetClinic"}>Pet Clinic</option>
+                          <option value={"PetGrooming"}>Pet Grooming</option>
+                          <option value={"PetBoarding"}>Pet Boarding</option>
+                          <option value={"PetTraining"}>Pet Training</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-1 col-md-6 p-0">
+                      <div className="submit-btn ">
+                        <button type="submit">
+                          {" "}
+                          <i className="flaticon-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div style={{ display: "flex" }}>
+                {/* <div className='search-btn mr-2'>
                                     <Link href='/listings' >
                                         <button>Search Now</button>
                                     </Link>
                                 </div> */}
-								<div className="search-btn">
-									<button onClick={contactFormShow}>
-										{t("Leave Your Search to Us")}
-									</button>
-								</div>
-							</div>
-						</div>
+                <div className="search-btn">
+                  <button onClick={contactFormShow}>
+                    {t("Leave Your Search to Us")}
+                  </button>
+                </div>
+              </div>
+            </div>
 
-						{contactForm && (
-							<div className="col-lg-4 col-sm-12 col-md-12">
-								<div className="contact-form mt-5">
-									<form id="contactForm" onSubmit={appointmentFormSubmit}>
-										<div className="row">
-											<div className="col-lg-12 col-md-6">
-												<div className="form-group">
-													<input
-														type="text"
-														className="dashbaord-category-select"
-														placeholder="Name"
-														style={{ border: "none" }}
-														value={name}
-														onChange={(e) => setName(e.target.value)}
-													/>
-													{error && name == "" ? (
-														<span className="text-danger">
-															Please enter name
-														</span>
-													) : (
-														<> </>
-													)}
-												</div>
-											</div>
+            {contactForm && (
+              <div className="col-lg-4 col-sm-12 col-md-12">
+                <div className="contact-form mt-5">
+                  <form id="contactForm" onSubmit={appointmentFormSubmit}>
+                    <div className="row">
+                      <div className="col-lg-12 col-md-6">
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            className="dashbaord-category-select"
+                            placeholder="Name"
+                            style={{ border: "none" }}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                          />
+                          {error && name == "" ? (
+                            <span className="text-danger">
+                              Please enter name
+                            </span>
+                          ) : (
+                            <> </>
+                          )}
+                        </div>
+                      </div>
 
-											<div className="col-lg-12 col-md-6">
-												<div className="form-group">
-													<input
-														type="text"
-														className="dashbaord-category-select"
-														placeholder="Mobile"
-														style={{ border: "none" }}
-														value={mobile}
-														onChange={(e) => setMobile(e.target.value)}
-													/>
-													{error && mobile == "" ? (
-														<span className="text-danger">
-															Please enter mobile number
-														</span>
-													) : (
-														<></>
-													)}
-												</div>
-											</div>
+                      <div className="col-lg-12 col-md-6">
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            className="dashbaord-category-select"
+                            placeholder="Mobile"
+                            style={{ border: "none" }}
+                            value={mobile}
+                            onChange={(e) => setMobile(e.target.value)}
+                          />
+                          {error && mobile == "" ? (
+                            <span className="text-danger">
+                              Please enter mobile number
+                            </span>
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                      </div>
 
-											<div className="col-lg-12 col-md-6">
-												<div className="form-group">
-													<select
-														className="dashbaord-category-select"
-														placeholder="Select the state"
-														style={{ border: "none" }}
-														value={category}
-														onChange={(e) => setCategory(e.target.value)}
-													>
-														<option>Categories</option>
-														<option>Pet Clinic</option>
-														<option>Pet Grooming</option>
-														<option>Pet Boarding</option>
-														<option>Pet Training</option>
-														<option>Pet Food</option>
-													</select>
-													{error && category.length == "" ? (
-														<span className="text-danger">
-															Please select category
-														</span>
-													) : (
-														<></>
-													)}
-												</div>
-											</div>
+                      <div className="col-lg-12 col-md-6">
+                        <div className="form-group">
+                          <select
+                            className="dashbaord-category-select"
+                            placeholder="Select the state"
+                            style={{ border: "none" }}
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                          >
+                            <option>Categories</option>
+                            <option>Pet Clinic</option>
+                            <option>Pet Grooming</option>
+                            <option>Pet Boarding</option>
+                            <option>Pet Training</option>
+                            <option>Pet Food</option>
+                          </select>
+                          {error && category.length == "" ? (
+                            <span className="text-danger">
+                              Please select category
+                            </span>
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                      </div>
 
-											<div className="col-lg-12 col-md-6">
-												<div className="form-group">
-													<input
-														type="text"
-														className="dashbaord-category-select"
-														placeholder="City"
-														style={{ border: "none" }}
-														value={city}
-														onChange={(e) => setCity(e.target.value)}
-													/>
-													{error && location == "" ? (
-														<span className="text-danger">
-															Please enter city
-														</span>
-													) : (
-														<></>
-													)}
-												</div>
-											</div>
+                      <div className="col-lg-12 col-md-6">
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            className="dashbaord-category-select"
+                            placeholder="City"
+                            style={{ border: "none" }}
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                          />
+                          {error && location == "" ? (
+                            <span className="text-danger">
+                              Please enter city
+                            </span>
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                      </div>
 
-											<div className="col-lg-12 col-md-6">
-												<div className="form-group">
-													<input
-														type="text"
-														className="dashbaord-category-select"
-														placeholder="Location"
-														style={{ border: "none" }}
-														value={location}
-														onChange={(e) => setLocation(e.target.value)}
-													/>
-													{error && location == "" ? (
-														<span className="text-danger">
-															Please enter location
-														</span>
-													) : (
-														<></>
-													)}
-												</div>
-											</div>
+                      <div className="col-lg-12 col-md-6">
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            className="dashbaord-category-select"
+                            placeholder="Location"
+                            style={{ border: "none" }}
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                          />
+                          {error && location == "" ? (
+                            <span className="text-danger">
+                              Please enter location
+                            </span>
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                      </div>
 
-											{/* <div className="col-lg-6 col-md-6">
+                      {/* <div className="col-lg-6 col-md-6">
 												<div className="form-group">
 													<label>
 														<i className="bx bx-menu-alt-left"></i> Appoinment:
@@ -582,56 +596,56 @@ const Banner = () => {
 												</div>
 											</div> */}
 
-											<div className="col-lg-12 col-md-6">
-												<div className="form-group">
-													{/* <input
+                      <div className="col-lg-12 col-md-6">
+                        <div className="form-group">
+                          {/* <input
 														type="datetime-local"
 														className="form-control"
 														placeholder="Appointment"
 														value={dateTime}
 														onChange={(e) => setDateTime(e.target.value)}
 													/> */}
-													<LocalizationProvider dateAdapter={AdapterDateFns}>
-														<DesktopDateTimePicker
-															ampm={false}
-															renderInput={(props) => <TextField {...props} />}
-															label="Appointment Date"
-															value={dateTime}
-															onChange={(newValue) => {
-																setDateTime(newValue);
-															}}
-														/>
-													</LocalizationProvider>
-													{error && dateTime == "" ? (
-														<span className="text-danger">
-															Please select date
-														</span>
-													) : (
-														<></>
-													)}
-												</div>
-											</div>
+                          <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DesktopDateTimePicker
+                              ampm={false}
+                              renderInput={(props) => <TextField {...props} />}
+                              label="Appointment Date"
+                              value={dateTime}
+                              onChange={(newValue) => {
+                                setDateTime(newValue);
+                              }}
+                            />
+                          </LocalizationProvider>
+                          {error && dateTime == "" ? (
+                            <span className="text-danger">
+                              Please select date
+                            </span>
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                      </div>
 
-											<div className="col-lg-12 col-md-12">
-												<button type="submit" className="default-btn">
-													Reach Us
-												</button>
-												<div
-													id="msgSubmit"
-													className="h3 text-center hidden"
-												></div>
-												<div className="clearfix"></div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						)}
-					</div>
-				</div>
-			</section>
-		</>
-	);
+                      <div className="col-lg-12 col-md-12">
+                        <button type="submit" className="default-btn">
+                          Reach Us
+                        </button>
+                        <div
+                          id="msgSubmit"
+                          className="h3 text-center hidden"
+                        ></div>
+                        <div className="clearfix"></div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    </>
+  );
 };
 
 export default Banner;

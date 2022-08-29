@@ -71,6 +71,7 @@ const GridListingsWithLeftSidebar = () => {
 			);
 		}, 4000);
 		setbusinessInterval(interval);
+		localStorage.setItem("interval", interval);
 	}, []);
 
 	// All Business filter
@@ -445,6 +446,7 @@ const GridListingsWithLeftSidebar = () => {
 	// Filter Listings
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setLoading(false);
 		console.log("filter");
 		clearInterval(businessInterval);
 		clearInterval(filterBusinessInterval);
@@ -473,6 +475,7 @@ const GridListingsWithLeftSidebar = () => {
 			);
 		}, 4000);
 		setFilterBusinessInterval(filterInterval);
+		localStorage.setItem("interval", filterInterval);
 	};
 
 	// Get Business without category function
@@ -699,6 +702,7 @@ const GridListingsWithLeftSidebar = () => {
 				callAllCategories(currentPage);
 			}, 4000);
 			setCategoryFilterInterval(categoryInterval);
+			localStorage.setItem("interval", categoryInterval);
 		} else {
 			categoryInterval = setInterval(() => {
 				currentPage++;
@@ -711,6 +715,7 @@ const GridListingsWithLeftSidebar = () => {
 				}
 			}, 4000);
 			setCategoryFilterInterval(categoryInterval);
+			localStorage.setItem("interval", categoryInterval);
 		}
 	};
 
@@ -723,12 +728,6 @@ const GridListingsWithLeftSidebar = () => {
 			query: { category, id },
 		});
 	};
-
-	// const pageChange = (page) => {
-	// 	console.log(page);
-	// 	businessFilteration(page);
-	// 	setCurrentPage(page);
-	// };
 
 	return (
 		<>
