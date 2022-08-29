@@ -18,4 +18,9 @@ export const dataCity = [
 	["Amritsar", "4", "878"],
 	["Kolkata", "20", "1077"],
 	["Mumbai", "28", "774"],
+	["Faridabad", "7", "580"],
+	["Gurgaon", "7", "582"],
+	["Noida", "10", "1090"],
+	["Ghaziabad", "10", "1007"],
+	["Delhi", "8", "533"],
 ];
