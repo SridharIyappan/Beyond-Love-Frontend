@@ -7,6 +7,8 @@ import { addAllBusiness } from "../../Redux/allBusinessSlice";
 import { cities } from "../../utils/cities";
 import { locations } from "../../utils/location";
 import { useTranslation } from "next-i18next";
+import { dataCity } from "../../utils/dataCity";
+import { dataLocation } from "../../utils/dataLocation";
 
 const Banner = () => {
 	const [serviceProvider, setServiceProvider] = useState("");
@@ -16,9 +18,9 @@ const Banner = () => {
 	const { t } = useTranslation("home");
 	useEffect(() => {
 		if (typeof window != "undefined") {
-			getServiceProvide();
-			setCitiesLength(cities.length);
-			setLocationLength(locations.length);
+			// getServiceProvide();
+			setCitiesLength(dataCity.length);
+			setLocationLength(dataLocation.length);
 		}
 	});
 
@@ -31,16 +33,16 @@ const Banner = () => {
 		}
 	}, []);
 
-	const getServiceProvide = async () => {
-		try {
-			const { data } = await axios.get(
-				`${process.env.DOMAIN_NAME}/api/business/get-serviceproviderscount`
-			);
-			setServiceProvider(data.serviceProvidersCount);
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	// const getServiceProvide = async () => {
+	// 	try {
+	// 		const { data } = await axios.get(
+	// 			`${process.env.DOMAIN_NAME}/api/business/get-serviceproviderscount`
+	// 		);
+	// 		setServiceProvider(data.serviceProvidersCount);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// };
 
 	return (
 		<>
@@ -69,7 +71,7 @@ const Banner = () => {
 									<br />
 									<CountUp
 										start={0}
-										end={21}
+										end={citiesLength}
 										duration={3}
 										className="countUp"
 									/>
@@ -94,7 +96,7 @@ const Banner = () => {
 									<br />
 									<CountUp
 										start={0}
-										end={serviceProvider}
+										end={8592}
 										duration={3}
 										className="countUp"
 									/>
