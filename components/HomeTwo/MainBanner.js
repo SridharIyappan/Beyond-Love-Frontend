@@ -76,31 +76,37 @@ const Banner = () => {
 				setUserType(user.userType);
 			}
 			setToken(token);
-			getAllBusinessProfiles();
+			// getAllBusinessProfiles();
 			let sArray = dataState.sort((a, b) => (a.Geo_Name < b.Geo_Name ? -1 : 1));
 			console.log(sArray);
 			setAllCities(dataCity.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
 			setAllLocations(dataLocation.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
-		} else {
+			const interval = localStorage.getItem("interval");
+			console.log(interval);
+			if (interval !== undefined || interval !== null) {
+				clearInterval(interval);
+				localStorage.removeItem("interval");
+			}
+
 			console.log("we are running server side");
 		}
 	}, []);
 
 	// All Business Profiles Function
-	const getAllBusinessProfiles = async () => {
-		try {
-			const { data } = await axios.get(
-				`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories`
-			);
-			console.log(data);
-			setAllBusinessDetail(data.profilesArray);
-			getStateandCities(data.profilesArray);
-			dispatch(addAllBusiness(data.profilesArray));
-			setRun(!run);
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	// const getAllBusinessProfiles = async () => {
+	// 	try {
+	// 		const { data } = await axios.get(
+	// 			`${process.env.DOMAIN_NAME}/api/business/get-profiles-from-all-categories`
+	// 		);
+	// 		console.log(data);
+	// 		setAllBusinessDetail(data.profilesArray);
+	// 		getStateandCities(data.profilesArray);
+	// 		dispatch(addAllBusiness(data.profilesArray));
+	// 		setRun(!run);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// };
 	// Appointment Form Function
 	const appointmentFormSubmit = async (e) => {
 		let s = new Date(dateTime).toLocaleString(undefined, {
