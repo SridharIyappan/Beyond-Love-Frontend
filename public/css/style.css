@@ -16987,3 +16987,13 @@ text-decoration: underline;
   width: 100% !important;
   background: #f6f6f6;
 }
+
+/* booking Btn section */
+.booking-Btn {
+  margin: auto !important;
+}
+
+.booking-Btn li.phone-number a {
+  background-color: #fed023 !important;
+  color: #000000 !important;
+}

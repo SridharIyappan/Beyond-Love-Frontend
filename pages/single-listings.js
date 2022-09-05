@@ -308,6 +308,19 @@ const SingleListings = () => {
     }
   };
 
+  const bookAppoinment = () => {
+    toast.error("Please Login As Customer", {
+      theme: "light",
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
   return (
     <>
       <NavbarTwo />
@@ -385,6 +398,21 @@ const SingleListings = () => {
                         {business.state[0]}
                       </p>
                     </li>
+                  )}
+                  {userType == "Customer" ? (<div className="booking-Btn">
+                    <li className="phone-number">
+                      <a href="#">
+                        <i className="bx bx-time-five"></i>Book Appoinment
+                      </a>
+                    </li>
+                  </div>) : (
+                    <div className="booking-Btn">
+                      <li className="phone-number" onClick={bookAppoinment}>
+                        <a href="#">
+                          <i className="bx bx-time-five"></i>Book Appoinment
+                        </a>
+                      </li>
+                    </div>
                   )}
                 </ul>
               </div>
