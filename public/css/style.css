@@ -11618,10 +11618,10 @@ Footer Area CSS
   background-image: url(../images/footer.png);
 }
 
-.footer-area .container .row {
+/* .footer-area .container .row {
   border-top: 2px solid #221638;
   border-bottom: 2px solid #221638;
-}
+} */
 
 .single-footer-widget {
   margin-bottom: 30px;
@@ -16864,6 +16864,7 @@ th {
 
 .footer-new-section .container .row {
   align-items: center;
+  justify-content: space-between;
 }
 
 .footer-new-section .container {

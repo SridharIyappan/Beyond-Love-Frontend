@@ -77,12 +77,12 @@ const Footer = ({ bgColor }) => {
 											{t("Pet Clinic")} {t("In Mumbai")}
 										</a>
 									</li>
-									<li>
+									{/* <li>
 										<a>
 											<i className="flaticon-left-chevron"></i>{" "}
 											{t("Pet Clinic")} {t("In Bangalore")}
 										</a>
-									</li>
+									</li> */}
 								</ul>
 							</div>
 						</div>
@@ -147,12 +147,12 @@ const Footer = ({ bgColor }) => {
 											{t("Pet Grooming")} {t("In Mumbai")}
 										</a>
 									</li>
-									<li>
+									{/* <li>
 										<a>
 											<i className="flaticon-left-chevron"></i>{" "}
 											{t("Pet Grooming")} {t("In Bangalore")}
 										</a>
-									</li>
+									</li> */}
 								</ul>
 							</div>
 						</div>
@@ -217,12 +217,12 @@ const Footer = ({ bgColor }) => {
 											{t("Pet Boarding")} {t("In Mumbai")}
 										</a>
 									</li>
-									<li>
+									{/* <li>
 										<a>
 											<i className="flaticon-left-chevron"></i>{" "}
 											{t("Pet Boarding")} {t("In Bangalore")}
 										</a>
-									</li>
+									</li> */}
 								</ul>
 							</div>
 						</div>
@@ -287,12 +287,12 @@ const Footer = ({ bgColor }) => {
 											{t("Pet Training")} {t("In Mumbai")}
 										</a>
 									</li>
-									<li>
+									{/* <li>
 										<a>
 											<i className="flaticon-left-chevron"></i>{" "}
 											{t("Pet Training")} {t("In Bangalore")}
 										</a>
-									</li>
+									</li> */}
 								</ul>
 							</div>
 							{/* <h3>Social Media</h3> */}
@@ -333,9 +333,7 @@ const Footer = ({ bgColor }) => {
 					<hr height="1px" class="sc-dnqmqq hBuCPu"></hr>
 
 					<div className="row copy-rights-section">
-						<div className="col-lg-4 col-sm-6 col-md-6 footer-content-second">
-							<a>Copyright © 2022 BEYONDLOVE. All Rights Reserved</a>
-						</div>
+
 						<div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
 							<a href="/">Privacy policy</a>
 						</div>
@@ -363,6 +361,10 @@ const Footer = ({ bgColor }) => {
 					<br />
 					<div className="made-section">
 						Made With 💙 In India – For the Pets, By Pet Lovers.
+					</div>
+					<br />
+					<div className="made-section">
+						<a>Copyright © 2022 BEYONDLOVE. All Rights Reserved</a>
 					</div>
 				</div>
 			</footer>
