@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { dataState } from "../../utils/dataState";
 import { dataCity } from "../../utils/dataCity";
 import { dataLocation } from "../../utils/dataLocation";
-
+import Typed from "react-typed";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDateTimePicker } from "@mui/x-date-pickers/DesktopDateTimePicker";
@@ -266,9 +266,9 @@ const Banner = () => {
 							<div className="banner-content banner-form mt-4">
 								<h1 className="banner-two-heading" style={{ height: "14vh" }}>
 									<span className="typewrite">{t("Find Nearby")}</span>
-									<Typist>
+									{/* <Typist>
 										<span> </span>
-										<Typist.Backspace count={0} delay={1000} />
+										<Typist.Backspace count={0} loop delay={1000} />
 										<span>{t("Pet Clinic")}</span>
 										<Typist.Backspace count={20} delay={750} />
 										<span> </span>
@@ -282,7 +282,18 @@ const Banner = () => {
 										<span> </span>
 										<Typist.Backspace count={22} delay={150} />
 										<span>{t("Pet Boarding")}</span>
-									</Typist>
+									</Typist> */}
+									<Typed style={{ color: "white" }}
+										strings={[
+											t("Pet Clinic"),
+											t("Pet Grooming"),
+											t("Pet Training"),
+											t("Pet Boarding"),
+										]}
+										typeSpeed={100}
+										backSpeed={50}
+										loop
+									/>
 									<span className="wrap"></span>
 								</h1>
 

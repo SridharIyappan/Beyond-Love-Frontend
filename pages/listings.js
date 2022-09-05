@@ -69,7 +69,7 @@ const GridListingsWithLeftSidebar = () => {
 				locationFilter,
 				categoryFilter
 			);
-		}, 4000);
+		}, 100);
 		setbusinessInterval(interval);
 		localStorage.setItem("interval", interval);
 	}, []);
@@ -473,7 +473,7 @@ const GridListingsWithLeftSidebar = () => {
 				locationFilter,
 				categoryFilter
 			);
-		}, 4000);
+		}, 100);
 		setFilterBusinessInterval(filterInterval);
 		localStorage.setItem("interval", filterInterval);
 	};
@@ -700,7 +700,7 @@ const GridListingsWithLeftSidebar = () => {
 			categoryInterval = setInterval(() => {
 				currentPage++;
 				callAllCategories(currentPage);
-			}, 4000);
+			}, 100);
 			setCategoryFilterInterval(categoryInterval);
 			localStorage.setItem("interval", categoryInterval);
 		} else {
@@ -713,7 +713,7 @@ const GridListingsWithLeftSidebar = () => {
 					console.log(cat);
 					callUniqueCategory(cat, currentPage);
 				}
-			}, 4000);
+			}, 100);
 			setCategoryFilterInterval(categoryInterval);
 			localStorage.setItem("interval", categoryInterval);
 		}

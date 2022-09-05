@@ -374,7 +374,7 @@ const SingleListings = () => {
                   )}
                   {/* <span className="rating-count">-{averageRating}</span> */}
                 </div>
-                <ul className="d-flex align-items-center">
+                <ul className="d-flex ">
                   {business !== null && (
                     <li className="phone-number">
                       <a href="#">
@@ -388,13 +388,15 @@ const SingleListings = () => {
                     <span>Currently Open</span>
                     08:00 AM - 10:00 PM
                   </li> */}
+                  {console.log(business)}
                   {business !== null && (
                     <li className="location">
                       <i className="bx bx-map"></i>
                       <span>Location</span>
+                      <p>{business.address[0]}</p>
                       <p>
                         {" "}
-                        {business.location[0]}, {business.city[0]},{" "}
+                        {business.city[0]},{" "}
                         {business.state[0]}
                       </p>
                     </li>
