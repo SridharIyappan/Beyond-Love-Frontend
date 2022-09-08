@@ -16713,7 +16713,8 @@ th {
 }
 
 .background-img {
-  background-image: url(../images/section2.jpg);
+  /* background-image: url(../images/section2.jpg); */
+  background: rgb(237 237 237);
   height: 100%;
 }
 

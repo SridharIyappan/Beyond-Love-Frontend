@@ -48,89 +48,96 @@ const Category = ({ titleOne, titleTwo }) => {
 
 	return (
 		<>
-			<section className="category-area pt-100 pb-70 bakgrd">
-				<div className="container">
-					{titleOne ? (
-						<div className="section-title">
-							<h2>{t("Popular Categories")}</h2>
-							{/* <p>
+			<div className="row mx-1">
+				<div className="col-lg-1 col-sm-6 col-md-4">
+					<section>
+
+					</section>
+				</div>
+				<div className="col-lg-10 col-sm-12 col-md-12">
+					<section className="category-area pt-100 pb-70 bakgrd">
+						<div className="container">
+							{titleOne ? (
+								<div className="section-title">
+									<h2>{t("Popular Categories")}</h2>
+									{/* <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
                 ipsum suspendisse ultrices gravida. Risus commodo viverra.
               </p> */}
-						</div>
-					) : titleTwo ? (
-						<div className="section-title text-left">
-							<h2>Explore by Category</h2>
-							<a href="#" className="link-btn">
-								Show All <i className="flaticon-right-chevron"></i>
-							</a>
-						</div>
-					) : (
-						""
-					)}
-					<div className="row" style={{ justifyContent: "space-between" }}>
-						<div
-							className="col-lg-3 col-sm-6 col-md-6"
-							onClick={(e) => getSpecificCategoryServices(e, "PetClinic")}
-						>
-							<div className="single-category-box">
-								<div className="icon">
-									<FaClinicMedical size="2.5rem" />
 								</div>
-								<h3>{t("Pet Clinic")}</h3>
-								<span>{3053}</span>
-								{/* <Link href="/grid-listings-with-map">
+							) : titleTwo ? (
+								<div className="section-title text-left">
+									<h2>Explore by Category</h2>
+									<a href="#" className="link-btn">
+										Show All <i className="flaticon-right-chevron"></i>
+									</a>
+								</div>
+							) : (
+								""
+							)}
+							<div className="row" style={{ justifyContent: "space-between" }}>
+								<div
+									className="col-lg-3 col-sm-6 col-md-6"
+									onClick={(e) => getSpecificCategoryServices(e, "PetClinic")}
+								>
+									<div className="single-category-box">
+										<div className="icon">
+											<FaClinicMedical size="2.5rem" />
+										</div>
+										<h3>{t("Pet Clinic")}</h3>
+										<span>{3053}</span>
+										{/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}
-							</div>
-						</div>
-						<div
-							className="col-lg-3 col-sm-6 col-md-6"
-							onClick={(e) => getSpecificCategoryServices(e, "PetGrooming")}
-						>
-							<div className="single-category-box">
-								<div className="icon">
-									<GiHairStrands size="2.5rem" />
+									</div>
 								</div>
-								<h3>{t("Pet Grooming")}</h3>
-								<span>{2062}</span>
-								{/* <Link href="/grid-listings-with-map">
+								<div
+									className="col-lg-3 col-sm-6 col-md-6"
+									onClick={(e) => getSpecificCategoryServices(e, "PetGrooming")}
+								>
+									<div className="single-category-box">
+										<div className="icon">
+											<GiHairStrands size="2.5rem" />
+										</div>
+										<h3>{t("Pet Grooming")}</h3>
+										<span>{2062}</span>
+										{/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}
-							</div>
-						</div>
-						<div
-							className="col-lg-3 col-sm-6 col-md-6"
-							onClick={(e) => getSpecificCategoryServices(e, "PetTraining")}
-						>
-							<div className="single-category-box">
-								<div className="icon">
-									<TbBone size="2.5rem" />
+									</div>
 								</div>
-								<h3>{t("Pet Training")}</h3>
-								<span>{2305}</span>
-								{/* <Link href="/grid-listings-with-map">
+								<div
+									className="col-lg-3 col-sm-6 col-md-6"
+									onClick={(e) => getSpecificCategoryServices(e, "PetTraining")}
+								>
+									<div className="single-category-box">
+										<div className="icon">
+											<TbBone size="2.5rem" />
+										</div>
+										<h3>{t("Pet Training")}</h3>
+										<span>{2305}</span>
+										{/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}
-							</div>
-						</div>
-						<div
-							className="col-lg-3 col-sm-6 col-md-6"
-							onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}
-						>
-							<div className="single-category-box">
-								<div className="icon">
-									<MdPets size="2.5rem" />
+									</div>
 								</div>
-								<h3>{t("Pet Boarding")}</h3>
-								<span>{1172}</span>
-								{/* <Link href="/grid-listings-with-map">
+								<div
+									className="col-lg-3 col-sm-6 col-md-6"
+									onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}
+								>
+									<div className="single-category-box">
+										<div className="icon">
+											<MdPets size="2.5rem" />
+										</div>
+										<h3>{t("Pet Boarding")}</h3>
+										<span>{1172}</span>
+										{/* <Link href="/grid-listings-with-map">
                   <a className="link-btn"></a>
                 </Link> */}
-							</div>
-						</div>
-						{/* <div className="col-lg-2 col-sm-6 col-md-4">
+									</div>
+								</div>
+								{/* <div className="col-lg-2 col-sm-6 col-md-4">
               <div className="single-category-box">
                 <div className="icon">
                   <MdOutlineFoodBank />
@@ -142,7 +149,7 @@ const Category = ({ titleOne, titleTwo }) => {
                 </Link>
               </div>
             </div> */}
-						{/* <div className='col-lg-2 col-sm-6 col-md-4'>
+								{/* <div className='col-lg-2 col-sm-6 col-md-4'>
               <div className='single-category-box'>
                 <div className='icon'>
                   <i className='flaticon-calendar'></i>
@@ -225,9 +232,16 @@ const Category = ({ titleOne, titleTwo }) => {
                 </Link>
               </div>
             </div> */}
-					</div>
+							</div>
+						</div>
+					</section>
 				</div>
-			</section>
+				<div className="col-lg-1 col-sm-6 col-md-4">
+					<section>
+
+					</section>
+				</div>
+			</div>
 		</>
 	);
 };

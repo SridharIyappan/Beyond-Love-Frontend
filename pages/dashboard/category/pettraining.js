@@ -327,12 +327,12 @@ const PetTraining = () => {
     }
   };
 
-  // const goToTop = () => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth",
-  //   });
-  // };
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -824,7 +824,7 @@ const PetTraining = () => {
 
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
-                      <button type="submit">Save Changes</button>
+                      <button onClick={goToTop} type="submit">Save Changes</button>
                     </div>
                   </div>
                 </div>
