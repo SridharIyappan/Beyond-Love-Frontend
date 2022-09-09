@@ -3,8 +3,8 @@ const path = require("path");
 
 module.exports = {
 	env: {
-		// DOMAIN_NAME: "http://65.2.6.154",
-		DOMAIN_NAME: "http://localhost:3002",
+		DOMAIN_NAME: "http://65.2.6.154",
+		// DOMAIN_NAME: "http://localhost:3002",
 		// i18n,
 	},
 	i18n: {
