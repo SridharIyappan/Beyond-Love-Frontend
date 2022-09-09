@@ -1,131 +1,55 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 
-const EventsArea = () => {
+const EventsArea = ({ openCustomer, openBusiness, openBusinessPopup, openCustomerPopup }) => {
+  useEffect(() => {
+
+    console.log(openCustomer)
+    console.log(openBusiness)
+  }, []);
+
   return (
     <>
-      <section className='events-area pt-100 pb-70'>
-        <div className='container'>
-          <div className='section-title'>
-            <h2>Upcoming Events</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-              ipsum suspendisse ultrices gravida. Risus commodo viverra.
-            </p>
-          </div>
+      <div className="row mx-1">
+        <div className="col-lg-1 col-sm-6 col-md-4">
+          <section>
 
-          <div className='row'>
-            <div className='col-lg-6 col-md-12'>
-              <div className='events-box'>
-                <img src='/images/events/events-big.jpg' alt='image' />
-                <div className='content'>
-                  <h3>Global Robotics Summit & Festival</h3>
-                  <span className='meta'>
-                    <i className='flaticon-calendar'></i> Thu, Jul 30, 11:30 am -
-                    10:00 pm
-                  </span>
-                </div>
-                <Link href='/single-events'>
-                  <a className='link-btn'></a>
-                </Link>
-              </div>
-            </div>
-
-            <div className='col-lg-6 col-md-12'>
-              <div className='events-item-list'>
-                <div className='single-events-box'>
-                  <div className='row m-0'>
-                    <div className='col-lg-4 col-md-4 p-0'>
-                      <div className='image bg-1'>
-                        <img src='/images/events/events1.jpg' alt='image' />
-                        <Link href='/single-events'>
-                          <a className='link-btn'></a>
-                        </Link>
-                      </div>
-                    </div>
-
-                    <div className='col-lg-8 col-md-8 p-0'>
-                      <div className='content'>
-                        <span className='meta'>
-                          <i className='flaticon-calendar'></i> Thu, Jul 30, 11:30
-                          am - 10:00 pm
-                        </span>
-                        <h3>
-                          <Link href='/single-events'>
-                            <a>
-                              Internet of Things Forum Africa Exhibition (IOTFA)
-                            </a>
-                          </Link>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className='single-events-box'>
-                  <div className='row m-0'>
-                    <div className='col-lg-4 col-md-4 p-0'>
-                      <div className='image bg-2'>
-                        <img src='/images/events/events2.jpg' alt='image' />
-                        <Link href='/single-events'>
-                          <a className='link-btn'></a>
-                        </Link>
-                      </div>
-                    </div>
-
-                    <div className='col-lg-8 col-md-8 p-0'>
-                      <div className='content'>
-                        <span className='meta'>
-                          <i className='flaticon-calendar'></i> Thu, Jul 30, 11:30
-                          am - 10:00 pm
-                        </span>
-                        <h3>
-                          <Link href='/single-events'>
-                            <a>
-                              Digital Marketing: Customer Engagement & Social
-                              Media
-                            </a>
-                          </Link>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className='single-events-box'>
-                  <div className='row m-0'>
-                    <div className='col-lg-4 col-md-4 p-0'>
-                      <div className='image bg-3'>
-                        <img src='/images/events/events3.jpg' alt='image' />
-                        <Link href='/single-events'>
-                          <a className='link-btn'></a>
-                        </Link>
-                      </div>
-                    </div>
-
-                    <div className='col-lg-8 col-md-8 p-0'>
-                      <div className='content'>
-                        <span className='meta'>
-                          <i className='flaticon-calendar'></i> Thu, Jul 30, 11:30
-                          am - 10:00 pm
-                        </span>
-                        <h3>
-                          <Link href='/single-events'>
-                            <a>
-                              International Agriculture and Technology Summit
-                            </a>
-                          </Link>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </section>
         </div>
-      </section>
+        <div className="col-lg-10 col-sm-12 col-md-12">
+          <section className='joinUs-section'>
+            <div class="str">
+              <div class="container">
+                <div class="row">
+                  <div class="home-tit">
+                    <h2><span>Join us Now</span></h2>
+                    <p>We connect with targeted customers for greater business conversion</p>
+                  </div>
+                  <div class="hom2-hom-ban-main">
+                    <div class="hom2-hom-ban hom2-hom-ban1">
+                      <h2>Are you a business owner?</h2>
+                      <p>Update your business details including services, about, contact details payment options and more.</p>
+                      {/* <a>Add my business</a> */}
+                      <button onClick={openBusinessPopup}>Add my business</button>
+                    </div>
+                    <div class="hom2-hom-ban hom2-hom-ban2">
+                      <h2>Are you looking for service?</h2>
+                      <p>Get everything in your pocket, What service do you need? Petsfeet will help you.</p>
+                      {/* <a>Create an account</a> */}
+                      <button onClick={openCustomerPopup}>Create an account</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div className="col-lg-1 col-sm-6 col-md-4">
+          <section>
+
+          </section>
+        </div>
+      </div>
     </>
   );
 };

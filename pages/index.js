@@ -57,17 +57,40 @@ export async function getStaticProps({ locale }) {
 }
 
 const Index2 = () => {
+  const [openCustomer, setOpenCustomer] = useState(false);
+  const [openBusiness, setOpenBusiness] = useState(false);
+  const openCustomerPopup = () => {
+    setOpenCustomer(true)
+    setOpenBusiness(false)
+  }
+  const openBusinessPopup = () => {
+    setOpenCustomer(false)
+    setOpenBusiness(true)
+  }
+
+  useEffect(() => {
+
+  }, [openCustomer, openBusiness])
+
   return (
     <>
-      <NavbarTwo />
+      <NavbarTwo openCustomer={openCustomer} openBusiness={openBusiness} />
       <MainBanner />
       <Banner />
       <CategoryTwo titleOne={true} />
       {/* <ListingAreaTwo bgColor="bg-f9f9f9" titleOne={true} /> */}
       {/* <Destinations titleOne={true} paddingBottom70="pb-70" /> */}
       {/* <Feedback title={true} bgColor="" bgImage="bg-image" /> */}
-      {/* <EventsArea /> */}
-      {/* <HowItWorks bgColor="bg-f9f9f9" /> */}
+      <HowItWorks bgColor="bg-f9f9f9" openCustomerPopup={openCustomerPopup}
+        openBusinessPopup={openBusinessPopup}
+        openBusiness={openBusiness}
+        openCustomer={openCustomer}
+      />
+      <EventsArea openCustomerPopup={openCustomerPopup}
+        openBusinessPopup={openBusinessPopup}
+        openCustomer={openCustomer}
+        openBusiness={openBusiness}
+      />
       {/* <Blog /> */}
       {/* <AppDownload /> */}
       <Footer />

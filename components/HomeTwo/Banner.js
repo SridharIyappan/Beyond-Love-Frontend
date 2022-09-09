@@ -55,34 +55,118 @@ const Banner = () => {
 				<div className="col-lg-10 col-sm-12 col-md-12">
 					<section className="banner-wrapper-area-main-banner background-img">
 						<div className="container" style={{ textAlign: "center" }}>
-							<div className="sec-count-head pt-4">
+							<div className="sec-count-head pt-4 p-3">
 								{/* <h1>{t("Best Place For All Your Pet Needs")}!</h1> */}
 								<h1>Popular Cities</h1>
 							</div>
 							<div className="row">
-								<div className="col-lg-2 col-sm-6 col-md-4">
+								<div className="col-lg-1 col-sm-6 col-md-4">
 								</div>
 								<div className="col-lg-2 col-sm-6 col-md-4">
-									<img src="/images/chennai.jpg" alt="image" />
+									<img src="/images/chennai.png" alt="image" />
 									<p>Chennai</p>
 								</div>
 								<div className="col-lg-2 col-sm-6 col-md-4">
-									<img src="/images/delhi.jpg" alt="image" />
+									<img src="/images/delhi.png" alt="image" />
 									<p>Delhi</p>
 								</div>
 								<div className="col-lg-2 col-sm-6 col-md-4">
-									<img src="/images/Hyderabad.jpg" alt="image" />
+									<img src="/images/Hyderabad.png" alt="image" />
 									<p>Hyderabad</p>
 								</div>
 								<div className="col-lg-2 col-sm-6 col-md-4">
-									<img src="/images/kolk.jpg" alt="image" />
+									<img src="/images/kolk.png" alt="image" />
 									<p>Kolkata</p>
 								</div>
 								<div className="col-lg-2 col-sm-6 col-md-4">
-									<img src="/images/mumbai.jpg" alt="image" />
+									<img src="/images/mumbai.png" alt="image" />
 									<p>Mumbai</p>
 								</div>
+								<div className="col-lg-1 col-sm-6 col-md-4">
+								</div>
 							</div>
+
+							<div class="land-pack">
+								<ul>
+									<li>
+										<div class="land-pack-grid">
+											<div class="land-pack-grid-img">
+
+												<img src="https://petsfeet.com/assets/frontend/images/services/shope.png" alt="dog shops" />
+											</div>
+											<div class="land-pack-grid-text">
+												<h4>States<span><br /></span> <CountUp
+													start={0}
+													end={14}
+													duration={3}
+													className="countUp"
+												/></h4>
+
+											</div>
+											{/* <a href="https://petsfeet.com/shops" class="land-pack-grid-btn">View all listings</a> */}
+										</div>
+									</li>
+									<li>
+										<div class="land-pack-grid">
+											<div class="land-pack-grid-img">
+												<img src="https://petsfeet.com/assets/frontend/images/services/doctor.png" alt="pet doctor" />
+											</div>
+											<div class="land-pack-grid-text">
+												<h4>Cities <span><br /></span>
+													<CountUp
+														start={0}
+														end={citiesLength}
+														duration={3}
+														className="countUp"
+													/>
+												</h4>
+
+											</div>
+											{/* <a href="https://petsfeet.com/doctor" class="land-pack-grid-btn">View all listings</a> */}
+										</div>
+									</li>
+									<li>
+										<div class="land-pack-grid">
+											<div class="land-pack-grid-img">
+												<img src="https://petsfeet.com/assets/frontend/images/services/medical.png" alt="pet medical store" />
+											</div>
+											<div class="land-pack-grid-text">
+												<h4>Locations  <span><br /></span>
+													<CountUp
+														start={0}
+														end={locationLength}
+														duration={3}
+														className="countUp"
+													/>
+												</h4>
+
+											</div>
+											{/* <a href="https://petsfeet.com/store" class="land-pack-grid-btn">View all listings</a> */}
+										</div>
+									</li>
+									<li>
+										<div class="land-pack-grid">
+											<div class="land-pack-grid-img">
+												<img src="https://petsfeet.com/assets/frontend/images/services/gromming.png" alt=" pet gromming" />
+											</div><br />
+											<div class="land-pack-grid-text">
+												<h4>Service Providers<span><br /></span>
+													<CountUp
+														start={0}
+														end={8592}
+														duration={3}
+														className="countUp"
+													/>
+												</h4>
+											</div>
+											{/* <a href="https://petsfeet.com/eshop/dog/dog-grooming" class="land-pack-grid-btn">View all listings</a> */}
+										</div>
+									</li>
+
+
+								</ul>
+							</div>
+
 							{/* <div className="row">
 								<div className="col-lg-4 col-sm-12 col-md-12"></div>
 								<div className="col-lg-8 col-sm-12 col-md-12 sec-count">

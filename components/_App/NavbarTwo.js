@@ -18,7 +18,7 @@ import Modal from "react-modal";
 import { useTranslation } from "next-i18next";
 resetIdCounter();
 
-const NavbarTwo = ({ text }) => {
+const NavbarTwo = ({ openCustomer, openBusiness }) => {
   const [displayAuth, setDisplayAuth] = useState(false);
   const [displayMiniAuth, setDisplayMiniAuth] = useState(false);
   const [displayVendorRegister, setDisplayVendorRegister] = useState(false);
@@ -87,11 +87,22 @@ const NavbarTwo = ({ text }) => {
         setCategoryProfile(category.toLowerCase());
       }
     }
+    console.log(openCustomer, "this is customer")
+    console.log(openBusiness, "this is busines")
+    if (openCustomer && (tok == null || tok == undefined)) {
+      setDisplayVendorRegister(true);
+      setDisplayAuth(false);
+
+    }
+    if (openBusiness && (tok == null || tok == undefined)) {
+      setDisplayAuth(true);
+      setDisplayVendorRegister(false);
+    }
     // your async action is here
     // return () => {
     // abortController.abort();
     // }
-  }, [run]);
+  }, [run, openCustomer, openBusiness]);
 
   // const languagesChange = (e) => {
   //   setLanguages(e.target.value)
