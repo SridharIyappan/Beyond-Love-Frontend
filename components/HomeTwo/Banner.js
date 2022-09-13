@@ -91,8 +91,7 @@ const Banner = () => {
 									<li>
 										<div class="land-pack-grid">
 											<div class="land-pack-grid-img">
-
-												<img src="https://petsfeet.com/assets/frontend/images/services/shope.png" alt="dog shops" />
+												<img src="/images/state.png" alt="image" />
 											</div>
 											<div class="land-pack-grid-text">
 												<h4>States<span><br /></span> <CountUp
@@ -109,7 +108,7 @@ const Banner = () => {
 									<li>
 										<div class="land-pack-grid">
 											<div class="land-pack-grid-img">
-												<img src="https://petsfeet.com/assets/frontend/images/services/doctor.png" alt="pet doctor" />
+												<img src="/images/city.png" alt="image" />
 											</div>
 											<div class="land-pack-grid-text">
 												<h4>Cities <span><br /></span>
@@ -128,7 +127,7 @@ const Banner = () => {
 									<li>
 										<div class="land-pack-grid">
 											<div class="land-pack-grid-img">
-												<img src="https://petsfeet.com/assets/frontend/images/services/medical.png" alt="pet medical store" />
+												<img src="/images/location.png" alt="image" />
 											</div>
 											<div class="land-pack-grid-text">
 												<h4>Locations  <span><br /></span>
@@ -147,7 +146,7 @@ const Banner = () => {
 									<li>
 										<div class="land-pack-grid">
 											<div class="land-pack-grid-img">
-												<img src="https://petsfeet.com/assets/frontend/images/services/gromming.png" alt=" pet gromming" />
+												<img src="/images/service.png" alt="image" />
 											</div><br />
 											<div class="land-pack-grid-text">
 												<h4>Service Providers<span><br /></span>

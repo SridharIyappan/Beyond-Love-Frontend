@@ -1719,7 +1719,7 @@ Main Banner Area CSS
 
 .banner-content {
   max-width: 840px;
-  padding-right: 50px;
+  /* padding-right: 50px; */
   margin-left: auto;
   margin-top: 50px;
 }
