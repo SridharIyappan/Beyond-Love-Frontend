@@ -720,12 +720,20 @@ const GridListingsWithLeftSidebar = () => {
 	};
 
 	// Move to Single Listing Page
-	const gotoSingleProfilePage = (e, category, id) => {
+	const gotoSingleProfilePage = (
+		e,
+		state,
+		city,
+		location,
+		businessName,
+		category,
+		id
+	) => {
 		e.preventDefault();
 		console.log(id, "id");
 		router.push({
 			pathname: "single-listings",
-			query: { category, id },
+			query: { state, city, location, businessName, category, id },
 		});
 	};
 
@@ -1038,7 +1046,15 @@ const GridListingsWithLeftSidebar = () => {
 												<div
 													className="listings-image"
 													onClick={(e) =>
-														gotoSingleProfilePage(e, bus.category, bus._id)
+														gotoSingleProfilePage(
+															e,
+															bus.state[0],
+															bus.city[0],
+															bus.location[0],
+															bus.businessName,
+															bus.category,
+															bus._id
+														)
 													}
 												>
 													<img src={profileImg} alt="image" loading="lazy" />
@@ -1072,7 +1088,15 @@ const GridListingsWithLeftSidebar = () => {
 													</ul>
 													<h3
 														onClick={(e) =>
-															gotoSingleProfilePage(e, bus.category, bus._id)
+															gotoSingleProfilePage(
+																e,
+																bus.state[0],
+																bus.city[0],
+																bus.location[0],
+																bus.businessName,
+																bus.category,
+																bus._id
+															)
 														}
 													>
 														{/* <Link href="/single-listings"> */}

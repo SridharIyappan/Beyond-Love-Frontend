@@ -260,9 +260,7 @@ const Banner = () => {
 		<>
 			<div className="row mx-1">
 				<div className="col-lg-1 col-sm-6 col-md-4">
-					<section>
-
-					</section>
+					<section></section>
 				</div>
 
 				<div className="col-lg-10 col-sm-12 col-md-12">
@@ -272,7 +270,10 @@ const Banner = () => {
 							<div className="row">
 								<div className="col-lg-8 col-sm-12 col-md-12 mt-5">
 									<div className="banner-content banner-form mt-4">
-										<h1 className="banner-two-heading" style={{ height: "14vh" }}>
+										<h1
+											className="banner-two-heading"
+											style={{ height: "14vh" }}
+										>
 											<span className="typewrite">{t("Find Nearby")}</span>
 											{/* <Typist>
 										<span> </span>
@@ -291,7 +292,8 @@ const Banner = () => {
 										<Typist.Backspace count={22} delay={150} />
 										<span>{t("Pet Boarding")}</span>
 									</Typist> */}
-											<Typed style={{ color: "white" }}
+											<Typed
+												style={{ color: "white" }}
 												strings={[
 													t("Pet Clinic"),
 													t("Pet Grooming"),
@@ -408,9 +410,15 @@ const Banner = () => {
 														>
 															<option>Categories</option>
 															<option value={"PetClinic"}>Pet Clinic</option>
-															<option value={"PetGrooming"}>Pet Grooming</option>
-															<option value={"PetBoarding"}>Pet Boarding</option>
-															<option value={"PetTraining"}>Pet Training</option>
+															<option value={"PetGrooming"}>
+																Pet Grooming
+															</option>
+															<option value={"PetBoarding"}>
+																Pet Boarding
+															</option>
+															<option value={"PetTraining"}>
+																Pet Training
+															</option>
 														</select>
 													</div>
 												</div>
@@ -568,10 +576,14 @@ const Banner = () => {
 														value={dateTime}
 														onChange={(e) => setDateTime(e.target.value)}
 													/> */}
-															<LocalizationProvider dateAdapter={AdapterDateFns}>
+															<LocalizationProvider
+																dateAdapter={AdapterDateFns}
+															>
 																<DesktopDateTimePicker
 																	ampm={false}
-																	renderInput={(props) => <TextField {...props} />}
+																	renderInput={(props) => (
+																		<TextField {...props} />
+																	)}
 																	label="Appointment Date"
 																	value={dateTime}
 																	onChange={(newValue) => {
@@ -610,9 +622,7 @@ const Banner = () => {
 				</div>
 
 				<div className="col-lg-1 col-sm-6 col-md-4">
-					<section>
-
-					</section>
+					<section></section>
 				</div>
 			</div>
 		</>
