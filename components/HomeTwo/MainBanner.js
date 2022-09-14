@@ -171,6 +171,7 @@ const Banner = () => {
 		router.push({
 			pathname: "/listings",
 			query: { categoryName, stateName, cityName, locationName },
+			// query: { categoryName, cityName, locationName },
 		});
 	};
 
@@ -215,29 +216,29 @@ const Banner = () => {
 	};
 
 	// Filtering Cities by State
-	const handleClickCity = () => {
-		console.log(stateName);
-		if (stateName == "" || stateName[1] == undefined) {
-			toast.error("Please Select State", {
-				theme: "light",
-				position: "top-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-		} else {
-			let arr = [];
-			allCities.map((city) => {
-				if (city[1] == stateName[1]) {
-					arr.push(city);
-				}
-			});
-			setSelectedCity(arr);
-		}
-	};
+	// const handleClickCity = () => {
+	// 	console.log(stateName);
+	// 	if (stateName == "" || stateName[1] == undefined) {
+	// 		toast.error("Please Select State", {
+	// 			theme: "light",
+	// 			position: "top-right",
+	// 			autoClose: 5000,
+	// 			hideProgressBar: false,
+	// 			closeOnClick: true,
+	// 			pauseOnHover: true,
+	// 			draggable: true,
+	// 			progress: undefined,
+	// 		});
+	// 	} else {
+	// 		let arr = [];
+	// 		allCities.map((city) => {
+	// 			if (city[1] == stateName[1]) {
+	// 				arr.push(city);
+	// 			}
+	// 		});
+	// 		setSelectedCity(arr);
+	// 	}
+	// };
 
 	// City Change Function
 	const handleChangeCity = (e) => {
@@ -247,15 +248,15 @@ const Banner = () => {
 	};
 
 	// State Change Function
-	const handleStateChange = (e) => {
-		console.log(e.target.value);
-		if (e.target.value == "") {
-			setRun(!run);
-		}
-		const stateChange = e.target.value;
-		console.log({ stateChange });
-		setStateName(stateChange.split(","));
-	};
+	// const handleStateChange = (e) => {
+	// 	console.log(e.target.value);
+	// 	if (e.target.value == "") {
+	// 		setRun(!run);
+	// 	}
+	// 	const stateChange = e.target.value;
+	// 	console.log({ stateChange });
+	// 	setStateName(stateChange.split(","));
+	// };
 	return (
 		<>
 			<div className="row mx-1">
@@ -312,7 +313,7 @@ const Banner = () => {
 												className="row m-0 align-items-center"
 												style={{ padding: "6px" }}
 											>
-												<div class="col-lg-3 col-md-6 p-0">
+												{/* <div class="col-lg-3 col-md-6 p-0">
 													<div className="form-group category-select">
 														<label className="category-icon">
 															<i className="flaticon-pin"></i>
@@ -336,26 +337,26 @@ const Banner = () => {
 																			? state.Geo_Name
 																			: window.location.reload(false)}
 																		{/* {state[0]} */}
-																	</option>
-																);
-																// }
-															})}
-														</select>
-													</div>
-												</div>
+												{/* </option> */}
+												{/* ); */}
+												{/* // } */}
+												{/* })} */}
+												{/* </select> */}
+												{/* </div> */}
+												{/* </div> */}
 
-												<div class="col-lg-3 col-md-6 p-0">
+												<div class="col-lg-4 col-md-6 p-0">
 													<div className="form-group category-select">
 														<label className="category-icon">
 															<i className="flaticon-pin"></i>
 														</label>
 														<select
 															className="banner-form-select-two"
-															onFocus={handleClickCity}
+															// onFocus={handleClickCity}
 															onChange={handleChangeCity}
 														>
 															<option>{t("City")}</option>
-															{selectedCity.map((city) => {
+															{dataCity.map((city) => {
 																return (
 																	<option
 																		value={[city[0], city[1], city[2]]}
@@ -369,7 +370,7 @@ const Banner = () => {
 													</div>
 												</div>
 
-												<div class="col-lg-3 col-md-6 p-0">
+												<div class="col-lg-4 col-md-6 p-0">
 													<div className="form-group category-select">
 														<label className="category-icon">
 															<i className="flaticon-pin"></i>
@@ -399,7 +400,7 @@ const Banner = () => {
 													</div>
 												</div>
 
-												<div class="col-lg-2 col-md-6 p-0">
+												<div class="col-lg-3 col-md-6 p-0">
 													<div className="form-group category-select">
 														<label className="category-icon">
 															<i className="flaticon-search"></i>

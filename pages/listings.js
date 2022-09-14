@@ -121,8 +121,7 @@ const GridListingsWithLeftSidebar = () => {
 		// Filter All business by selected city
 		if (
 			(categoryFilter == "" || categoryFilter == undefined) &&
-			stateFilter != "" &&
-			stateFilter != undefined &&
+			(stateFilter == "" || stateFilter == undefined) &&
 			cityFilter != "" &&
 			cityFilter != undefined &&
 			(locationFilter == "" || locationFilter == undefined)
@@ -134,8 +133,7 @@ const GridListingsWithLeftSidebar = () => {
 		// Filter all business by selected location
 		if (
 			(categoryFilter == "" || categoryFilter == undefined) &&
-			stateFilter != "" &&
-			stateFilter != undefined &&
+			(stateFilter == "" || stateFilter == undefined) &&
 			cityFilter != "" &&
 			cityFilter != undefined &&
 			locationFilter != "" &&
@@ -168,8 +166,7 @@ const GridListingsWithLeftSidebar = () => {
 		if (
 			categoryFilter != "" &&
 			categoryFilter != undefined &&
-			stateFilter != "" &&
-			stateFilter != undefined &&
+			(stateFilter == "" || stateFilter == undefined) &&
 			cityFilter != "" &&
 			cityFilter != undefined &&
 			(locationFilter == "" || locationFilter == undefined)
@@ -188,8 +185,7 @@ const GridListingsWithLeftSidebar = () => {
 		if (
 			categoryFilter != "" &&
 			categoryFilter != undefined &&
-			stateFilter != "" &&
-			stateFilter != undefined &&
+			(stateFilter == "" || stateFilter == undefined) &&
 			cityFilter != "" &&
 			cityFilter != undefined &&
 			locationFilter != "" &&
