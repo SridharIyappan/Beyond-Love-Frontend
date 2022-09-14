@@ -34,10 +34,7 @@ const HowItWorks = ({
 									<li>
 										<div>
 											<span>1</span>
-											<img
-												src="https://petsfeet.com/assets/frontend/images/icon/how1.png"
-												alt="fish food"
-											/>
+											<img src='/images/createAccount.png' alt='image' />
 											<h4>Create an account</h4>
 											<p>
 												Create your business with Beyond Love to reach out of
@@ -48,10 +45,7 @@ const HowItWorks = ({
 									<li>
 										<div>
 											<span>2</span>
-											<img
-												src="https://petsfeet.com/assets/frontend/images/icon/how2.png"
-												alt="fish food"
-											/>
+											<img src='/images/addBusiness.png' alt='image' />
 											<h4>Add your business</h4>
 											<p>
 												Beyond Love provided free online business listing
@@ -63,10 +57,7 @@ const HowItWorks = ({
 									<li>
 										<div>
 											<span>3</span>
-											<img
-												src="https://petsfeet.com/assets/frontend/images/icon/how3.png"
-												alt="fish food"
-											/>
+											<img src='/images/lead.png' alt='image' />
 											<h4>Get more leads</h4>
 											<p>
 												Get verified by your business with Beyond Love so we can
