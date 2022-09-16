@@ -17338,3 +17338,10 @@ text-decoration: underline;
     margin: 20px 0;
   }
 }
+
+.img-fixed {
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+}

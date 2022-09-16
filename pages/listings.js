@@ -1053,7 +1053,7 @@ const GridListingsWithLeftSidebar = () => {
 														)
 													}
 												>
-													<img src={profileImg} alt="image" loading="lazy" />
+													<img src={profileImg} alt="image" loading="lazy" className="img-fixed" />
 													{/* <Link href="/single-listings">
                             <a className="link-btn"></a>
                           </Link> */}
