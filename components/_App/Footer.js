@@ -311,10 +311,13 @@ const Footer = ({ bgColor }) => {
 					<footer className="footer-new-section">
 						<div className="container">
 							<div className="row" style={{ alignItems: "normal" }}>
-								<div className="col-lg-3 col-sm-6 col-md-6 ">
-									<p>
-										<img src="/images/black-logo2.png" alt="logo" />
-									</p>
+								<div className="col-lg-4 col-sm-6 col-md-6 ">
+									<img src="/images/black-logo2.png" alt="logo" />
+									<p className="pl-2" style={{ fontWeight: "500" }}>Beyond Love is India’s fastest growing discovery platform for
+										searching and booking Petcare Services. We give access to
+										choose from 5000+ verified service providers across India
+										and we have just started! Services Search Made Simple. Search.
+										Book. Pamper. Love.</p>
 								</div>
 								<div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
 									<p>Company</p>
@@ -331,7 +334,7 @@ const Footer = ({ bgColor }) => {
 									<a href="/">Community guidelines</a>
 									<a href="/">Responsible disclosure</a>
 								</div>
-								<div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
+								<div className="col-lg-2 col-sm-6 col-md-6 footer-content-second">
 									<p>Apply</p>
 									{/* <a href="/">Become a Dog Walker</a> */}
 									<a href="/"> Careers</a>

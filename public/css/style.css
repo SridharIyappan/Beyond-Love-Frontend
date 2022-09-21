@@ -1736,7 +1736,7 @@ Main Banner Area CSS
 }
 
 .banner-content form {
-  margin-top: 40px;
+  margin-top: 20px;
   background-color: var(--whiteColor);
   -webkit-box-shadow: 5px 5px var(--mainColor2);
   box-shadow: 5px 5px var(--mainColor2);
@@ -16350,7 +16350,7 @@ th {
 }
 
 .search-btn button {
-  margin-top: 60px;
+  margin-top: 30px;
   border: none;
   border-radius: 30px;
   display: inline-block;
@@ -17344,4 +17344,43 @@ text-decoration: underline;
   object-fit: cover;
   object-position: top;
   width: 100%;
+}
+
+.product-categories-list .categories .category {
+  padding-bottom: 0;
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.product-categories-list .category {
+  text-align: center;
+  width: 76px;
+  flex: 0 0 auto;
+  padding-bottom: 10px;
+}
+
+.product-categories-list .categories .category a {
+  margin: auto;
+}
+
+.product-categories-list .category a {
+  display: block;
+  color: #333e48;
+}
+
+.product-categories-list .categories img {
+  max-width: 100px;
+  margin-bottom: 10px !important;
+}
+
+.product-categories-list .category img {
+  max-width: 150px;
+  margin: auto;
+  height: 133px;
+}
+
+.product-categories-list .categories h4 {
+  font-size: 14px;
+  font-weight: 600;
 }

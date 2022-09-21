@@ -60,11 +60,6 @@ const Category = ({ titleOne, titleTwo }) => {
 							{titleOne ? (
 								<div className="section-title">
 									<h2>{t("Popular Categories")}</h2>
-									{/* <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-                ipsum suspendisse ultrices gravida. Risus commodo viverra.
-              </p> */}
 								</div>
 							) : titleTwo ? (
 								<div className="section-title text-left">
@@ -87,9 +82,6 @@ const Category = ({ titleOne, titleTwo }) => {
 										</div>
 										<h3>{t("Pet Clinic")}</h3>
 										<span>{3053}</span>
-										{/* <Link href="/grid-listings-with-map">
-                  <a className="link-btn"></a>
-                </Link> */}
 									</div>
 								</div>
 								<div
@@ -102,9 +94,6 @@ const Category = ({ titleOne, titleTwo }) => {
 										</div>
 										<h3>{t("Pet Grooming")}</h3>
 										<span>{2062}</span>
-										{/* <Link href="/grid-listings-with-map">
-                  <a className="link-btn"></a>
-                </Link> */}
 									</div>
 								</div>
 								<div
@@ -117,9 +106,6 @@ const Category = ({ titleOne, titleTwo }) => {
 										</div>
 										<h3>{t("Pet Training")}</h3>
 										<span>{2305}</span>
-										{/* <Link href="/grid-listings-with-map">
-                  <a className="link-btn"></a>
-                </Link> */}
 									</div>
 								</div>
 								<div
@@ -132,106 +118,8 @@ const Category = ({ titleOne, titleTwo }) => {
 										</div>
 										<h3>{t("Pet Boarding")}</h3>
 										<span>{1172}</span>
-										{/* <Link href="/grid-listings-with-map">
-                  <a className="link-btn"></a>
-                </Link> */}
 									</div>
 								</div>
-								{/* <div className="col-lg-2 col-sm-6 col-md-4">
-              <div className="single-category-box">
-                <div className="icon">
-                  <MdOutlineFoodBank />
-                </div>
-                <h3>Pet Food</h3>
-                <span>8 Places</span>
-                <Link href="/grid-listings-with-map">
-                  <a className="link-btn"></a>
-                </Link>
-              </div>
-            </div> */}
-								{/* <div className='col-lg-2 col-sm-6 col-md-4'>
-              <div className='single-category-box'>
-                <div className='icon'>
-                  <i className='flaticon-calendar'></i>
-                </div>
-                <h3>Events</h3>
-                <span>12 Places</span>
-                <Link href='/grid-listings-with-map'>
-                  <a className='link-btn'></a>
-                </Link>
-              </div>
-            </div>
-            <div className='col-lg-2 col-sm-6 col-md-4'>
-              <div className='single-category-box'>
-                <div className='icon'>
-                  <i className='flaticon-heart-1'></i>
-                </div>
-                <h3>Health Care</h3>
-                <span>16 Places</span>
-                <Link href='/grid-listings-with-map'>
-                  <a className='link-btn'></a>
-                </Link>
-              </div>
-            </div>
-            <div className='col-lg-2 col-sm-6 col-md-4'>
-              <div className='single-category-box'>
-                <div className='icon'>
-                  <i className='flaticon-airport'></i>
-                </div>
-                <h3>Travel & Public</h3>
-                <span>8 Places</span>
-                <Link href='/grid-listings-with-map'>
-                  <a className='link-btn'></a>
-                </Link>
-              </div>
-            </div>
-            <div className='col-lg-2 col-sm-6 col-md-4'>
-              <div className='single-category-box'>
-                <div className='icon'>
-                  <i className='flaticon-car-insurance'></i>
-                </div>
-                <h3>Auto Insurance</h3>
-                <span>10 Places</span>
-                <Link href='/grid-listings-with-map'>
-                  <a className='link-btn'></a>
-                </Link>
-              </div>
-            </div>
-            <div className='col-lg-2 col-sm-6 col-md-4'>
-              <div className='single-category-box'>
-                <div className='icon'>
-                  <i className='flaticon-attorney'></i>
-                </div>
-                <h3>Attorneys</h3>
-                <span>25 Places</span>
-                <Link href='/grid-listings-with-map'>
-                  <a className='link-btn'></a>
-                </Link>
-              </div>
-            </div>
-            <div className='col-lg-2 col-sm-6 col-md-4'>
-              <div className='single-category-box'>
-                <div className='icon'>
-                  <i className='flaticon-plumber'></i>
-                </div>
-                <h3>Plumbers</h3>
-                <span>5 Places</span>
-                <Link href='/grid-listings-with-map'>
-                  <a className='link-btn'></a>
-                </Link>
-              </div>
-            </div>
-            <div className='col-lg-2 col-sm-6 col-md-4'>
-              <div className='single-category-box more-categories'>
-                <div className='icon'>
-                  <i className='flaticon-more-1'></i>
-                </div>
-                <h3>More Categories</h3>
-                <Link href='/categories'>
-                  <a className='link-btn'></a>
-                </Link>
-              </div>
-            </div> */}
 							</div>
 						</div>
 					</section>

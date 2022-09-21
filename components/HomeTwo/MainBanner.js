@@ -256,6 +256,15 @@ const Banner = () => {
 	// 	console.log({ stateChange });
 	// 	setStateName(stateChange.split(","));
 	// };
+
+	const getSpecificCategoryServices = (e, categoryName) => {
+		e.preventDefault();
+		router.push({
+			pathname: "/listings",
+			query: { categoryName },
+		});
+	};
+
 	return (
 		<>
 			<div className="row mx-1">
@@ -268,12 +277,9 @@ const Banner = () => {
 						<ToastContainer />
 						<div className="mx-4">
 							<div className="row">
-								<div className="col-lg-8 col-sm-12 col-md-12 mt-5">
+								<div className="col-lg-8 col-sm-12 col-md-12 mt-1">
 									<div className="banner-content banner-form mt-4">
-										<h1
-											className="banner-two-heading"
-											style={{ height: "14vh" }}
-										>
+										<h1 className="banner-two-heading">
 											<span className="typewrite">{t("Find Nearby")}</span>
 											{/* <Typist>
 										<span> </span>
@@ -306,6 +312,67 @@ const Banner = () => {
 											/> */}
 											<span className="text-light">Services</span>
 										</h1>
+										{/* Gif file section */}
+										<section class="product-categories-list">
+											<div class="categories-block columns-5">
+												<ul class="categories">
+													<div className="row">
+														<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
+															<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetClinic")}>
+																<a>
+																	<img class="lazy loaded" src="/images/PetClinic.gif" alt="pet clinic" width="300" height="300" data-was-processed="true" />
+																	<h4>Pet Clinic </h4>
+																</a>
+															</li>
+														</div>
+														<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
+															<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetTraining")}>
+																<a>
+																	<img class="lazy loaded" src="/images/training.gif" alt="pet training" width="300" height="300" data-was-processed="true" />
+																	<h4>Pet Training</h4>
+																</a>
+															</li>
+														</div>
+													</div>
+												</ul>
+												<ul class="categories">
+													<div className="row">
+														<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
+															<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}>
+																<a href="#">
+																	<img class="lazy loaded" src="/images/boarding.gif" alt="Collar, Leashes &amp; Harness" width="300" height="300" data-was-processed="true" />
+																	<h4>Pet boarding </h4>
+																</a>
+															</li>
+														</div>
+														<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
+															<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetGrooming")}>
+																<a href="#">
+																	<img class="lazy loaded" src="/images/grooming.gif" alt="Dog Grooming" width="300" height="300" data-was-processed="true" />
+																	<h4>Pet Grooming</h4>
+																</a>
+															</li>
+														</div>
+													</div>
+												</ul>
+											</div>
+											{/* <ul class="categories">
+												<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}>
+													<a href="#">
+														<img class="lazy loaded" src="/images/boarding.gif" alt="Collar, Leashes &amp; Harness" width="300" height="300" data-was-processed="true" />
+														<h4>Pet boarding </h4>
+													</a>
+												</li>
+												<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetGrooming")}>
+													<a href="#">
+														<img class="lazy loaded" src="/images/grooming.gif" alt="Dog Grooming" width="300" height="300" data-was-processed="true" />
+														<h4>Pet Grooming</h4>
+													</a>
+												</li>
+											</ul> */}
+
+										</section>
+										{/* Gif file End section */}
 
 										<form onSubmit={handleSubmit}>
 											<div
@@ -344,7 +411,7 @@ const Banner = () => {
 												{/* </div> */}
 												{/* </div> */}
 
-												<div class="col-lg-4 col-md-6 p-0">
+												<div class="col-lg-5 col-md-6 p-0">
 													<div className="form-group category-select">
 														<label className="category-icon">
 															<i className="flaticon-pin"></i>
@@ -369,7 +436,7 @@ const Banner = () => {
 													</div>
 												</div>
 
-												<div class="col-lg-4 col-md-6 p-0">
+												<div class="col-lg-5 col-md-6 p-0">
 													<div className="form-group category-select">
 														<label className="category-icon">
 															<i className="flaticon-pin"></i>
@@ -399,7 +466,7 @@ const Banner = () => {
 													</div>
 												</div>
 
-												<div class="col-lg-3 col-md-6 p-0">
+												{/* <div class="col-lg-3 col-md-6 p-0">
 													<div className="form-group category-select">
 														<label className="category-icon">
 															<i className="flaticon-search"></i>
@@ -421,9 +488,9 @@ const Banner = () => {
 															</option>
 														</select>
 													</div>
-												</div>
+												</div> */}
 
-												<div class="col-lg-1 col-md-6 p-0">
+												<div class="col-lg-2 col-md-6 p-0">
 													<div className="submit-btn ">
 														<button type="submit">
 															{" "}
@@ -619,12 +686,12 @@ const Banner = () => {
 							</div>
 						</div>
 					</section>
-				</div>
+				</div >
 
 				<div className="col-lg-1 col-sm-6 col-md-4">
 					<section></section>
 				</div>
-			</div>
+			</div >
 		</>
 	);
 };

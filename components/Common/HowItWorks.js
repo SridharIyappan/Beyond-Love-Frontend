@@ -32,9 +32,9 @@ const HowItWorks = ({
 							<div class="how-wrks-inn">
 								<ul>
 									<li>
-										<div>
+										<div onClick={openCustomerPopup}>
 											<span>1</span>
-											<img src='/images/createAccount.png' alt='image' />
+											<img src='/images/lead.png' alt='image' />
 											<h4>Create an account</h4>
 											<p>
 												Create your account with Beyond Love to reach out to millions of people by connecting with new customers.
@@ -42,7 +42,7 @@ const HowItWorks = ({
 										</div>
 									</li>
 									<li>
-										<div>
+										<div onClick={openBusinessPopup}>
 											<span>2</span>
 											<img src='/images/addBusiness.png' alt='image' />
 											<h4>Add your business</h4>
@@ -54,7 +54,7 @@ const HowItWorks = ({
 									<li>
 										<div>
 											<span>3</span>
-											<img src='/images/lead.png' alt='image' />
+											<img src='/images/createAccount.png' alt='image' />
 											<h4>Get more leads</h4>
 											<p>
 												Get your business verified with Beyond Love so that we can provide you more traffic and leads for your business.
