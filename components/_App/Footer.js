@@ -319,10 +319,10 @@ const Footer = ({ bgColor }) => {
 								<div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
 									<p>Company</p>
 									<a href="/">About Beyond Love</a>
-									<a href="/">Press & Investors</a>
+									{/* <a href="/">Press & Investors</a> */}
 									<a href="/">Beyond Love Partners</a>
 									<a href="/">Blog</a>
-									<a href="/">Petted</a>
+									{/* <a href="/">Petted</a> */}
 								</div>
 								<div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
 									<p>Support</p>
@@ -333,7 +333,7 @@ const Footer = ({ bgColor }) => {
 								</div>
 								<div className="col-lg-3 col-sm-6 col-md-6 footer-content-second">
 									<p>Apply</p>
-									<a href="/">Become a Dog Walker</a>
+									{/* <a href="/">Become a Dog Walker</a> */}
 									<a href="/"> Careers</a>
 								</div>
 							</div>

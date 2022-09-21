@@ -1,10 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-const OwlCarousel = dynamic(import("react-owl-carousel3"));
+// const OwlCarousel = dynamic(import("react-owl-carousel3"));
 import { FaClinicMedical } from "react-icons/fa";
 import { ToastContainer, toast, TypeOptions } from "react-toastify";
-
+import React from 'react';
+import OwlCarousel from 'react-owl-carousel3';
 //components
 import NavbarTwo from "../components/_App/NavbarTwo";
 import Footer from "../components/_App/Footer";
@@ -736,6 +737,28 @@ const GridListingsWithLeftSidebar = () => {
 	return (
 		<>
 			<NavbarTwo />
+			<OwlCarousel
+				className="owl-theme"
+				loop margin={5}
+			>
+				<div class="item" style={{ width: "100%" }}>
+					<img src='/images/slider1.jpg' alt='image' width={100} />
+				</div>
+				<div class="item" style={{ width: "100%" }}>
+					<img src='/images/slider2.jpg' alt='image' width={100} />
+				</div>
+				<div class="item" style={{ width: "100%" }}>
+					<img src='/images/slider3.jpg' alt='image' width={100} />
+				</div>
+				<div class="item" style={{ width: "100%" }}>
+					<img src='/images/slider4.jpg' alt='image' width={100} />
+				</div>
+				<div class="item" style={{ width: "100%" }}>
+					<img src='/images/slider2.jpg' alt='image' width={100} />
+				</div>
+			</OwlCarousel>
+
+			{/* Find popular section */}
 			<div className="page-title-bg">
 				<div className="container">
 					<h2>{t("Find Popular Services")}</h2>

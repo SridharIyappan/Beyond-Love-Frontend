@@ -34,7 +34,7 @@ const EventsArea = ({ openCustomer, openBusiness, openBusinessPopup, openCustome
                     </div>
                     <div class="hom2-hom-ban hom2-hom-ban2">
                       <h2>Are you looking for service?</h2>
-                      <p>Get everything in your pocket, What service do you need? Petsfeet will help you.</p>
+                      <p>Get everything in your pocket, What service do you need? Beyond Love will help you.</p>
                       {/* <a>Create an account</a> */}
                       <button onClick={openCustomerPopup}>Create an account</button>
                     </div>

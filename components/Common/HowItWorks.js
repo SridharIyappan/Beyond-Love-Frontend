@@ -37,8 +37,7 @@ const HowItWorks = ({
 											<img src='/images/createAccount.png' alt='image' />
 											<h4>Create an account</h4>
 											<p>
-												Create your business with Beyond Love to reach out of
-												millions of people by connecting with new customers.
+												Create your account with Beyond Love to reach out to millions of people by connecting with new customers.
 											</p>
 										</div>
 									</li>
@@ -48,9 +47,7 @@ const HowItWorks = ({
 											<img src='/images/addBusiness.png' alt='image' />
 											<h4>Add your business</h4>
 											<p>
-												Beyond Love provided free online business listing
-												services and a new way to brand yourself on the
-												internet.
+												Beyond Love provides free online business listing services and a new way to brand yourself on the internet.
 											</p>
 										</div>
 									</li>
@@ -60,8 +57,7 @@ const HowItWorks = ({
 											<img src='/images/lead.png' alt='image' />
 											<h4>Get more leads</h4>
 											<p>
-												Get verified by your business with Beyond Love so we can
-												provide you more traffic and leads for your business.
+												Get your business verified with Beyond Love so that we can provide you more traffic and leads for your business.
 											</p>
 										</div>
 									</li>

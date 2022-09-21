@@ -107,8 +107,7 @@ const Banner = () => {
 			appointmentDate: s,
 		};
 		console.log(d);
-		if (
-			name === "" ||
+		if (name === "" ||
 			mobile === "" ||
 			category === "" ||
 			city === "" ||
@@ -293,7 +292,7 @@ const Banner = () => {
 										<Typist.Backspace count={22} delay={150} />
 										<span>{t("Pet Boarding")}</span>
 									</Typist> */}
-											<Typed
+											{/* <Typed
 												style={{ color: "white" }}
 												strings={[
 													t("Pet Clinic"),
@@ -304,8 +303,8 @@ const Banner = () => {
 												typeSpeed={100}
 												backSpeed={50}
 												loop
-											/>
-											<span className="wrap"></span>
+											/> */}
+											<span className="text-light">Services</span>
 										</h1>
 
 										<form onSubmit={handleSubmit}>

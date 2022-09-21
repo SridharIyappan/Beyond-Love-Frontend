@@ -813,7 +813,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 
 							<ul className="nav nav-tabs" id="myTab">
 								<h3 className="vendor-register-head">
-									{t("Welcome Back! Customer")}
+									{t("Welcome Back. Pet Parent.")}
 								</h3>
 								<TabList>
 									<Tab className="nav-item">
