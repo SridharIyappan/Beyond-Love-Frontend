@@ -124,6 +124,7 @@ const SingleListings = () => {
       const { data } = await axios.get(
         `${process.env.DOMAIN_NAME}/api/business/get-profile/${cate}/${id}`
       );
+      console.log(data)
       const li = data.business.likes.includes(customerId);
       console.log(li);
       setLike(li);
@@ -309,15 +310,9 @@ const SingleListings = () => {
   };
 
   const bookAppoinment = () => {
-    toast.error("Please Login As Customer", {
-      theme: "light",
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
+    router.push({
+      pathname: "/bookappoinment",
+      query: { business },
     });
   }
 
