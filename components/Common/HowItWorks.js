@@ -32,7 +32,7 @@ const HowItWorks = ({
 							<div class="how-wrks-inn">
 								<ul>
 									<li>
-										<div onClick={openCustomerPopup}>
+										<div>
 											<span>1</span>
 											<img src='/images/lead.png' alt='image' />
 											<h4>Create an account</h4>

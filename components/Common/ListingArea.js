@@ -53,9 +53,11 @@ const ListingArea = () => {
   const [isMounted, setisMounted] = useState(false);
 
   useEffect(() => {
-    setisMounted(true);
-    setDisplay(true);
-    setisMounted(false);
+    if (typeof window != "undefined") {
+      setisMounted(true);
+      setDisplay(true);
+      setisMounted(false);
+    }
   }, []);
 
   return (
@@ -79,7 +81,7 @@ const ListingArea = () => {
                     <img src='/images/listings/listings1.jpg' alt='image' />
                     <Link href="/single-listings">
 
-                    <a className='link-btn'></a>
+                      <a className='link-btn'></a>
                     </Link>
                     <a href='#' className='bookmark-save'>
                       <i className='flaticon-heart'></i>
@@ -110,10 +112,10 @@ const ListingArea = () => {
                       </li>
                     </ul>
                     <h3>
-                    <Link href="/single-listings">
+                      <Link href="/single-listings">
 
-                      <a>Chipotle Mexican Grill</a>
-                    </Link>
+                        <a>Chipotle Mexican Grill</a>
+                      </Link>
                     </h3>
                     <span className='status'>
                       <i className='flaticon-save'></i> Open Now
@@ -137,15 +139,15 @@ const ListingArea = () => {
                 <div className='single-listings-box'>
                   <div className='listings-image'>
                     <div className='listings-image-slides owl-theme'>
-                   
+
                       <div className='single-image'>
                         <img src='/images/listings/listings2.jpg' alt='image' />
                         <Link href="/single-listings">
 
-                        <a className='link-btn'></a>
+                          <a className='link-btn'></a>
                         </Link>
                       </div>
-              {/* <OwlCarousel {...optionsTwo}>
+                      {/* <OwlCarousel {...optionsTwo}>
 
                       <div className='single-image'>
                         <img src='/images/listings/listings4.jpg' alt='image' />
@@ -183,7 +185,7 @@ const ListingArea = () => {
                     <h3>
                       <Link href="/single-listings">
 
-                      <a>The Beverly Hills Hotel</a>
+                        <a>The Beverly Hills Hotel</a>
                       </Link>
                     </h3>
                     <span className='status'>
@@ -210,7 +212,7 @@ const ListingArea = () => {
                     <img src='/images/listings/listings3.jpg' alt='image' />
                     <Link href="/single-listings">
 
-                    <a className='link-btn'></a>
+                      <a className='link-btn'></a>
                     </Link>
 
                     <a href='#' className='bookmark-save'>
@@ -241,10 +243,10 @@ const ListingArea = () => {
                       </li>
                     </ul>
                     <h3>
-                    <Link href="/single-listings">
+                      <Link href="/single-listings">
 
-                      <a>Central Shopping Center</a>
-                    </Link>
+                        <a>Central Shopping Center</a>
+                      </Link>
                     </h3>
                     <span className='status status-close'>
                       <i className='flaticon-save'></i> Close Now
@@ -272,10 +274,10 @@ const ListingArea = () => {
                         <img src='/images/listings/listings5.jpg' alt='image' />
                         <Link href="/single-listings">
 
-                        <a className='link-btn'></a>
+                          <a className='link-btn'></a>
                         </Link>
                       </div>
-                    {/* <OwlCarousel {...optionsTwo}>
+                      {/* <OwlCarousel {...optionsTwo}>
 
                       <div className='single-image'>
                         <img src='/images/listings/listings6.jpg' alt='image' />
@@ -311,10 +313,10 @@ const ListingArea = () => {
                       </li>
                     </ul>
                     <h3>
-                    <Link href="/single-listings">
+                      <Link href="/single-listings">
 
-                      <a>Indice Beauty Center</a>
-                    </Link>
+                        <a>Indice Beauty Center</a>
+                      </Link>
                     </h3>
                     <span className='status'>
                       <i className='flaticon-save'></i> Open Now
