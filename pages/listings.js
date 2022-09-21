@@ -4,8 +4,10 @@ import dynamic from "next/dynamic";
 // const OwlCarousel = dynamic(import("react-owl-carousel3"));
 import { FaClinicMedical } from "react-icons/fa";
 import { ToastContainer, toast, TypeOptions } from "react-toastify";
-import React from 'react';
-import OwlCarousel from 'react-owl-carousel3';
+import React from "react";
+const OwlCarousel = dynamic(import("react-owl-carousel3"));
+
+// import OwlCarousel from "react-owl-carousel3";
 //components
 import NavbarTwo from "../components/_App/NavbarTwo";
 import Footer from "../components/_App/Footer";
@@ -18,6 +20,16 @@ import { dataCity } from "../utils/dataCity";
 import { dataLocation } from "../utils/dataLocation";
 import { dataState } from "../utils/dataState";
 import { useDispatch } from "react-redux";
+
+const options = {
+	loop: true,
+	margin: 20,
+	nav: false,
+	mouseDrag: false,
+	items: 1,
+	dots: true,
+	autoplay: true,
+};
 
 const GridListingsWithLeftSidebar = () => {
 	const [categories, setCategories] = useState([]);
@@ -341,8 +353,7 @@ const GridListingsWithLeftSidebar = () => {
 		// Filter All Business by selected state
 		if (
 			(categoryFilter == "" || categoryFilter == undefined) &&
-			stateFilter != "" &&
-			stateFilter != undefined &&
+			(stateFilter == "" || stateFilter == undefined) &&
 			(cityFilter == "" || cityFilter == undefined) &&
 			(locationFilter == "" || locationFilter == undefined)
 		) {
@@ -354,8 +365,7 @@ const GridListingsWithLeftSidebar = () => {
 		// Filter All business by selected city
 		if (
 			(categoryFilter == "" || categoryFilter == undefined) &&
-			stateFilter != "" &&
-			stateFilter != undefined &&
+			(stateFilter == "" || stateFilter == undefined) &&
 			cityFilter != "" &&
 			cityFilter != undefined &&
 			(locationFilter == "" || locationFilter == undefined)
@@ -367,8 +377,7 @@ const GridListingsWithLeftSidebar = () => {
 		// Filter all business by selected location
 		if (
 			(categoryFilter == "" || categoryFilter == undefined) &&
-			stateFilter != "" &&
-			stateFilter != undefined &&
+			(stateFilter == "" || stateFilter == undefined) &&
 			cityFilter != "" &&
 			cityFilter != undefined &&
 			locationFilter != "" &&
@@ -401,8 +410,7 @@ const GridListingsWithLeftSidebar = () => {
 		if (
 			categoryFilter != "" &&
 			categoryFilter != undefined &&
-			stateFilter != "" &&
-			stateFilter != undefined &&
+			(stateFilter == "" || stateFilter == undefined) &&
 			cityFilter != "" &&
 			cityFilter != undefined &&
 			(locationFilter == "" || locationFilter == undefined)
@@ -421,8 +429,7 @@ const GridListingsWithLeftSidebar = () => {
 		if (
 			categoryFilter != "" &&
 			categoryFilter != undefined &&
-			stateFilter != "" &&
-			stateFilter != undefined &&
+			(stateFilter == "" || stateFilter == undefined) &&
 			cityFilter != "" &&
 			cityFilter != undefined &&
 			locationFilter != "" &&
@@ -737,26 +744,26 @@ const GridListingsWithLeftSidebar = () => {
 	return (
 		<>
 			<NavbarTwo />
-			<OwlCarousel
-				className="owl-theme"
-				loop margin={5}
-			>
-				<div class="item" style={{ width: "100%" }}>
-					<img src='/images/slider1.jpg' alt='image' width={100} />
-				</div>
-				<div class="item" style={{ width: "100%" }}>
-					<img src='/images/slider2.jpg' alt='image' width={100} />
-				</div>
-				<div class="item" style={{ width: "100%" }}>
-					<img src='/images/slider3.jpg' alt='image' width={100} />
-				</div>
-				<div class="item" style={{ width: "100%" }}>
-					<img src='/images/slider4.jpg' alt='image' width={100} />
-				</div>
-				<div class="item" style={{ width: "100%" }}>
-					<img src='/images/slider2.jpg' alt='image' width={100} />
-				</div>
-			</OwlCarousel>
+
+			<div className="owl-theme">
+				<OwlCarousel {...options}>
+					<div>
+						<img src="/images/slider1.jpg" alt="image" />
+					</div>
+					<div>
+						<img src="/images/slider2.jpg" alt="image" />
+					</div>
+					<div>
+						<img src="/images/slider3.jpg" alt="image" />
+					</div>
+					<div>
+						<img src="/images/slider4.jpg" alt="image" />
+					</div>
+					<div>
+						<img src="/images/slider2.jpg" alt="image" />
+					</div>
+				</OwlCarousel>
+			</div>
 
 			{/* Find popular section */}
 			<div className="page-title-bg">
@@ -767,7 +774,7 @@ const GridListingsWithLeftSidebar = () => {
 						style={{ maxWidth: "1080px !important", paddingRight: 0 }}
 					>
 						<div className="row m-0 align-items-center py-2">
-							<div class="col-lg-2 col-md-6 py-1">
+							<div class="col-lg-3 col-md-6 py-1">
 								<div className="form-group category-select">
 									<label className="category-icon">
 										<i className="flaticon-search"></i>
@@ -786,7 +793,7 @@ const GridListingsWithLeftSidebar = () => {
 								</div>
 							</div>
 
-							<div class="col-lg-3 col-md-6 py-1">
+							{/* <div class="col-lg-3 col-md-6 py-1">
 								<div className="form-group category-select">
 									<label className="category-icon">
 										<i className="flaticon-pin"></i>
@@ -812,9 +819,9 @@ const GridListingsWithLeftSidebar = () => {
 										})}
 									</select>
 								</div>
-							</div>
+							</div> */}
 
-							<div class="col-lg-3 col-md-6 py-1">
+							<div class="col-lg-4 col-md-6 py-1">
 								<div className="form-group category-select">
 									<label className="category-icon">
 										<i className="flaticon-pin"></i>
@@ -827,7 +834,7 @@ const GridListingsWithLeftSidebar = () => {
 										<option>
 											{cityName.length > 0 ? cityName[0] : "City"}
 										</option>
-										{selectedCity.map((city) => {
+										{dataCity.map((city) => {
 											return (
 												<option
 													value={[city[0], city[1], city[2]]}
@@ -841,7 +848,7 @@ const GridListingsWithLeftSidebar = () => {
 								</div>
 							</div>
 
-							<div class="col-lg-3 col-md-6 py-1">
+							<div class="col-lg-4 col-md-6 py-1">
 								<div className="form-group category-select">
 									<label className="category-icon">
 										<i className="flaticon-pin"></i>
@@ -1076,7 +1083,12 @@ const GridListingsWithLeftSidebar = () => {
 														)
 													}
 												>
-													<img src={profileImg} alt="image" loading="lazy" className="img-fixed" />
+													<img
+														src={profileImg}
+														alt="image"
+														loading="lazy"
+														className="img-fixed"
+													/>
 													{/* <Link href="/single-listings">
                             <a className="link-btn"></a>
                           </Link> */}
