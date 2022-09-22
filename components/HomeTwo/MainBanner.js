@@ -320,7 +320,7 @@ const Banner = () => {
 														<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
 															<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetClinic")}>
 																<a>
-																	<img class="lazy loaded" src="/images/PetClinic.gif" alt="pet clinic" width="300" height="300" data-was-processed="true" />
+																	<img class="lazy loaded" src="/images/Clinic.gif" alt="pet clinic" width="300" height="300" data-was-processed="true" />
 																	<h4>Pet Clinic </h4>
 																</a>
 															</li>
@@ -341,7 +341,7 @@ const Banner = () => {
 															<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}>
 																<a href="#">
 																	<img class="lazy loaded" src="/images/boarding.gif" alt="Collar, Leashes &amp; Harness" width="300" height="300" data-was-processed="true" />
-																	<h4>Pet boarding </h4>
+																	<h4>Pet Boarding </h4>
 																</a>
 															</li>
 														</div>

@@ -17375,7 +17375,7 @@ text-decoration: underline;
 }
 
 .product-categories-list .category img {
-  max-width: 150px;
+  max-width: 180px;
   margin: auto;
   height: 133px;
 }
@@ -17383,4 +17383,87 @@ text-decoration: underline;
 .product-categories-list .categories h4 {
   font-size: 14px;
   font-weight: 600;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  background: #ffffee;
+}
+
+.os-times-w {
+  position: relative;
+}
+
+.timeslots {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dp-timeslot {
+  height: 24px;
+  flex-grow: 1;
+  margin: 0px;
+  box-shadow: inset 1px 0px 0px 0px #fff, inset -1px 0px 0px 0px #fff;
+  border-radius: 0px;
+  position: relative;
+  cursor: pointer;
+  background-color: #8fe286;
+}
+
+.latepoint-w .latepoint-booking-form-element.latepoint-border-radius-rounded .dp-timeslot .dp-label {
+  border-radius: 6px;
+}
+
+.dp-timeslot .dp-label {
+  display: none;
+  text-align: center;
+  padding: 7px 8px 7px 8px;
+  line-height: 1;
+  background-color: #04bb03;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translate(-50%, -100%);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.dp-timeslot .dp-label {
+  display: none;
+  text-align: center;
+  padding: 7px 8px 7px 8px;
+  line-height: 1;
+  background-color: #04bb03;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translate(-50%, -100%);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.selectTime {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffee;
+  padding: 10px;
+}
+
+.selectTime p {
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  border: 1px solid grey;
+  text-align: center;
+  cursor: pointer;
 }

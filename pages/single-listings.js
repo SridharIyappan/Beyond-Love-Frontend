@@ -311,7 +311,7 @@ const SingleListings = () => {
 
   const bookAppoinment = () => {
     router.push({
-      pathname: "/bookappoinment",
+      pathname: "/bookappointment",
       query: { business },
     });
   }
