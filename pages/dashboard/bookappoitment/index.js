@@ -1,37 +1,38 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-const OwlCarousel = dynamic(import('react-owl-carousel3'));
-
 //components
 import NavbarThree from '../../../components/_App/NavbarThree';
 import DashboardNavbar from '../../../components/Dashboard/DashboardNavbar';
+import axios from 'axios';
 
-const options = {
-    loop: true,
-    margin: 0,
-    nav: true,
-    mouseDrag: false,
-    items: 1,
-    dots: false,
-    autoplay: true,
-    smartSpeed: 500,
-
-    navText: [
-        "<i class='flaticon-left-chevron'></i>",
-        "<i class='flaticon-right-chevron'></i>",
-    ],
-};
 
 const BookAppoinment = () => {
-    const [display, setDisplay] = useState(false);
-    const [isMounted, setisMounted] = useState(false);
+    const [appointment, setAppointment] = useState([])
+    console.log(appointment)
 
     useEffect(() => {
-        setisMounted(true);
-        setDisplay(true);
-        setisMounted(false);
+        if (typeof window != "undefined") {
+            const tok = localStorage.getItem("token")
+            const user = JSON.parse(localStorage.getItem("user"));
+            let category = user.category;
+            if (tok != null || cate != null) {
+                getAppoitment(category, tok);
+            }
+        }
+        else {
+            console.log("we area running server side")
+        }
     }, []);
+
+    const getAppoitment = async (category, token) => {
+        try {
+            const { data } = await axios.get(`${process.env.DOMAIN_NAME}/api/business/get-appointment/${category}/${token}`)
+            console.log(data)
+            setAppointment(data.appointments)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <>
@@ -39,61 +40,67 @@ const BookAppoinment = () => {
             <div className='main-content d-flex flex-column'>
                 <NavbarThree />
 
-                <div className='breadcrumb-area'>
+                {appointment.length > 0 ? (<div className='breadcrumb-area'>
                     <h1>Book Appoinment</h1>
-                </div>
+                </div>) : (
+                    <h1>No Appoinment</h1>
+                )}
 
                 <section className='listing-area'>
                     <div className='row'>
-                        <div className='col-xl-4 col-lg-6 col-md-6'>
-                            <h5>Your Appoinment</h5>
-                            <div className='single-listings-box'>
-                                <div className='listings-image'>
-                                    <img src='/images/listings/listings1.jpg' alt='image' />
-                                    <Link href="/single-listings">
-                                        <a className='link-btn'></a>
-                                    </Link>
-                                </div>
+                        {appointment.map((app) => {
+                            return (
+                                <div className='col-xl-4 col-lg-6 col-md-6' key={app._id}>
+                                    <div className='single-listings-box'>
+                                        <div className='listings-image'>
+                                            <img src='/images/listings/listings1.jpg' alt='image' />
+                                            <Link href="/single-listings">
+                                                <a className='link-btn'></a>
+                                            </Link>
+                                        </div>
 
-                                <div className='listings-content'>
-                                    <ul className='listings-meta'>
-                                        <li>
-                                            <a href='#'>
-                                                <i className='flaticon-furniture-and-household'></i>{' '}
-                                                Restaurant
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href='#'>
-                                                <i className='flaticon-pin'></i> New York, USA
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <h3>
-                                        <Link href="/single-listings">
+                                        <div className='listings-content'>
+                                            <ul className='listings-meta'>
+                                                <li>
+                                                    <a href='#'>
+                                                        <i className='flaticon-furniture-and-household'></i>{' '}
+                                                        Restaurant
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href='#'>
+                                                        <i className='flaticon-pin'></i> New York, USA
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <h3>
+                                                <Link href="/single-listings">
 
-                                            <a>Chipotle Mexican Grill</a>
-                                        </Link>
-                                    </h3>
-                                    <div className='d-flex align-items-center justify-content-between'>
-                                        <div className='rating'>
-                                            <i className='bx bxs-star'></i>
-                                            <i className='bx bxs-star'></i>
-                                            <i className='bx bxs-star'></i>
-                                            <i className='bx bxs-star'></i>
-                                            <i className='bx bxs-star'></i>
-                                            <span className='count'>(45)</span>
+                                                    <a>Chipotle Mexican Grill</a>
+                                                </Link>
+                                            </h3>
+                                            <div className='d-flex align-items-center justify-content-between'>
+                                                <div className='rating'>
+                                                    <i className='bx bxs-star'></i>
+                                                    <i className='bx bxs-star'></i>
+                                                    <i className='bx bxs-star'></i>
+                                                    <i className='bx bxs-star'></i>
+                                                    <i className='bx bxs-star'></i>
+                                                    <span className='count'>(45)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className='listings-footer'>
+                                            <a href='#' className='default-btn'>
+                                                Delete
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
+                            )
+                        })}
 
-                                <div className='listings-footer'>
-                                    <a href='#' className='default-btn'>
-                                        Delete
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </section>
