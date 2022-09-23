@@ -43,7 +43,7 @@ const BookAppoinment = () => {
                 {appointment.length > 0 ? (<div className='breadcrumb-area'>
                     <h1>Book Appoinment</h1>
                 </div>) : (
-                    <h1>No Appoinment</h1>
+                    <h3>No Appoinment</h3>
                 )}
 
                 <section className='listing-area'>
