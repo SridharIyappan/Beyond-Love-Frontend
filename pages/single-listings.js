@@ -125,6 +125,7 @@ const SingleListings = () => {
         `${process.env.DOMAIN_NAME}/api/business/get-profile/${cate}/${id}`
       );
       console.log(data)
+      setBusinessid(data.business._id)
       const li = data.business.likes.includes(customerId);
       console.log(li);
       setLike(li);
@@ -310,9 +311,10 @@ const SingleListings = () => {
   };
 
   const bookAppoinment = () => {
+    console.log(business)
     router.push({
-      pathname: "/bookappointment",
-      query: { business },
+      pathname: "bookappointment",
+      query: business,
     });
   }
 
@@ -322,10 +324,14 @@ const SingleListings = () => {
       <section className="listings-details-area pb-70">
         <div className="listings-details-image">
           <ToastContainer />
-          {coverImg !== null && (
+          {/* {coverImg !== null && (
             <img src={coverImg} alt="image" className="cover-img" />
-          )}
-
+          )} */}
+          <img
+            src="/images/user1.jpg"
+            alt="image"
+            style={{ width: "85px" }}
+          />
           <div className="container">
             <div className="container">
               <div className="listings-details-content">
@@ -396,21 +402,15 @@ const SingleListings = () => {
                       </p>
                     </li>
                   )}
-                  {userType == "Customer" ? (<div className="booking-Btn">
+
+                  <div className="booking-Btn" onClick={bookAppoinment}>
                     <li className="phone-number">
                       <a href="#">
                         <i className="bx bx-time-five"></i>Book Appoinment
                       </a>
                     </li>
-                  </div>) : (
-                    <div className="booking-Btn">
-                      <li className="phone-number" onClick={bookAppoinment}>
-                        <a href="#">
-                          <i className="bx bx-time-five"></i>Book Appoinment
-                        </a>
-                      </li>
-                    </div>
-                  )}
+                  </div>
+
                 </ul>
               </div>
             </div>

@@ -232,6 +232,17 @@ const DashboardNavbar = () => {
               </Link>
             </li>)}
 
+            {userDetail.userType == "Business" ? (<li className='nav-item'>
+              <Link href={`/dashboard/bookappoitment`} activeClassName='active'>
+                <a>
+                  <span className='icon'>
+                    <i className='bx bx-copy'></i>
+                  </span>
+                  <span className='menu-title'>Appoinment</span>
+                </a>
+              </Link>
+            </li>) : (<></>)}
+
             {/* <li className='nav-item'>
               <a>
                 <span className='icon'>
