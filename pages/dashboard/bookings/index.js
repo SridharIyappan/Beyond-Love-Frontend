@@ -109,7 +109,7 @@ const Bookings = () => {
                           <i className='bx bx-check-circle'></i> Approve
                         </a>
                         <a href='#' className='default-btn danger'>
-                          <i className='bx bx-x-circle'></i> Reject
+                          <i className='bx bx-x-circle'></i> Resolve
                         </a>
                       </td>
                     </tr>

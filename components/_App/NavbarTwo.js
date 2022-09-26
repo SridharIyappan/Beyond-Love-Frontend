@@ -372,7 +372,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 														aria-expanded="false"
 													>
 														<div className="menu-profile">
-															{/* {userDetail.profileImage !== undefined ? (
+															{userDetail.profileImage !== undefined ? (
 																<img
 																	src={profile}
 																	className="rounded-circle"
@@ -384,7 +384,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 																	className="rounded-circle"
 																	alt="image"
 																/>
-															)} */}
+															)}
 															<span
 																className="name"
 																onClick={toggleDropdownProfile}
@@ -403,7 +403,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 													>
 														<div className="dropdown-header d-flex flex-column align-items-center">
 															<div className="figure mb-3">
-																{/* {userDetail.profileImage !== undefined ? (
+																{userDetail.profileImage !== undefined ? (
 																	<img
 																		src={profile}
 																		className="rounded-circle"
@@ -417,7 +417,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 																		alt="image"
 																		style={{ height: "80px", width: "80px" }}
 																	/>
-																)} */}
+																)}
 															</div>
 
 															<div className="info text-center">
@@ -619,7 +619,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 													aria-expanded="false"
 												>
 													<div className="menu-profile">
-														{/* {userDetail.profileImage !== undefined ? (
+														{userDetail.profileImage !== undefined ? (
 															<img
 																src={profile}
 																className="rounded-circle"
@@ -631,7 +631,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 																className="rounded-circle"
 																alt="image"
 															/>
-														)} */}
+														)}
 														<span
 															className="name"
 															onClick={toggleDropdownProfile}
@@ -650,7 +650,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 												>
 													<div className="dropdown-header d-flex flex-column align-items-center">
 														<div className="figure mb-3">
-															{/* {userDetail.profileImage !== undefined ? (
+															{userDetail.profileImage !== undefined ? (
 																<img
 																	src={profile}
 																	className="rounded-circle"
@@ -664,7 +664,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 																	alt="image"
 																	style={{ height: "80px", width: "80px" }}
 																/>
-															)} */}
+															)}
 														</div>
 
 														<div className="info text-center">

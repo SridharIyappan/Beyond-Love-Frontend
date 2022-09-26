@@ -324,10 +324,10 @@ const SingleListings = () => {
 			<section className="listings-details-area pb-70">
 				<div className="listings-details-image">
 					<ToastContainer />
-					{/* {coverImg !== null && (
-            <img src={coverImg} alt="image" className="cover-img" />
-          )} */}
-					<img src="/images/user1.jpg" alt="image" style={{ width: "85px" }} />
+					{coverImg !== null && (
+						<img src={coverImg} alt="image" className="cover-img" />
+					)}
+					{/* <img src="/images/user1.jpg" alt="image" style={{ width: "85px" }} /> */}
 					<div className="container">
 						<div className="container">
 							<div className="listings-details-content">

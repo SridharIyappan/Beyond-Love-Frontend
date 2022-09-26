@@ -65,26 +65,30 @@ const GridListingsWithLeftSidebar = () => {
 	let currentPage = 0;
 
 	useEffect(() => {
-		dataState.sort((a, b) => (a.Geo_Name < b.Geo_Name ? -1 : 1));
-		setAllCities(dataCity.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
-		setAllLocations(dataLocation.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
-		let categoryFilter = router.query.categoryName;
-		let stateFilter = router.query.stateName;
-		let cityFilter = router.query.cityName;
-		let locationFilter = router.query.locationName;
+		if (typeof window != "undefined") {
+			dataState.sort((a, b) => (a.Geo_Name < b.Geo_Name ? -1 : 1));
+			setAllCities(dataCity.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
+			setAllLocations(dataLocation.sort((a, b) => (a[0] < b[0] ? -1 : 1)));
+			let categoryFilter = router.query.categoryName;
+			let stateFilter = router.query.stateName;
+			let cityFilter = router.query.cityName;
+			let locationFilter = router.query.locationName;
 
-		interval = setInterval(() => {
-			currentPage++;
-			businessFilteration(
-				currentPage,
-				stateFilter,
-				cityFilter,
-				locationFilter,
-				categoryFilter
-			);
-		}, 100);
-		setbusinessInterval(interval);
-		localStorage.setItem("interval", interval);
+			interval = setInterval(() => {
+				currentPage++;
+				businessFilteration(
+					currentPage,
+					stateFilter,
+					cityFilter,
+					locationFilter,
+					categoryFilter
+				);
+			}, 100);
+			setbusinessInterval(interval);
+			localStorage.setItem("interval", interval);
+		} else {
+			console.log("we area running server side")
+		}
 	}, []);
 
 	// All Business filter
@@ -1083,12 +1087,12 @@ const GridListingsWithLeftSidebar = () => {
 														)
 													}
 												>
-													{/* <img
+													<img
 														src={profileImg}
 														alt="image"
 														loading="lazy"
 														className="img-fixed"
-													/> */}
+													/>
 													{/* <Link href="/single-listings">
                             <a className="link-btn"></a>
                           </Link> */}

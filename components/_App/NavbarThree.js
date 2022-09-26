@@ -129,7 +129,7 @@ const NavbarThree = () => {
                           aria-expanded='false'
                         >
                           <div className='menu-profile'>
-                            {/* {userDetail.profileImage !== undefined ?
+                            {userDetail.profileImage !== undefined ?
                               (<img
                                 src={profile}
                                 className='rounded-circle'
@@ -141,7 +141,7 @@ const NavbarThree = () => {
                                   className='rounded-circle'
                                   alt='image'
                                   style={{ height: "40px", width: "40px" }}
-                                />)} */}
+                                />)}
                             <span className='name' onClick={toggleDropdownProfile}>{t("My Account")}</span>
                           </div>
                         </a>
@@ -154,7 +154,7 @@ const NavbarThree = () => {
 
                           <div className='dropdown-header d-flex flex-column align-items-center'>
                             <div className='figure mb-3'>
-                              {/* {userDetail.profileImage !== undefined ?
+                              {userDetail.profileImage !== undefined ?
                                 (<img
                                   src={profile}
                                   className='rounded-circle'
@@ -164,7 +164,7 @@ const NavbarThree = () => {
                                     src='/images/user1.jpg'
                                     className='rounded-circle'
                                     alt='image'
-                                  />)} */}
+                                  />)}
                             </div>
 
                             <div className='info text-center'>
