@@ -13416,7 +13416,7 @@ Dashboard CSS
 
 .bookings-listings-box table tbody td {
   white-space: nowrap;
-  vertical-align: middle;
+  /* vertical-align: middle; */
   padding: 30px 25px;
   border-bottom: 1px dashed #eeeeee;
   border-right: 1px dashed #eeeeee;
@@ -17472,4 +17472,8 @@ text-decoration: underline;
 .activeBackGround {
   background-color: #4b2d22;
   color: white;
+}
+
+.customer-appointment {
+  display: flex;
 }

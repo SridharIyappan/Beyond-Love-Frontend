@@ -369,13 +369,13 @@ const PetTraining = () => {
                   <form onSubmit={profilePicSubmit}>
                     <div className="col-xl-6 col-lg-6 col-md-12">
                       <div className="form-group profile-box">
-                        {userDetail.profileImage !== undefined && (
+                        {/* {userDetail.profileImage !== undefined && (
                           <img
                             src={profile}
                             alt="imag"
                             className="profile-image"
                           />
-                        )}
+                        )} */}
                         <input
                           type="file"
                           name="file"
@@ -396,13 +396,13 @@ const PetTraining = () => {
                   <form onSubmit={coverPicSubmit}>
                     <div className="col-xl-6 col-lg-6 col-md-12">
                       <div className="form-group profile-box">
-                        {userDetail.profileImage !== undefined && (
+                        {/* {userDetail.profileImage !== undefined && (
                           <img
                             src={cover}
                             alt="imag"
                             className="profile-image"
                           />
-                        )}
+                        )} */}
                         <input
                           type="file"
                           name="file"

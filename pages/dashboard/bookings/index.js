@@ -1,278 +1,122 @@
 import Link from 'next/link';
 import NavbarThree from '../../../components/_App/NavbarThree';
 import DashboardNavbar from '../../../components/Dashboard/DashboardNavbar';
+import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Bookings = () => {
+  const [appointment, setAppointment] = useState([])
+  console.log(appointment)
+
+  useEffect(() => {
+    if (typeof window != "undefined") {
+      const tok = localStorage.getItem("token")
+      const user = JSON.parse(localStorage.getItem("user"));
+      let category = user.category;
+      if (tok != null || cate != null) {
+        getAppoitment(category, tok);
+      }
+    }
+    else {
+      console.log("we area running server side")
+    }
+  }, []);
+
+  const getAppoitment = async (category, token) => {
+    try {
+      const { data } = await axios.get(`${process.env.DOMAIN_NAME}/api/business/get-appointment/${category}/${token}`)
+      console.log(data)
+      setAppointment(data.appointments)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <DashboardNavbar />
       <div className='main-content d-flex flex-column'>
         <NavbarThree />
 
-        <div className='breadcrumb-area'>
-          <h1>Bookings</h1>
-          <ol className='breadcrumb'>
-            <li className='item'>
-              <Link href='/dashboard'>
-                <a>Home</a>
-              </Link>
-            </li>
-            <li className='item'>
-              <Link href='/dashboard'>
-                <a>Dashboard</a>
-              </Link>
-            </li>
-            <li className='item'>Bookings</li>
-          </ol>
-        </div>
-
         <div className='bookings-listings-box'>
-          <h3>Booking Requests</h3>
+          <h3>Your Appointment</h3>
 
           <div className='table-responsive'>
             <table className='table'>
               <thead>
                 <tr>
-                  <th>Customer</th>
-                  <th>Details</th>
+                  <th>Customer Details</th>
+                  <th>Pet Details</th>
+                  <th>Appointment Date & Time</th>
                   <th>Action</th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr>
-                  <td className='name'>
-                    <img src='/images/user1.jpg' alt='image' />
-                    <div className='info'>
-                      <span>James Anderson</span>
-                      <ul>
-                        <li>
-                          <a href='tel:+21444556521'>+214 4455 6521</a>
-                        </li>
-                        <li>
-                          <a href='mailto:hello@james.com'>hello@james.com</a>
-                        </li>
-                      </ul>
-                      <a href='mailto:hello@james.com' className='default-btn'>
-                        <i className='bx bx-envelope'></i> Send Message
-                      </a>
-                    </div>
-                  </td>
+                {appointment.map((app) => {
+                  console.log(app)
+                  let day = app.date;
+                  let day1 = new Date(day)
+                  let day2 = day1.toString()
+                  let date = day2.split(" ", 4)
+                  return (
+                    <tr>
+                      <td className='details'>
+                        <img src='/images/user1.jpg' alt='image' width={80} height={80} />
+                        <ul>
+                          <li>
+                            <span>Name :</span>{" "}{app.name}
+                          </li>
+                          <li>
+                            <span>Email :</span>{" "}{app.email}
+                          </li>
+                          <li>
+                            <span>Mobile :</span>{" "}{app.mobile}
+                          </li>
+                          <li>
+                            <span>Address :</span>{" "}{app.address}
+                          </li>
+                        </ul>
+                      </td>
 
-                  <td className='details'>
-                    <h4>
-                      Farmis Hotel & Restaurant{' '}
-                      <span className='bookings-status pending'>Pending</span>
-                    </h4>
+                      <td className='details'>
+                        <ul>
+                          <li>
+                            <span>Breed :</span>{" "}{app.petBreed}
+                          </li>
+                          <li>
+                            <span>Pet Name :</span>{" "}{app.petName}
+                          </li>
+                          <li>
+                            <span>Pet Age :</span>{" "}{app.petAge}
+                          </li>
+                        </ul>
+                      </td>
 
-                    <ul>
-                      <li>
-                        <i className='bx bx-map'></i>
-                        <span>Address:</span>
-                        40 Journal Square, NG USA
-                      </li>
-                      <li>
-                        <i className='bx bx-calendar'></i>
-                        <span>Date:</span>
-                        20/05/2020
-                      </li>
-                      <li>
-                        <i className='bx bx-purchase-tag'></i>
-                        <span>Price:</span>
-                        $1500
-                      </li>
-                      <li>
-                        <i className='bx bx-group'></i>
-                        <span>Persons:</span>4 Peoples
-                      </li>
-                      <li>
-                        <i className='bx bx-credit-card-front'></i>
-                        <span>Payment:</span>
-                        <strong className='paid'>Paid</strong> using Paypal
-                      </li>
-                    </ul>
-                  </td>
+                      <td className='details'>
+                        <ul>
+                          <li>
+                            <span>Date :</span>{" "}{date[0]} {date[1]} {date[2]} {date[3]}
+                          </li>
+                          <li>
+                            <span>Time :</span>{" "}{app.time}
+                          </li>
+                        </ul>
+                      </td>
+                      <td className='action'>
+                        <a href='#' className='default-btn'>
+                          <i className='bx bx-check-circle'></i> Approve
+                        </a>
+                        <a href='#' className='default-btn danger'>
+                          <i className='bx bx-x-circle'></i> Reject
+                        </a>
+                      </td>
+                    </tr>
+                  )
+                })}
 
-                  <td className='action'>
-                    <a href='#' className='default-btn'>
-                      <i className='bx bx-check-circle'></i> Approve
-                    </a>
-                    <a href='#' className='default-btn danger'>
-                      <i className='bx bx-x-circle'></i> Reject
-                    </a>
-                  </td>
-                </tr>
 
-                <tr>
-                  <td className='name'>
-                    <img src='/images/user2.jpg' alt='image' />
-                    <div className='info'>
-                      <span>Alina Smith</span>
-                      <ul>
-                        <li>
-                          <a href='tel:+21444556521'>+214 4455 6521</a>
-                        </li>
-                        <li>
-                          <a href='mailto:hello@alina.com'>hello@alina.com</a>
-                        </li>
-                      </ul>
-                      <a href='mailto:hello@alina.com' className='default-btn'>
-                        <i className='bx bx-envelope'></i> Send Message
-                      </a>
-                    </div>
-                  </td>
-
-                  <td className='details'>
-                    <h4>
-                      Skyview Shopping Center{' '}
-                      <span className='bookings-status approved'>Approved</span>
-                    </h4>
-
-                    <ul>
-                      <li>
-                        <i className='bx bx-map'></i>
-                        <span>Address:</span>
-                        55 County Laois, Ireland
-                      </li>
-                      <li>
-                        <i className='bx bx-calendar'></i>
-                        <span>Date:</span>
-                        19/05/2020
-                      </li>
-                      <li>
-                        <i className='bx bx-purchase-tag'></i>
-                        <span>Price:</span>
-                        $200
-                      </li>
-                      <li>
-                        <i className='bx bx-credit-card-front'></i>
-                        <span>Payment:</span>
-                        <strong className='paid'>Paid</strong> using Paypal
-                      </li>
-                    </ul>
-                  </td>
-
-                  <td className='action'>
-                    <a href='#' className='default-btn danger'>
-                      <i className='bx bx-x-circle'></i> Cancel
-                    </a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className='name'>
-                    <img src='/images/user3.jpg' alt='image' />
-                    <div className='info'>
-                      <span>James Andy</span>
-                      <ul>
-                        <li>
-                          <a href='tel:+21444556521'>+214 4455 6521</a>
-                        </li>
-                        <li>
-                          <a href='mailto:hello@andy.com'>hello@andy.com</a>
-                        </li>
-                      </ul>
-                      <a href='mailto:hello@andy.com' className='default-btn'>
-                        <i className='bx bx-envelope'></i> Send Message
-                      </a>
-                    </div>
-                  </td>
-
-                  <td className='details'>
-                    <h4>
-                      Gym Training Center{' '}
-                      <span className='bookings-status pending'>Pending</span>
-                    </h4>
-
-                    <ul>
-                      <li>
-                        <i className='bx bx-map'></i>
-                        <span>Address:</span>
-                        Tilt Tilbury, United Kingdom
-                      </li>
-                      <li>
-                        <i className='bx bx-calendar'></i>
-                        <span>Date:</span>
-                        18/05/2020
-                      </li>
-                      <li>
-                        <i className='bx bx-purchase-tag'></i>
-                        <span>Price:</span>
-                        $214
-                      </li>
-                      <li>
-                        <i className='bx bx-group'></i>
-                        <span>Persons:</span>2 Peoples
-                      </li>
-                      <li>
-                        <i className='bx bx-credit-card-front'></i>
-                        <span>Payment:</span>
-                        <strong className='unpaid'>Unpaid</strong>
-                      </li>
-                    </ul>
-                  </td>
-
-                  <td className='action'>
-                    <a href='#' className='default-btn'>
-                      <i className='bx bx-check-circle'></i> Approve
-                    </a>
-                    <a href='#' className='default-btn danger'>
-                      <i className='bx bx-x-circle'></i> Reject
-                    </a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className='name'>
-                    <img src='/images/user4.jpg' alt='image' />
-                    <div className='info'>
-                      <span>Steven Smith</span>
-                      <ul>
-                        <li>
-                          <a href='tel:+21444556521'>+214 4455 6521</a>
-                        </li>
-                        <li>
-                          <a href='mailto:hello@steven.com'>hello@steven.com</a>
-                        </li>
-                      </ul>
-                      <a href='mailto:hello@steven.com' className='default-btn'>
-                        <i className='bx bx-envelope'></i> Send Message
-                      </a>
-                    </div>
-                  </td>
-
-                  <td className='details'>
-                    <h4>
-                      The Magician Restaurant{' '}
-                      <span className='bookings-status canceled'>Canceled</span>
-                    </h4>
-
-                    <ul>
-                      <li>
-                        <i className='bx bx-map'></i>
-                        <span>Address:</span>
-                        40 Journal Square, NG USA
-                      </li>
-                      <li>
-                        <i className='bx bx-calendar'></i>
-                        <span>Date:</span>
-                        17/05/2020
-                      </li>
-                      <li>
-                        <i className='bx bx-purchase-tag'></i>
-                        <span>Price:</span>
-                        $200
-                      </li>
-                      <li>
-                        <i className='bx bx-credit-card-front'></i>
-                        <span>Payment:</span>
-                        <strong className='paid'>Paid</strong> using Paypal
-                      </li>
-                    </ul>
-                  </td>
-
-                  <td className='action'></td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -280,21 +124,12 @@ const Bookings = () => {
 
         <div className='flex-grow-1'></div>
 
-        <div className='copyrights-area'>
-          <div className='row align-items-center'>
-            <div className='col-lg-6 col-sm-6 col-md-6'>
+        <div className="copyrights-area">
+          <div className="row align-items-center">
+            <div className="col-lg-6 col-sm-6 col-md-6">
               <p>
-                <i className='bx bx-copyright'></i>2020 <a href='#'>Indice</a>. All
-                rights reserved
-              </p>
-            </div>
-
-            <div className='col-lg-6 col-sm-6 col-md-6 text-right'>
-              <p>
-                Designed by ❤️{' '}
-                <a href='https://envytheme.com/' target='_blank' rel="noreferrer">
-                  EnvyTheme
-                </a>
+                <i className="bx bx-copyright"></i>Copyright © 2020{" "}
+                <a href="/">BEYONDLOVE</a>. All Rights Reserved
               </p>
             </div>
           </div>
