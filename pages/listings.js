@@ -1,20 +1,19 @@
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 // const OwlCarousel = dynamic(import("react-owl-carousel3"));
 import { FaClinicMedical } from "react-icons/fa";
 import { ToastContainer, toast, TypeOptions } from "react-toastify";
 import React from "react";
-const OwlCarousel = dynamic(import("react-owl-carousel3"));
+// const OwlCarousel = dynamic(import("react-owl-carousel3"));
 
-// import OwlCarousel from "react-owl-carousel3";
 //components
 import NavbarTwo from "../components/_App/NavbarTwo";
 import Footer from "../components/_App/Footer";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Pagination from "../components/Pagination";
-import { useTranslation } from "next-i18next";
+// import { useTranslation } from "next-i18next";
 
 import { dataCity } from "../utils/dataCity";
 import { dataLocation } from "../utils/dataLocation";
@@ -52,7 +51,7 @@ const GridListingsWithLeftSidebar = () => {
 	const [categoryFilterInterval, setCategoryFilterInterval] = useState(true);
 
 	let router = useRouter();
-	const { t } = useTranslation("home");
+	// const { t } = useTranslation("home");
 
 	let dispatch = useDispatch();
 
@@ -749,7 +748,7 @@ const GridListingsWithLeftSidebar = () => {
 		<>
 			<NavbarTwo />
 
-			<div className="owl-theme">
+			{/* <div className="owl-theme">
 				<OwlCarousel {...options}>
 					<div>
 						<img src="/images/slider1.jpg" alt="image" />
@@ -767,12 +766,12 @@ const GridListingsWithLeftSidebar = () => {
 						<img src="/images/slider2.jpg" alt="image" />
 					</div>
 				</OwlCarousel>
-			</div>
+			</div> */}
 
 			{/* Find popular section */}
 			<div className="page-title-bg">
 				<div className="container">
-					<h2>{t("Find Popular Services")}</h2>
+					<h2>Find Popular Services</h2>
 					<form
 						onSubmit={handleSubmit}
 						style={{ maxWidth: "1080px !important", paddingRight: 0 }}
