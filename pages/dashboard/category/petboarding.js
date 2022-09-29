@@ -1,7 +1,13 @@
+import * as React from 'react';
+import { Dayjs } from 'dayjs';
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import Link from "next/link";
 import NavbarThree from "../../../components/_App/NavbarThree";
 import DashboardNavbar from "../../../components/Dashboard/DashboardNavbar";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast, TypeOptions } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
@@ -27,8 +33,6 @@ const PetTraining = () => {
   const [cityFilter, setCityFilter] = useState([]);
   const [locationFilter, setLocationFilter] = useState([]);
   const [location, setLocation] = useState([]);
-  const [packageName, setPackageName] = useState("");
-  const [packagePrice, setPackagePrice] = useState("");
   const [established, setestablished] = useState("");
   const [token, setToken] = useState("");
   const [error, setError] = useState(false);
@@ -40,6 +44,34 @@ const PetTraining = () => {
   const [profile, setProfile] = useState();
   const [cover, setCover] = useState();
   const [userDetail, setUserDetail] = useState("");
+  const [service, setService] = useState("");
+  const [serviceCost, setServiceCost] = useState("");
+  const [duration, setDuration] = useState("");
+  const [id, setId] = useState(1);
+  const [pack, setPack] = useState([]);
+  const [serviceList, setServiceList] = useState([{ service: "" }]);
+  const [startTime, setStartTime] = React.useState(null);
+  const [endTime, setEndTime] = React.useState(null);
+  const [timing, setTiming] = useState([])
+  const [bookingSlot, setBookingSlot] = useState(1);
+
+
+  // const handleServiceAdd = () => {
+  //   setServiceList([...serviceList, { service: "" }]);
+  // }
+
+  // const handleServiceRemove = (index) => {
+  //   const list = [...serviceList];
+  //   list.splice(index, 1)
+  //   setServiceList(list)
+  // }
+
+  // const handleServiceChange = (e, index) => {
+  //   const { name, value } = e.target;
+  //   const list = [...serviceList];
+  //   list[index][name] = value;
+  //   setServiceList(list);
+  // }
 
   useEffect(() => {
     if (typeof window != "undefined") {
@@ -354,6 +386,36 @@ const PetTraining = () => {
     });
   };
 
+  const createTime = () => {
+    if (startTime != "" && endTime != "" && startTime != null && endTime != null) {
+      setTiming((timing) => [...timing, { id: timing.length, startTime, endTime }])
+      console.log(timing)
+      setStartTime("")
+      setEndTime("")
+    }
+  }
+
+  const handlePackage = () => {
+    setPack((pack) => [...pack, { id: id, service, serviceCost, duration }]);
+    console.log(pack)
+    setService("")
+    setServiceCost("")
+    setDuration("")
+  }
+
+  const createPackage = () => {
+    if (service !== "" && serviceCost !== "" && duration !== "") {
+      setId((id) => id + 1)
+      handlePackage();
+    }
+  }
+
+  const removePackage = (name) => {
+    const removeData = pack.filter((rem) => rem.service !== name);
+    setPack(removeData)
+    console.log(removeData)
+  }
+
   return (
     <>
       <DashboardNavbar />
@@ -369,13 +431,13 @@ const PetTraining = () => {
                   <form onSubmit={profilePicSubmit}>
                     <div className="col-xl-6 col-lg-6 col-md-12">
                       <div className="form-group profile-box">
-                        {/* {userDetail.profileImage !== undefined && (
+                        {userDetail.profileImage !== undefined && (
                           <img
                             src={profile}
                             alt="imag"
                             className="profile-image"
                           />
-                        )} */}
+                        )}
                         <input
                           type="file"
                           name="file"
@@ -396,13 +458,13 @@ const PetTraining = () => {
                   <form onSubmit={coverPicSubmit}>
                     <div className="col-xl-6 col-lg-6 col-md-12">
                       <div className="form-group profile-box">
-                        {/* {userDetail.profileImage !== undefined && (
+                        {userDetail.profileImage !== undefined && (
                           <img
                             src={cover}
                             alt="imag"
                             className="profile-image"
                           />
-                        )} */}
+                        )}
                         <input
                           type="file"
                           name="file"
@@ -780,30 +842,43 @@ const PetTraining = () => {
                     </div>
                   </div> */}
 
-                  {/* <div className="col-lg-12 col-md-12">
+                  <div className="col-lg-12 col-md-12">
                     <div className="form-group">
                       <h3 id="address">PACKAGES</h3>
                     </div>
                   </div>
 
-                  <div className="col-xl-6 col-lg-12 col-md-12">
+                  <div className="col-xl-4 col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Name</label>
+                      <label>Service</label>
                       <input
                         type="text"
                         className="form-control"
-                        onChange={(e) => setPackageName(e.target.value)}
+                        value={service}
+                        onChange={(e) => setService(e.target.value)}
                       />
                     </div>
                   </div>
 
-                  <div className="col-xl-4 col-lg-12 col-md-12">
+                  <div className="col-xl-3 col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Price</label>
+                      <label>Service Cost</label>
                       <input
-                        type="number"
+                        type="text"
+                        value={serviceCost}
                         className="form-control"
-                        onChange={(e) => setPackagePrice(e.target.value)}
+                        onChange={(e) => setServiceCost(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-xl-3 col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Duration</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={duration}
+                        onChange={(e) => setDuration(e.target.value)}
                       />
                     </div>
                   </div>
@@ -814,12 +889,195 @@ const PetTraining = () => {
                         <br />
                       </label>
                       <span data-toggle="modal" activeClassName="active">
-                        <a className="default-btn">
+                        <a className="default-btn" style={{ width: "100%" }}
+                          onClick={createPackage}
+                        >
                           Add
                         </a>
                       </span>
                     </div>
-                  </div> */}
+                  </div>
+
+                  {pack.map((pac) => {
+                    return (
+                      <div className="col-xl-4 col-lg-12 col-md-12 package-view" key={pac.id}
+                        style={{ padding: "0px" }}
+                      >
+                        <div className="card-body ">
+                          <div
+                            className="events-details-info"
+                            style={{ backgroundColor: "unset" }}
+                          >
+                            <ul className="info">
+                              <li className="price">
+                                <div className="d-flex justify-content-between align-items-center">
+                                  <span>Service</span>
+                                  {pac.service}
+                                </div>
+                              </li>
+                              <li>
+                                <div className="d-flex justify-content-between align-items-center">
+                                  <span>Service Cost</span>
+                                  {pac.serviceCost}
+                                </div>
+                              </li>
+                              <li>
+                                <div className="d-flex justify-content-between align-items-center">
+                                  <span>Duration</span>
+                                  <span>{pac.duration}</span>
+                                </div>
+                              </li>
+                              <br />
+                              <span data-toggle="modal" activeClassName="active" >
+                                <a
+                                  className="default-btn"
+                                  onClick={() => removePackage(pac.service)}
+                                >
+                                  Remove
+                                </a>
+                              </span>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <h3 id="address">Time Slot</h3>
+                    </div>
+                  </div>
+
+                  <div className="col-xl-4 col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Start Time</label>
+                      <input
+                        type="time"
+                        className="form-control"
+                        placeholder='start time'
+                        value={startTime}
+                        onChange={(e) => setStartTime(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-xl-4 col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>End Time</label>
+                      <input
+                        type="time"
+                        className="form-control"
+                        placeholder='end time'
+                        value={endTime}
+                        onChange={(e) => setEndTime(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-xl-2 col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>
+                        <br />
+                      </label>
+                      <span data-toggle="modal" activeClassName="active">
+                        <a className="default-btn" style={{ width: "100%" }}
+                          onClick={createTime}
+                        >
+                          Add
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+
+
+                  {timing.map((time) => {
+                    return (
+                      <div className="col-xl-2 col-lg-12 col-md-12 package-view" key={time.id}
+                        style={{ marginRight: "5px", marginBottom: "5px" }}
+                      >
+                        <div className="card-body ">
+                          <div
+                            className="events-details-info"
+                            style={{ backgroundColor: "unset", padding: "8px" }}
+                          >
+                            <ul className="info">
+                              <li className="price">
+                                <div className="justify-content-between align-items-center">
+                                  {time.startTime}{""} : {""} {time.endTime}
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <h3 id="address">Bookings for Slot</h3>
+                    </div>
+                  </div>
+
+                  <div className="col-xl-4 col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder='start time'
+                        value={bookingSlot}
+                        onChange={(e) => setBookingSlot(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+
+                  {/* {serviceList.map((ser, index) => {
+                    return (
+                      <div className="row m-1">
+                        <div className="col-xl-6 col-lg-12 col-md-12" key={index}>
+                          <div className="form-group">
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="time"
+                              id="service"
+                              value={ser.service}
+                              name="service"
+                              onChange={(e) => handleServiceChange(e, index)}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="col-xl-3 col-lg-12 col-md-12" key={index}>
+                          <div className="form-group">
+                            {serviceList.length > 1 &&
+                              (<span data-toggle="modal" activeClassName="active" onClick={() => handleServiceRemove(index)}>
+                                <a className="default-btn" style={{ width: "100%" }}
+                                >
+                                  -
+                                </a>
+                              </span>)}
+                          </div>
+                        </div>
+
+                        <div className="col-xl-3 col-lg-12 col-md-12" key={index}>
+                          <div className="form-group">
+                            {serviceList.length - 1 === index && serviceList.length < 8 &&
+                              (<span data-toggle="modal" activeClassName="active" onClick={handleServiceAdd}>
+                                <a className="default-btn" style={{ width: "100%" }}
+                                >
+                                  +
+                                </a>
+                              </span>)}
+                          </div>
+                        </div>
+
+                      </div>
+                    )
+                  })} */}
+
 
                   {/* <div className="col-lg-12 col-md-12">
                     <div

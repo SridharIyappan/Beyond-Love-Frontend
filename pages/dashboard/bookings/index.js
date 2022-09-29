@@ -51,7 +51,6 @@ const Bookings = () => {
 
   const reschedulePopup = (id) => {
     setRescheduleId(id)
-    console.log(id, rescheduleId)
     if (id === rescheduleId) {
       setReschedule(true);
     }
@@ -123,9 +122,9 @@ const Bookings = () => {
 
         <div className='bookings-listings-box'>
           <ToastContainer />
-          <h3>Your Appointment</h3>
 
-          <div className='table-responsive'>
+          {appointment.length > 0 ? (<div className='table-responsive'>
+            <h3>Your Appointment</h3>
             <table className='table'>
               <thead>
                 <tr>
@@ -191,9 +190,9 @@ const Bookings = () => {
                         <a href='#' className='default-btn'>
                           <i className='bx bx-check-circle'></i> Approve
                         </a>
-                        <a href='#' className='default-btn danger' onClick={() => reschedulePopup(app._id)}>
+                        <button className='default-btn danger' onClick={() => reschedulePopup(app._id)}>
                           <i className='bx bx-x-circle'></i> Reschedule
-                        </a>
+                        </button>
                       </td>
                     </tr>
                   )
@@ -202,7 +201,7 @@ const Bookings = () => {
 
               </tbody>
             </table>
-          </div>
+          </div>) : (<h3>No Appointment</h3>)}
         </div>
 
         <div className='flex-grow-1'></div>
@@ -235,8 +234,8 @@ const Bookings = () => {
             </button>
             {appointment.map((app) => {
               return (
-                {
-                  app._id == rescheduleId && (<div>
+                <>
+                  {app._id == rescheduleId && (<div>
                     <form onSubmit={(e) => rescheduleOnsubmit(e, app.category, app._id)}>
                       <h3 style={{ textAlign: "center" }}>Reschedule Date & Time</h3>
                       <hr />
@@ -336,7 +335,8 @@ const Bookings = () => {
                       </div>
                     </form>
                   </div>)
-                }
+                  }
+                </>
               )
             })}
           </div>
