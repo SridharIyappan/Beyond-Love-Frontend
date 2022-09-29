@@ -343,7 +343,6 @@ const PetTraining = () => {
 
   const handlePackage = () => {
     setPack((pack) => [...pack, { id: id, service, serviceCost, duration }]);
-    console.log(pack)
     setService("")
     setServiceCost("")
     setDuration("")
@@ -359,13 +358,11 @@ const PetTraining = () => {
   const removePackage = (name) => {
     const removeData = pack.filter((rem) => rem.service !== name);
     setPack(removeData)
-    console.log(removeData)
   }
 
   const createTime = () => {
     if (startTime != "" && endTime != "" && startTime != null && endTime != null) {
       setTiming((timing) => [...timing, { id: timing.length, startTime, endTime }])
-      console.log(timing)
       setStartTime("")
       setEndTime("")
     }
