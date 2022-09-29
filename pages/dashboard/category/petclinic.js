@@ -41,6 +41,10 @@ const PetTraining = () => {
   const [duration, setDuration] = useState("");
   const [id, setId] = useState(1);
   const [pack, setPack] = useState([]);
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [timing, setTiming] = useState([])
+  const [bookingSlot, setBookingSlot] = useState(1);
 
   useEffect(() => {
     if (typeof window != "undefined") {
@@ -227,7 +231,6 @@ const PetTraining = () => {
 
   const profilePicSubmit = async (e) => {
     e.preventDefault();
-    console.log(apiprofileImg);
     if (apiprofileImg == undefined) {
       console.log("error");
       return toast.error("Please Select Image", {
@@ -280,7 +283,6 @@ const PetTraining = () => {
 
   const coverPicSubmit = async (e) => {
     e.preventDefault();
-    console.log(apiCoverImg);
     if (apiCoverImg == undefined) {
       return toast.error("Please Select Image", {
         theme: "light",
@@ -360,6 +362,20 @@ const PetTraining = () => {
     console.log(removeData)
   }
 
+  const createTime = () => {
+    if (startTime != "" && endTime != "" && startTime != null && endTime != null) {
+      setTiming((timing) => [...timing, { id: timing.length, startTime, endTime }])
+      console.log(timing)
+      setStartTime("")
+      setEndTime("")
+    }
+  }
+
+  const removeTimeSlot = (time) => {
+    const removeTime = timing.filter((tim) => tim.startTime !== time)
+    setTiming(removeTime)
+  }
+
   return (
     <>
       <DashboardNavbar />
@@ -375,13 +391,13 @@ const PetTraining = () => {
                   <form onSubmit={profilePicSubmit}>
                     <div className="col-xl-6 col-lg-6 col-md-12">
                       <div className="form-group profile-box">
-                        {/* {userDetail.profileImage !== undefined && (
+                        {userDetail.profileImage !== undefined && (
                           <img
                             src={profile}
                             alt="imag"
                             className="profile-image"
                           />
-                        )} */}
+                        )}
                         <input
                           type="file"
                           name="file"
@@ -402,13 +418,13 @@ const PetTraining = () => {
                   <form onSubmit={coverPicSubmit}>
                     <div className="col-xl-6 col-lg-6 col-md-12">
                       <div className="form-group profile-box">
-                        {/* {userDetail.profileImage !== undefined && (
+                        {userDetail.profileImage !== undefined && (
                           <img
                             src={cover}
                             alt="imag"
                             className="profile-image"
                           />
-                        )} */}
+                        )}
                         <input
                           type="file"
                           name="file"
@@ -859,6 +875,97 @@ const PetTraining = () => {
                     );
                   })}
 
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <h3 id="address">Time Slot</h3>
+                    </div>
+                  </div>
+
+                  <div className="col-xl-4 col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>Start Time</label>
+                      <input
+                        type="time"
+                        className="form-control"
+                        placeholder='start time'
+                        value={startTime}
+                        onChange={(e) => setStartTime(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-xl-4 col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>End Time</label>
+                      <input
+                        type="time"
+                        className="form-control"
+                        placeholder='end time'
+                        value={endTime}
+                        onChange={(e) => setEndTime(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-xl-2 col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <label>
+                        <br />
+                      </label>
+                      <span data-toggle="modal" activeClassName="active">
+                        <a className="default-btn" style={{ width: "100%" }}
+                          onClick={createTime}
+                        >
+                          Add
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+
+
+                  {timing.map((time) => {
+                    return (
+                      <div className="col-xl-2 col-lg-12 col-md-12 package-view" key={time.id}
+                        style={{ marginRight: "17px", marginBottom: "5px" }}
+                      >
+                        <button type="button" className="time-slot-close" onClick={() => removeTimeSlot(time.startTime)}>
+                          <i className="bx bx-x"></i>
+                        </button>
+                        <div className="card-body ">
+                          <div
+                            className="events-details-info"
+                            style={{ backgroundColor: "unset", padding: "8px" }}
+                          >
+                            <ul className="info">
+                              <li className="price">
+                                <div className="justify-content-between align-items-center">
+                                  {time.startTime}{""} : {""} {time.endTime}
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+
+                  <div className="col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <h3 id="address">Bookings for Slot</h3>
+                    </div>
+                  </div>
+
+                  <div className="col-xl-4 col-lg-12 col-md-12">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder='start time'
+                        value={bookingSlot}
+                        onChange={(e) => setBookingSlot(e.target.value)}
+                      />
+                    </div>
+                  </div>
 
                   {/* <div className="col-lg-12 col-md-12">
                     <div

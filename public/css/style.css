@@ -17490,3 +17490,20 @@ text-decoration: underline;
   -webkit-transition: var(--transition);
   transition: var(--transition);
 }
+
+.time-slot-close {
+  position: absolute !important;
+  right: -22px !important;
+  top: -22px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background-color: red !important;
+  width: 32px !important;
+  height: 32px !important;
+  text-align: center !important;
+  text-shadow: unset !important;
+  border-radius: 50% !important;
+  line-height: 32px !important;
+  color: var(--whiteColor) !important;
+  padding: 3px 0 0 !important;
+}

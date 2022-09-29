@@ -1,9 +1,4 @@
 import * as React from 'react';
-import { Dayjs } from 'dayjs';
-import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import Link from "next/link";
 import NavbarThree from "../../../components/_App/NavbarThree";
 import DashboardNavbar from "../../../components/Dashboard/DashboardNavbar";
@@ -49,9 +44,8 @@ const PetTraining = () => {
   const [duration, setDuration] = useState("");
   const [id, setId] = useState(1);
   const [pack, setPack] = useState([]);
-  const [serviceList, setServiceList] = useState([{ service: "" }]);
-  const [startTime, setStartTime] = React.useState(null);
-  const [endTime, setEndTime] = React.useState(null);
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [timing, setTiming] = useState([])
   const [bookingSlot, setBookingSlot] = useState(1);
 
@@ -386,15 +380,6 @@ const PetTraining = () => {
     });
   };
 
-  const createTime = () => {
-    if (startTime != "" && endTime != "" && startTime != null && endTime != null) {
-      setTiming((timing) => [...timing, { id: timing.length, startTime, endTime }])
-      console.log(timing)
-      setStartTime("")
-      setEndTime("")
-    }
-  }
-
   const handlePackage = () => {
     setPack((pack) => [...pack, { id: id, service, serviceCost, duration }]);
     console.log(pack)
@@ -413,7 +398,19 @@ const PetTraining = () => {
   const removePackage = (name) => {
     const removeData = pack.filter((rem) => rem.service !== name);
     setPack(removeData)
-    console.log(removeData)
+  }
+
+  const createTime = () => {
+    if (startTime != "" && endTime != "" && startTime != null && endTime != null) {
+      setTiming((timing) => [...timing, { id: timing.length, startTime, endTime }])
+      setStartTime("")
+      setEndTime("")
+    }
+  }
+
+  const removeTimeSlot = (time) => {
+    const removeTime = timing.filter((tim) => tim.startTime !== time)
+    setTiming(removeTime)
   }
 
   return (
@@ -994,8 +991,11 @@ const PetTraining = () => {
                   {timing.map((time) => {
                     return (
                       <div className="col-xl-2 col-lg-12 col-md-12 package-view" key={time.id}
-                        style={{ marginRight: "5px", marginBottom: "5px" }}
+                        style={{ marginRight: "17px", marginBottom: "5px" }}
                       >
+                        <button type="button" className="time-slot-close" onClick={() => removeTimeSlot(time.startTime)}>
+                          <i className="bx bx-x"></i>
+                        </button>
                         <div className="card-body ">
                           <div
                             className="events-details-info"
