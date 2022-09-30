@@ -106,6 +106,9 @@ const PetTraining = () => {
       setCity(data.business.city);
       setLocation(data.business.location);
       setAbout(data.business.description);
+      setTiming(data.business.timeSlots);
+      setBookingSlot(data.business.bookingPerSlot);
+      setPack(data.business.packages);
       setProfile(
         `${process.env.DOMAIN_NAME}/api/business/get-photos/${data.business.profileImage}`
       );
@@ -134,6 +137,9 @@ const PetTraining = () => {
       city,
       location,
       establishedYear: established,
+      timeSlots: timing,
+      bookingPerSlot: bookingSlot,
+      packages: pack,
     };
     if (
       email == "" ||
@@ -380,13 +386,28 @@ const PetTraining = () => {
     setPack(removeData)
   }
 
+
   const createTime = () => {
-    if (startTime != "" && endTime != "" && startTime != null && endTime != null) {
-      setTiming((timing) => [...timing, { id: timing.length, startTime, endTime }])
-      setStartTime("")
-      setEndTime("")
+    if (
+      startTime != "" &&
+      endTime != "" &&
+      startTime != null &&
+      endTime != null
+    ) {
+      setTiming((timing) => [
+        ...timing,
+        {
+          id: timing.length,
+          timeSlot: `${startTime} - ${endTime}`,
+          startTime,
+          endTime,
+        },
+      ]);
+      setStartTime("");
+      setEndTime("");
     }
-  }
+  };
+
 
   const removeTimeSlot = (time) => {
     const removeTime = timing.filter((tim) => tim.startTime !== time)
@@ -818,7 +839,7 @@ const PetTraining = () => {
 
                   <div className="col-xl-4 col-lg-12 col-md-12">
                     <div className="form-group">
-                      <label>Service</label>
+                      <label>Service Name</label>
                       <input
                         type="text"
                         className="form-control"

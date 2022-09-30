@@ -660,7 +660,7 @@ const BookAppoinment = () => {
                                                                     </div>
                                                                 </div>
 
-                                                                <div className="col-xl-6 col-lg-12 col-md-12">
+                                                                <div className="col-lg-12 col-md-12">
                                                                     <div className="form-group">
                                                                         <label>Age</label>
                                                                         <input
@@ -671,7 +671,11 @@ const BookAppoinment = () => {
                                                                         />
                                                                     </div>
                                                                 </div>
-
+                                                                <div className="col-lg-12 col-md-12">
+                                                                    <div className="form-group">
+                                                                        <h3 id="address">Appointment Date & Time</h3>
+                                                                    </div>
+                                                                </div>
                                                                 <div className="col-xl-6 col-lg-12 col-md-12">
                                                                     <div className="form-group">
                                                                         <label>Date</label>
@@ -685,7 +689,7 @@ const BookAppoinment = () => {
                                                                     </div>
                                                                 </div>
 
-                                                                <div className="col-lg-12 col-md-12">
+                                                                <div className="col-xl-6 col-lg-12 col-md-12">
                                                                     <div className="form-group">
                                                                         <label>Time</label>
                                                                         <input
