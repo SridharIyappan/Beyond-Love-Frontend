@@ -846,50 +846,56 @@ const PetTraining = () => {
                     </div>
                   </div>
 
-                  {pack.map((pac) => {
-                    return (
-                      <div className="col-xl-4 col-lg-12 col-md-12 package-view" key={pac.id}
-                        style={{ marginRight: "5px", marginBottom: "5px" }}
-                      >
-                        <div className="card-body ">
-                          <div
-                            className="events-details-info"
-                            style={{ backgroundColor: "unset" }}
-                          >
-                            <ul className="info">
-                              <li className="price">
-                                <div className="d-flex justify-content-between align-items-center">
-                                  <span>Service</span>
-                                  {pac.service}
-                                </div>
-                              </li>
-                              <li>
-                                <div className="d-flex justify-content-between align-items-center">
-                                  <span>Service Cost</span>
-                                  {pac.serviceCost}
-                                </div>
-                              </li>
-                              <li>
-                                <div className="d-flex justify-content-between align-items-center">
-                                  <span>Duration</span>
-                                  <span>{pac.duration}</span>
-                                </div>
-                              </li>
-                              <br />
-                              <span data-toggle="modal" activeClassName="active" >
-                                <a
-                                  className="default-btn"
-                                  onClick={() => removePackage(pac.service)}
+                  {pack != undefined &&
+                    pack.map((pac) => {
+                      return (
+                        <div
+                          className="col-xl-4 col-lg-12 col-md-12 package-view"
+                          key={pac.id}
+                          style={{ padding: "0px" }}
+                        >
+                          <div className="card-body ">
+                            <div
+                              className="events-details-info"
+                              style={{ backgroundColor: "unset" }}
+                            >
+                              <ul className="info">
+                                <li className="price">
+                                  <div className="d-flex justify-content-between align-items-center">
+                                    <span>Service</span>
+                                    {pac.service}
+                                  </div>
+                                </li>
+                                <li>
+                                  <div className="d-flex justify-content-between align-items-center">
+                                    <span>Service Cost</span>
+                                    {pac.serviceCost}
+                                  </div>
+                                </li>
+                                <li>
+                                  <div className="d-flex justify-content-between align-items-center">
+                                    <span>Duration</span>
+                                    <span>{pac.duration}</span>
+                                  </div>
+                                </li>
+                                <br />
+                                <span
+                                  data-toggle="modal"
+                                  activeClassName="active"
                                 >
-                                  Remove
-                                </a>
-                              </span>
-                            </ul>
+                                  <a
+                                    className="default-btn"
+                                    onClick={() => removePackage(pac.service)}
+                                  >
+                                    Remove
+                                  </a>
+                                </span>
+                              </ul>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
 
                   <div className="col-lg-12 col-md-12">
                     <div className="form-group">
