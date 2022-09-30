@@ -922,7 +922,7 @@ const PetTraining = () => {
 
                   {timing.map((time) => {
                     return (
-                      <div className="col-xl-2 col-lg-12 col-md-12 package-view" key={time.id}
+                      <div className="col-xl-2 col-lg-12 col-md-12 package-view mt-2" key={time.id}
                         style={{ marginRight: "17px", marginBottom: "5px" }}
                       >
                         <button type="button" className="time-slot-close" onClick={() => removeTimeSlot(time.startTime)}>

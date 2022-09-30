@@ -126,6 +126,8 @@ const PetTraining = () => {
       setCity(data.business.city);
       setLocation(data.business.location);
       setAbout(data.business.description);
+      setTiming(data.business.timeSlots);
+      setBookingSlot(data.business.bookingPerSlot)
       setProfile(
         `${process.env.DOMAIN_NAME}/api/business/get-photos/${data.business.profileImage}`
       );
@@ -154,6 +156,8 @@ const PetTraining = () => {
       city,
       location,
       establishedYear: established,
+      timeSlots: timing,
+      bookingPerSlot: bookingSlot,
     };
     console.log(d);
     if (
@@ -990,7 +994,7 @@ const PetTraining = () => {
 
                   {timing.map((time) => {
                     return (
-                      <div className="col-xl-2 col-lg-12 col-md-12 package-view" key={time.id}
+                      <div className="col-xl-2 col-lg-12 col-md-12 package-view mt-2" key={time.id}
                         style={{ marginRight: "17px", marginBottom: "5px" }}
                       >
                         <button type="button" className="time-slot-close" onClick={() => removeTimeSlot(time.startTime)}>
@@ -1004,7 +1008,7 @@ const PetTraining = () => {
                             <ul className="info">
                               <li className="price">
                                 <div className="justify-content-between align-items-center">
-                                  {time.startTime}{""} : {""} {time.endTime}
+                                  {time.startTime}{""} - {""} {time.endTime}
                                 </div>
                               </li>
                             </ul>

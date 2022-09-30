@@ -17493,17 +17493,22 @@ text-decoration: underline;
 
 .time-slot-close {
   position: absolute !important;
-  right: -22px !important;
-  top: -22px !important;
+  right: -10px !important;
+  top: 41px !important;
   opacity: 1 !important;
   visibility: visible !important;
   background-color: red !important;
-  width: 32px !important;
-  height: 32px !important;
+  width: 25px !important;
+  height: 25px !important;
   text-align: center !important;
   text-shadow: unset !important;
   border-radius: 50% !important;
   line-height: 32px !important;
   color: var(--whiteColor) !important;
   padding: 3px 0 0 !important;
+}
+
+.time-slot-close i {
+  display: flex !important;
+  justify-content: center !important;
 }
