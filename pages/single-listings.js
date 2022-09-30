@@ -95,6 +95,7 @@ const SingleListings = () => {
 			if (category != undefined && id != undefined) {
 				getUniqueProfile(category, id);
 				getReviews(id);
+				// getAppointment(category, id)
 			} else {
 				setRun(!run);
 			}
@@ -134,33 +135,19 @@ const SingleListings = () => {
 			setCoverImage(
 				`${process.env.DOMAIN_NAME}/api/business/get-photos/${data.business.coverImage}`
 			);
-			if (data.success) {
-				toast.success(data.msg, {
-					theme: "light",
-					position: "top-right",
-					autoClose: 2000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: true,
-					draggable: true,
-					progress: undefined,
-				});
-			} else {
-				toast.error(data.msg, {
-					theme: "light",
-					position: "top-right",
-					autoClose: 2000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: true,
-					draggable: true,
-					progress: undefined,
-				});
-			}
 		} catch (error) {
 			console.log(error);
 		}
 	};
+
+	// const getAppointment = async (category, id) => {
+	// 	try {
+	// 		const { data } = await axios.get(`${process.env.DOMAIN_NAME}/api/business/get-profile/${category}/${id}`)
+	// 		console.log(data)
+	// 	} catch (error) {
+	// 		console.log(error)
+	// 	}
+	// }
 
 	const businessLikeWithoutLogin = () => {
 		toast.error("Please Login As Customer", {
