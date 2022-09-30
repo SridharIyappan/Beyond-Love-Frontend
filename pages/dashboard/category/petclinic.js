@@ -373,14 +373,12 @@ const PetTraining = () => {
       startTime != null &&
       endTime != null
     ) {
-      setTiming((timing) => [
-        ...timing,
-        {
-          id: timing.length,
-          timeSlot: `${startTime} - ${endTime}`,
-          startTime,
-          endTime,
-        },
+      setTiming((timing) => [...timing,
+      {
+        id: timing.length,
+        timeSlot: `${startTime} - ${endTime}`,
+        startTime, endTime,
+      },
       ]);
       setStartTime("");
       setEndTime("");
