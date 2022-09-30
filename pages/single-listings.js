@@ -314,7 +314,7 @@ const SingleListings = () => {
 		console.log(business);
 		router.push({
 			pathname: "bookappointment",
-			query: business,
+			query: { category: business.category, id: business._id },
 		});
 	};
 
