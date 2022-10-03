@@ -278,13 +278,13 @@ const BookAppoinment = () => {
 			console.log({ bookingsNumber });
 			if (bookingsNumber >= bookingsPerSlot) {
 				available.pop(time);
-				setAvailableTimeSlots(available);
-			} else {
-				setAvailableTimeSlots(available);
+				// setAvailableTimeSlots(available);
 			}
+
 			console.log({ available });
 			bookingsNumber = 0;
 		});
+		setAvailableTimeSlots(available);
 
 		setDateTimeShow(true);
 	};
@@ -550,7 +550,6 @@ const BookAppoinment = () => {
 														<div className="form-group">
 															<label>Select time</label>
 															<div className="selectTime">
-																{availableTimeSlots}
 																{availableTimeSlots.map((slot) => (
 																	<p
 																		className={
@@ -559,6 +558,7 @@ const BookAppoinment = () => {
 																				? "activeBackGround"
 																				: ""
 																		}
+																		key={slot.id}
 																		onClick={() =>
 																			selectOnclickTime(slot.timeSlot)
 																		}
@@ -566,6 +566,9 @@ const BookAppoinment = () => {
 																		{slot.timeSlot}
 																	</p>
 																))}
+																{availableTimeSlots.length <= 0 && (
+																	<p>Slots are not availble.</p>
+																)}
 															</div>
 														</div>
 													</div>
