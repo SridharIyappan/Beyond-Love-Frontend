@@ -60,6 +60,7 @@ const BookAppoinment = () => {
 	const [timeSlots, setTimeSlots] = useState([]);
 	const [appointmentsData, setAppointmentsData] = useState([]);
 	const [bookingsPerSlot, setBookingsPerSlot] = useState("");
+	const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
 	const router = useRouter();
 	console.log(router);
 
@@ -87,6 +88,7 @@ const BookAppoinment = () => {
 			console.log(data);
 			setBusinessData(data.business);
 			setTimeSlots(data.business.timeSlots);
+			setAvailableTimeSlots(data.business.timeSlots);
 			setAppointmentsData(data.fromPresentToPastAppointments);
 			setBookingsPerSlot(data.business.bookingPerSlot);
 		} catch (error) {
@@ -261,22 +263,28 @@ const BookAppoinment = () => {
 		}
 
 		console.log({ appointmentsData }, { bookingsPerSlot });
-		let slotsAvailable = [];
-		appointmentsData.map((appointment) => {
-			if (appointment.date == date) {
-				console.log(appointment.date == date, "dates are same");
-				slotsAvailable.push(appointment.timeSlot);
+
+		let bookingsNumber = 0;
+
+		let available = [];
+
+		timeSlots.map((time) => {
+			available.push(time);
+			appointmentsData.map((appointment) => {
+				if (appointment.date == date && appointment.timeSlot == time.timeSlot) {
+					bookingsNumber++;
+				}
+			});
+			console.log({ bookingsNumber });
+			if (bookingsNumber >= bookingsPerSlot) {
+				available.pop(time);
+				setAvailableTimeSlots(available);
 			} else {
-				console.log("Date are not same");
+				setAvailableTimeSlots(available);
 			}
+			console.log({ available });
+			bookingsNumber = 0;
 		});
-		console.log({ slotsAvailable });
-		// if (slotsAvailable.length >= bookingsPerSlot) {
-		// 	console.log("Slots Full");
-		// 	timeSlots = timeSlots.filter((time)=> time != slotsAvailable)
-		// } else {
-		// 	console.log("Slots Available");
-		// }
 
 		setDateTimeShow(true);
 	};
@@ -542,7 +550,8 @@ const BookAppoinment = () => {
 														<div className="form-group">
 															<label>Select time</label>
 															<div className="selectTime">
-																{timeSlots.map((slot) => (
+																{availableTimeSlots}
+																{availableTimeSlots.map((slot) => (
 																	<p
 																		className={
 																			backGroundColor &&
