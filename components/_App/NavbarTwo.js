@@ -336,7 +336,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 								<div className="mobile-view" style={{ marginRight: "44px" }}>
 									{token == null || token == "" ? (
 										<div className="others-option d-flex align-items-center">
-											<div className="option-item">
+											{/* <div className="option-item">
 												<span
 													data-toggle="modal"
 													onClick={toggleAuthRegister}
@@ -345,7 +345,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 													<i className="flaticon-user"></i> {t("Login")} /{" "}
 													{t("Register")}
 												</span>
-											</div>
+											</div> */}
 											<div className="option-item">
 												<span
 													data-toggle="modal"
@@ -583,7 +583,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 							<div className="option-inner">
 								{token == null || token == "" ? (
 									<div className="others-option">
-										<div className="option-item">
+										{/* <div className="option-item">
 											<span
 												data-toggle="modal"
 												data-target="#loginRegisterModal"
@@ -592,7 +592,7 @@ const NavbarTwo = ({ openCustomer, openBusiness }) => {
 												<i className="flaticon-user"></i> {t("Login")} /{" "}
 												{t("Register")}
 											</span>
-										</div>
+										</div> */}
 										<div className="option-item">
 											<span
 												data-toggle="modal"

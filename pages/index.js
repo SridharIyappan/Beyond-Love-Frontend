@@ -91,7 +91,7 @@ const Index2 = () => {
         openCustomer={openCustomer}
         openBusiness={openBusiness}
       />
-      <Blog />
+      {/* <Blog /> */}
       {/* <AppDownload /> */}
       <Footer />
     </>

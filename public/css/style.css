@@ -1736,7 +1736,7 @@ Main Banner Area CSS
 }
 
 .banner-content form {
-  margin-top: 20px;
+  margin-top: 45px;
   background-color: var(--whiteColor);
   -webkit-box-shadow: 5px 5px var(--mainColor2);
   box-shadow: 5px 5px var(--mainColor2);
@@ -2007,7 +2007,7 @@ Main Banner Area CSS
 }
 
 .banner-wrapper-area-main-banner {
-  padding-bottom: 100px;
+  padding-bottom: 40px;
   height: 91vh;
   background-image: url(../images/main-banner-bg3.png);
   background-position: center center;
@@ -16715,7 +16715,7 @@ th {
 .background-img {
   /* background-image: url(../images/section2.jpg); */
   background: rgb(237 237 237);
-  height: 100%;
+  /* height: 100%; */
 }
 
 .sec-count {
@@ -16723,8 +16723,8 @@ th {
 }
 
 .sec-count-head {
-  /* margin-left: 288px;
-  margin-top: 0px; */
+  /* margin-left: 288px; */
+  margin-top: 0px !important;
   text-align: center;
 
 }
@@ -16881,7 +16881,7 @@ th {
 }
 
 .footer-content-second p {
-  margin-top: 26px !important;
+  margin-top: 40px !important;
   /* margin-bottom: 5px !important; */
   color: rgb(71, 71, 71) !important;
   /* line-height: 20px !important; */
@@ -17014,7 +17014,7 @@ text-decoration: underline;
   float: left;
   overflow: hidden;
   margin-bottom: 20px;
-  margin: 40px 0px;
+  margin-top: 65px;
   padding: 0px;
 }
 
@@ -17154,7 +17154,7 @@ text-decoration: underline;
   width: 100%;
   padding: 23px 0px;
   position: relative;
-  /* background-color: #ededed; */
+  background-color: #ffffff;
 }
 
 .how-wrks .home-tit {
@@ -17303,8 +17303,8 @@ text-decoration: underline;
 }
 
 .joinUs-section {
-  background-color: #fabc1d;
-  padding: 28px;
+  background-color: #ffffff;
+  /* padding: 28px; */
 }
 
 @media screen and (max-width: 480px) {

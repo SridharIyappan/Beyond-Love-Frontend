@@ -48,88 +48,88 @@ const Category = ({ titleOne, titleTwo }) => {
 
 	return (
 		<>
-			<div className="row mx-1">
+			{/* <div className="row mx-1">
 				<div className="col-lg-1 col-sm-6 col-md-4">
 					<section>
 
 					</section>
 				</div>
-				<div className="col-lg-10 col-sm-12 col-md-12">
-					<section className="category-area pt-100 pb-70 bakgrd">
-						<div className="container">
-							{titleOne ? (
-								<div className="section-title">
-									<h2>{t("Popular Categories")}</h2>
+				<div className="col-lg-10 col-sm-12 col-md-12"> */}
+			<section className="category-area pt-100 pb-70 bakgrd">
+				<div className="container">
+					{titleOne ? (
+						<div className="section-title">
+							<h2>{t("Popular Categories")}</h2>
+						</div>
+					) : titleTwo ? (
+						<div className="section-title text-left">
+							<h2>Explore by Category</h2>
+							<a href="#" className="link-btn">
+								Show All <i className="flaticon-right-chevron"></i>
+							</a>
+						</div>
+					) : (
+						""
+					)}
+					<div className="row" style={{ justifyContent: "space-between" }}>
+						<div
+							className="col-lg-3 col-sm-6 col-md-6"
+							onClick={(e) => getSpecificCategoryServices(e, "PetClinic")}
+						>
+							<div className="single-category-box">
+								<div className="icon">
+									<FaClinicMedical size="2.5rem" />
 								</div>
-							) : titleTwo ? (
-								<div className="section-title text-left">
-									<h2>Explore by Category</h2>
-									<a href="#" className="link-btn">
-										Show All <i className="flaticon-right-chevron"></i>
-									</a>
-								</div>
-							) : (
-								""
-							)}
-							<div className="row" style={{ justifyContent: "space-between" }}>
-								<div
-									className="col-lg-3 col-sm-6 col-md-6"
-									onClick={(e) => getSpecificCategoryServices(e, "PetClinic")}
-								>
-									<div className="single-category-box">
-										<div className="icon">
-											<FaClinicMedical size="2.5rem" />
-										</div>
-										<h3>{t("Pet Clinic")}</h3>
-										<span>{3053}</span>
-									</div>
-								</div>
-								<div
-									className="col-lg-3 col-sm-6 col-md-6"
-									onClick={(e) => getSpecificCategoryServices(e, "PetGrooming")}
-								>
-									<div className="single-category-box">
-										<div className="icon">
-											<GiHairStrands size="2.5rem" />
-										</div>
-										<h3>{t("Pet Grooming")}</h3>
-										<span>{2062}</span>
-									</div>
-								</div>
-								<div
-									className="col-lg-3 col-sm-6 col-md-6"
-									onClick={(e) => getSpecificCategoryServices(e, "PetTraining")}
-								>
-									<div className="single-category-box">
-										<div className="icon">
-											<TbBone size="2.5rem" />
-										</div>
-										<h3>{t("Pet Training")}</h3>
-										<span>{2305}</span>
-									</div>
-								</div>
-								<div
-									className="col-lg-3 col-sm-6 col-md-6"
-									onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}
-								>
-									<div className="single-category-box">
-										<div className="icon">
-											<MdPets size="2.5rem" />
-										</div>
-										<h3>{t("Pet Boarding")}</h3>
-										<span>{1172}</span>
-									</div>
-								</div>
+								<h3>{t("Pet Clinic")}</h3>
+								<span>{3053}</span>
 							</div>
 						</div>
-					</section>
+						<div
+							className="col-lg-3 col-sm-6 col-md-6"
+							onClick={(e) => getSpecificCategoryServices(e, "PetGrooming")}
+						>
+							<div className="single-category-box">
+								<div className="icon">
+									<GiHairStrands size="2.5rem" />
+								</div>
+								<h3>{t("Pet Grooming")}</h3>
+								<span>{2062}</span>
+							</div>
+						</div>
+						<div
+							className="col-lg-3 col-sm-6 col-md-6"
+							onClick={(e) => getSpecificCategoryServices(e, "PetTraining")}
+						>
+							<div className="single-category-box">
+								<div className="icon">
+									<TbBone size="2.5rem" />
+								</div>
+								<h3>{t("Pet Training")}</h3>
+								<span>{2305}</span>
+							</div>
+						</div>
+						<div
+							className="col-lg-3 col-sm-6 col-md-6"
+							onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}
+						>
+							<div className="single-category-box">
+								<div className="icon">
+									<MdPets size="2.5rem" />
+								</div>
+								<h3>{t("Pet Boarding")}</h3>
+								<span>{1172}</span>
+							</div>
+						</div>
+					</div>
 				</div>
+			</section>
+			{/* </div>
 				<div className="col-lg-1 col-sm-6 col-md-4">
 					<section>
 
 					</section>
 				</div>
-			</div>
+			</div> */}
 		</>
 	);
 };

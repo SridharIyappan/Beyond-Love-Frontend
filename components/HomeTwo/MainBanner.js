@@ -45,22 +45,22 @@ const Banner = () => {
 	let dispatch = useDispatch();
 
 	// Contact Form Function
-	const contactFormShow = () => {
-		if (userType == "Customer") {
-			setContactForm(!contactForm);
-		} else {
-			toast.error("Please login as a customer", {
-				theme: "light",
-				position: "top-center",
-				autoClose: 2000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-		}
-	};
+	// const contactFormShow = () => {
+	// 	if (userType == "Customer") {
+	// 		setContactForm(!contactForm);
+	// 	} else {
+	// 		toast.error("Please login as a customer", {
+	// 			theme: "light",
+	// 			position: "top-center",
+	// 			autoClose: 2000,
+	// 			hideProgressBar: false,
+	// 			closeOnClick: true,
+	// 			pauseOnHover: true,
+	// 			draggable: true,
+	// 			progress: undefined,
+	// 		});
+	// 	}
+	// };
 
 	useEffect(() => {
 		if (typeof window != "undefined") {
@@ -267,21 +267,21 @@ const Banner = () => {
 
 	return (
 		<>
-			<div className="row mx-1">
+			{/* <div className="row mx-1">
 				<div className="col-lg-1 col-sm-6 col-md-4">
 					<section></section>
 				</div>
 
-				<div className="col-lg-10 col-sm-12 col-md-12">
-					<section className="banner-wrapper-area-main-banner">
-						<ToastContainer />
-						<div className="mx-4">
-							<div className="row">
-								<div className="col-lg-8 col-sm-12 col-md-12 mt-1">
-									<div className="banner-content banner-form mt-4">
-										<h1 className="banner-two-heading">
-											<span className="typewrite">{t("Find Nearby")}</span>
-											{/* <Typist>
+				<div className="col-lg-10 col-sm-12 col-md-12"> */}
+			<section className="banner-wrapper-area-main-banner">
+				<ToastContainer />
+				<div className="mx-4">
+					<div className="row">
+						<div className="col-lg-8 col-sm-12 col-md-12 mt-1">
+							<div className="banner-content banner-form mt-4">
+								<h1 className="banner-two-heading">
+									<span className="typewrite">{t("Find Nearby")}</span>
+									{/* <Typist>
 										<span> </span>
 										<Typist.Backspace count={0} loop delay={1000} />
 										<span>{t("Pet Clinic")}</span>
@@ -298,7 +298,7 @@ const Banner = () => {
 										<Typist.Backspace count={22} delay={150} />
 										<span>{t("Pet Boarding")}</span>
 									</Typist> */}
-											{/* <Typed
+									{/* <Typed
 												style={{ color: "white" }}
 												strings={[
 													t("Pet Clinic"),
@@ -310,53 +310,53 @@ const Banner = () => {
 												backSpeed={50}
 												loop
 											/> */}
-											<span className="text-light">Services</span>
-										</h1>
-										{/* Gif file section */}
-										<section class="product-categories-list">
-											<div class="categories-block columns-5">
-												<ul class="categories">
-													<div className="row">
-														<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
-															<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetClinic")}>
-																<a>
-																	<img class="lazy loaded" src="/images/Clinic.gif" alt="pet clinic" width="300" height="300" data-was-processed="true" />
-																	<h4>Pet Clinic </h4>
-																</a>
-															</li>
-														</div>
-														<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
-															<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetTraining")}>
-																<a>
-																	<img class="lazy loaded" src="/images/training.gif" alt="pet training" width="300" height="300" data-was-processed="true" />
-																	<h4>Pet Training</h4>
-																</a>
-															</li>
-														</div>
-													</div>
-												</ul>
-												<ul class="categories">
-													<div className="row">
-														<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
-															<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}>
-																<a href="#">
-																	<img class="lazy loaded" src="/images/boarding.gif" alt="Collar, Leashes &amp; Harness" width="300" height="300" data-was-processed="true" />
-																	<h4>Pet Boarding </h4>
-																</a>
-															</li>
-														</div>
-														<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
-															<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetGrooming")}>
-																<a href="#">
-																	<img class="lazy loaded" src="/images/grooming.gif" alt="Dog Grooming" width="300" height="300" data-was-processed="true" />
-																	<h4>Pet Grooming</h4>
-																</a>
-															</li>
-														</div>
-													</div>
-												</ul>
+									<span className="text-light">Services</span>
+								</h1>
+								{/* Gif file section */}
+								<section class="product-categories-list">
+									<div class="categories-block columns-5">
+										<ul class="categories">
+											<div className="row">
+												<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
+													<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetClinic")}>
+														<a>
+															<img class="lazy loaded" src="/images/Clinic.gif" alt="pet clinic" width="300" height="300" data-was-processed="true" />
+															<h4>Pet Clinic </h4>
+														</a>
+													</li>
+												</div>
+												<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
+													<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetTraining")}>
+														<a>
+															<img class="lazy loaded" src="/images/training.gif" alt="pet training" width="300" height="300" data-was-processed="true" />
+															<h4>Pet Training</h4>
+														</a>
+													</li>
+												</div>
 											</div>
-											{/* <ul class="categories">
+										</ul>
+										<ul class="categories">
+											<div className="row">
+												<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
+													<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}>
+														<a href="#">
+															<img class="lazy loaded" src="/images/boarding.gif" alt="Collar, Leashes &amp; Harness" width="300" height="300" data-was-processed="true" />
+															<h4>Pet Boarding </h4>
+														</a>
+													</li>
+												</div>
+												<div className="col-lg-5 col-md-6 p-0" style={{ margin: "0 auto" }}>
+													<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetGrooming")}>
+														<a href="#">
+															<img class="lazy loaded" src="/images/grooming.gif" alt="Dog Grooming" width="300" height="300" data-was-processed="true" />
+															<h4>Pet Grooming</h4>
+														</a>
+													</li>
+												</div>
+											</div>
+										</ul>
+									</div>
+									{/* <ul class="categories">
 												<li class="category" onClick={(e) => getSpecificCategoryServices(e, "PetBoarding")}>
 													<a href="#">
 														<img class="lazy loaded" src="/images/boarding.gif" alt="Collar, Leashes &amp; Harness" width="300" height="300" data-was-processed="true" />
@@ -371,15 +371,15 @@ const Banner = () => {
 												</li>
 											</ul> */}
 
-										</section>
-										{/* Gif file End section */}
+								</section>
+								{/* Gif file End section */}
 
-										<form onSubmit={handleSubmit}>
-											<div
-												className="row m-0 align-items-center"
-												style={{ padding: "6px" }}
-											>
-												{/* <div class="col-lg-3 col-md-6 p-0">
+								<form onSubmit={handleSubmit}>
+									<div
+										className="row m-0 align-items-center"
+										style={{ padding: "6px" }}
+									>
+										{/* <div class="col-lg-3 col-md-6 p-0">
 													<div className="form-group category-select">
 														<label className="category-icon">
 															<i className="flaticon-pin"></i>
@@ -403,70 +403,70 @@ const Banner = () => {
 																			? state.Geo_Name
 																			: window.location.reload(false)}
 																		{/* {state[0]} */}
-												{/* </option> */}
-												{/* ); */}
-												{/* // } */}
-												{/* })} */}
-												{/* </select> */}
-												{/* </div> */}
-												{/* </div> */}
+										{/* </option> */}
+										{/* ); */}
+										{/* // } */}
+										{/* })} */}
+										{/* </select> */}
+										{/* </div> */}
+										{/* </div> */}
 
-												<div class="col-lg-5 col-md-6 p-0">
-													<div className="form-group category-select">
-														<label className="category-icon">
-															<i className="flaticon-pin"></i>
-														</label>
-														<select
-															className="banner-form-select-two"
-															// onFocus={handleClickCity}
-															onChange={handleChangeCity}
-														>
-															<option>{t("City")}</option>
-															{dataCity.map((city) => {
-																return (
-																	<option
-																		value={[city[0], city[1], city[2]]}
-																		key={city[0]}
-																	>
-																		{city[0]}
-																	</option>
-																);
-															})}
-														</select>
-													</div>
-												</div>
+										<div class="col-lg-5 col-md-6 p-0">
+											<div className="form-group category-select">
+												<label className="category-icon">
+													<i className="flaticon-pin"></i>
+												</label>
+												<select
+													className="banner-form-select-two"
+													// onFocus={handleClickCity}
+													onChange={handleChangeCity}
+												>
+													<option>{t("City")}</option>
+													{dataCity.map((city) => {
+														return (
+															<option
+																value={[city[0], city[1], city[2]]}
+																key={city[0]}
+															>
+																{city[0]}
+															</option>
+														);
+													})}
+												</select>
+											</div>
+										</div>
 
-												<div class="col-lg-5 col-md-6 p-0">
-													<div className="form-group category-select">
-														<label className="category-icon">
-															<i className="flaticon-pin"></i>
-														</label>
-														<select
-															className="banner-form-select-two"
-															onFocus={handleClickLocation}
-															onChange={handleChangeLocation}
-														>
-															<option>{t("Location")}</option>
-															{selectedLocation.map((location) => {
-																return (
-																	<option
-																		value={[
-																			location[0],
-																			location[1],
-																			location[2],
-																			location[3],
-																		]}
-																		key={location[0]}
-																	>
-																		{location[0]}
-																	</option>
-																);
-															})}
-														</select>
-													</div>
-												</div>
+										<div class="col-lg-5 col-md-6 p-0">
+											<div className="form-group category-select">
+												<label className="category-icon">
+													<i className="flaticon-pin"></i>
+												</label>
+												<select
+													className="banner-form-select-two"
+													onFocus={handleClickLocation}
+													onChange={handleChangeLocation}
+												>
+													<option>{t("Location")}</option>
+													{selectedLocation.map((location) => {
+														return (
+															<option
+																value={[
+																	location[0],
+																	location[1],
+																	location[2],
+																	location[3],
+																]}
+																key={location[0]}
+															>
+																{location[0]}
+															</option>
+														);
+													})}
+												</select>
+											</div>
+										</div>
 
-												{/* <div class="col-lg-3 col-md-6 p-0">
+										{/* <div class="col-lg-3 col-md-6 p-0">
 													<div className="form-group category-select">
 														<label className="category-icon">
 															<i className="flaticon-search"></i>
@@ -490,143 +490,143 @@ const Banner = () => {
 													</div>
 												</div> */}
 
-												<div class="col-lg-2 col-md-6 p-0">
-													<div className="submit-btn ">
-														<button type="submit">
-															{" "}
-															<i className="flaticon-search"></i>
-														</button>
-													</div>
-												</div>
+										<div class="col-lg-2 col-md-6 p-0">
+											<div className="submit-btn ">
+												<button type="submit">
+													{" "}
+													<i className="flaticon-search"></i>
+												</button>
 											</div>
-										</form>
+										</div>
 									</div>
-									<div style={{ display: "flex" }}>
-										{/* <div className='search-btn mr-2'>
+								</form>
+							</div>
+							<div style={{ display: "flex" }}>
+								{/* <div className='search-btn mr-2'>
                                     <Link href='/listings' >
                                         <button>Search Now</button>
                                     </Link>
                                 </div> */}
-										<div className="search-btn">
-											<button onClick={contactFormShow}>
-												{t("Leave Your Search to Us")}
-											</button>
-										</div>
-									</div>
-								</div>
+								{/* <div className="search-btn">
+									<button onClick={contactFormShow}>
+										{t("Leave Your Search to Us")}
+									</button>
+								</div> */}
+							</div>
+						</div>
 
-								{contactForm && (
-									<div className="col-lg-4 col-sm-12 col-md-12">
-										<div className="contact-form mt-5">
-											<form id="contactForm" onSubmit={appointmentFormSubmit}>
-												<div className="row">
-													<div className="col-lg-12 col-md-6">
-														<div className="form-group">
-															<input
-																type="text"
-																className="dashbaord-category-select"
-																placeholder="Name"
-																style={{ border: "none" }}
-																value={name}
-																onChange={(e) => setName(e.target.value)}
-															/>
-															{error && name == "" ? (
-																<span className="text-danger">
-																	Please enter name
-																</span>
-															) : (
-																<> </>
-															)}
-														</div>
-													</div>
+						{contactForm && (
+							<div className="col-lg-4 col-sm-12 col-md-12">
+								<div className="contact-form mt-5">
+									<form id="contactForm" onSubmit={appointmentFormSubmit}>
+										<div className="row">
+											<div className="col-lg-12 col-md-6">
+												<div className="form-group">
+													<input
+														type="text"
+														className="dashbaord-category-select"
+														placeholder="Name"
+														style={{ border: "none" }}
+														value={name}
+														onChange={(e) => setName(e.target.value)}
+													/>
+													{error && name == "" ? (
+														<span className="text-danger">
+															Please enter name
+														</span>
+													) : (
+														<> </>
+													)}
+												</div>
+											</div>
 
-													<div className="col-lg-12 col-md-6">
-														<div className="form-group">
-															<input
-																type="text"
-																className="dashbaord-category-select"
-																placeholder="Mobile"
-																style={{ border: "none" }}
-																value={mobile}
-																onChange={(e) => setMobile(e.target.value)}
-															/>
-															{error && mobile == "" ? (
-																<span className="text-danger">
-																	Please enter mobile number
-																</span>
-															) : (
-																<></>
-															)}
-														</div>
-													</div>
+											<div className="col-lg-12 col-md-6">
+												<div className="form-group">
+													<input
+														type="text"
+														className="dashbaord-category-select"
+														placeholder="Mobile"
+														style={{ border: "none" }}
+														value={mobile}
+														onChange={(e) => setMobile(e.target.value)}
+													/>
+													{error && mobile == "" ? (
+														<span className="text-danger">
+															Please enter mobile number
+														</span>
+													) : (
+														<></>
+													)}
+												</div>
+											</div>
 
-													<div className="col-lg-12 col-md-6">
-														<div className="form-group">
-															<select
-																className="dashbaord-category-select"
-																placeholder="Select the state"
-																style={{ border: "none" }}
-																value={category}
-																onChange={(e) => setCategory(e.target.value)}
-															>
-																<option>Categories</option>
-																<option>Pet Clinic</option>
-																<option>Pet Grooming</option>
-																<option>Pet Boarding</option>
-																<option>Pet Training</option>
-																<option>Pet Food</option>
-															</select>
-															{error && category.length == "" ? (
-																<span className="text-danger">
-																	Please select category
-																</span>
-															) : (
-																<></>
-															)}
-														</div>
-													</div>
+											<div className="col-lg-12 col-md-6">
+												<div className="form-group">
+													<select
+														className="dashbaord-category-select"
+														placeholder="Select the state"
+														style={{ border: "none" }}
+														value={category}
+														onChange={(e) => setCategory(e.target.value)}
+													>
+														<option>Categories</option>
+														<option>Pet Clinic</option>
+														<option>Pet Grooming</option>
+														<option>Pet Boarding</option>
+														<option>Pet Training</option>
+														<option>Pet Food</option>
+													</select>
+													{error && category.length == "" ? (
+														<span className="text-danger">
+															Please select category
+														</span>
+													) : (
+														<></>
+													)}
+												</div>
+											</div>
 
-													<div className="col-lg-12 col-md-6">
-														<div className="form-group">
-															<input
-																type="text"
-																className="dashbaord-category-select"
-																placeholder="City"
-																style={{ border: "none" }}
-																value={city}
-																onChange={(e) => setCity(e.target.value)}
-															/>
-															{error && location == "" ? (
-																<span className="text-danger">
-																	Please enter city
-																</span>
-															) : (
-																<></>
-															)}
-														</div>
-													</div>
+											<div className="col-lg-12 col-md-6">
+												<div className="form-group">
+													<input
+														type="text"
+														className="dashbaord-category-select"
+														placeholder="City"
+														style={{ border: "none" }}
+														value={city}
+														onChange={(e) => setCity(e.target.value)}
+													/>
+													{error && location == "" ? (
+														<span className="text-danger">
+															Please enter city
+														</span>
+													) : (
+														<></>
+													)}
+												</div>
+											</div>
 
-													<div className="col-lg-12 col-md-6">
-														<div className="form-group">
-															<input
-																type="text"
-																className="dashbaord-category-select"
-																placeholder="Location"
-																style={{ border: "none" }}
-																value={location}
-																onChange={(e) => setLocation(e.target.value)}
-															/>
-															{error && location == "" ? (
-																<span className="text-danger">
-																	Please enter location
-																</span>
-															) : (
-																<></>
-															)}
-														</div>
-													</div>
+											<div className="col-lg-12 col-md-6">
+												<div className="form-group">
+													<input
+														type="text"
+														className="dashbaord-category-select"
+														placeholder="Location"
+														style={{ border: "none" }}
+														value={location}
+														onChange={(e) => setLocation(e.target.value)}
+													/>
+													{error && location == "" ? (
+														<span className="text-danger">
+															Please enter location
+														</span>
+													) : (
+														<></>
+													)}
+												</div>
+											</div>
 
-													{/* <div className="col-lg-6 col-md-6">
+											{/* <div className="col-lg-6 col-md-6">
 												<div className="form-group">
 													<label>
 														<i className="bx bx-menu-alt-left"></i> Appoinment:
@@ -634,64 +634,64 @@ const Banner = () => {
 												</div>
 											</div> */}
 
-													<div className="col-lg-12 col-md-6">
-														<div className="form-group">
-															{/* <input
+											<div className="col-lg-12 col-md-6">
+												<div className="form-group">
+													{/* <input
 														type="datetime-local"
 														className="form-control"
 														placeholder="Appointment"
 														value={dateTime}
 														onChange={(e) => setDateTime(e.target.value)}
 													/> */}
-															<LocalizationProvider
-																dateAdapter={AdapterDateFns}
-															>
-																<DesktopDateTimePicker
-																	ampm={false}
-																	renderInput={(props) => (
-																		<TextField {...props} />
-																	)}
-																	label="Appointment Date"
-																	value={dateTime}
-																	onChange={(newValue) => {
-																		setDateTime(newValue);
-																	}}
-																/>
-															</LocalizationProvider>
-															{error && dateTime == "" ? (
-																<span className="text-danger">
-																	Please select date
-																</span>
-															) : (
-																<></>
+													<LocalizationProvider
+														dateAdapter={AdapterDateFns}
+													>
+														<DesktopDateTimePicker
+															ampm={false}
+															renderInput={(props) => (
+																<TextField {...props} />
 															)}
-														</div>
-													</div>
-
-													<div className="col-lg-12 col-md-12">
-														<button type="submit" className="default-btn">
-															Reach Us
-														</button>
-														<div
-															id="msgSubmit"
-															className="h3 text-center hidden"
-														></div>
-														<div className="clearfix"></div>
-													</div>
+															label="Appointment Date"
+															value={dateTime}
+															onChange={(newValue) => {
+																setDateTime(newValue);
+															}}
+														/>
+													</LocalizationProvider>
+													{error && dateTime == "" ? (
+														<span className="text-danger">
+															Please select date
+														</span>
+													) : (
+														<></>
+													)}
 												</div>
-											</form>
+											</div>
+
+											<div className="col-lg-12 col-md-12">
+												<button type="submit" className="default-btn">
+													Reach Us
+												</button>
+												<div
+													id="msgSubmit"
+													className="h3 text-center hidden"
+												></div>
+												<div className="clearfix"></div>
+											</div>
 										</div>
-									</div>
-								)}
+									</form>
+								</div>
 							</div>
-						</div>
-					</section>
-				</div >
+						)}
+					</div>
+				</div>
+			</section>
+			{/* </div >
 
 				<div className="col-lg-1 col-sm-6 col-md-4">
 					<section></section>
 				</div>
-			</div >
+			</div > */}
 		</>
 	);
 };

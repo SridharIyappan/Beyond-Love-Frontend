@@ -131,8 +131,8 @@ const PetTraining = () => {
       (pincode == undefined && state == "") ||
       (state == undefined && city == "") ||
       (city == undefined && location == "") ||
-      (location == undefined && street == "")
-        (doorNumber == undefined && doorNumber == "") ||
+      (location == undefined && street == "") ||
+      (doorNumber == undefined && doorNumber == "") ||
       (street == undefined && street == "")
     ) {
       setError(true);
