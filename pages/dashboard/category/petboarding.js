@@ -1021,7 +1021,7 @@ const PetTraining = () => {
 										</div>
 									</div>
 
-									{timing.map((time) => {
+									{timing !== undefined && (<> {timing.map((time) => {
 										return (
 											<div
 												className="col-xl-2 col-lg-12 col-md-12 package-view mt-2"
@@ -1051,8 +1051,8 @@ const PetTraining = () => {
 													</div>
 												</div>
 											</div>
-										);
-									})}
+										)
+									})}</>)}
 
 									<div className="col-lg-12 col-md-12">
 										<div className="form-group">
