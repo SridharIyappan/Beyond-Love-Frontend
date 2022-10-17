@@ -26,8 +26,6 @@ const Bookings = () => {
   const [appointmentsData, setAppointmentsData] = useState([]);
   const [bookingsPerSlot, setBookingsPerSlot] = useState("");
   const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
-  const [appointmentFixed, setAppointmentFixed] = useState("")
-  const [appointemntId, setAppointmentId] = useState("");
 
   useEffect(() => {
     if (typeof window != "undefined") {
@@ -196,12 +194,10 @@ const Bookings = () => {
   };
 
   const confirmappointment = async (e, category, id) => {
-    setAppointmentId(id)
     e.preventDefault();
     console.log(token)
     try {
       const { data } = await axios.put(`${process.env.DOMAIN_NAME}/api/business/fix-appointemnt/${id}/${category}/${token}`);
-      setAppointmentFixed(data.appointment.appointmentFixed)
       console.log(data)
       if (data.success) {
         toast.success(data.msg, {
@@ -306,11 +302,11 @@ const Bookings = () => {
                         </ul>
                       </td>
                       <td className='action'>
-                        <button
-                          className={appointmentFixed !== "true" && appointemntId === app._id ? "confirmHideBtn" : "default-btn"}
+                        {app.appointmentFixed === false && (<button
+                          className="default-btn"
                           onClick={(e) => confirmappointment(e, app.category, app._id)}>
                           <i className='bx bx-check-circle'></i> Confirm
-                        </button>
+                        </button>)}
                         <button className='default-btn danger' onClick={() => reschedulePopup(app._id)}>
                           <i className='bx bx-x-circle'></i> Reschedule
                         </button>
