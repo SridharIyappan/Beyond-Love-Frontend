@@ -1,17 +1,12 @@
 import axios from "axios";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { addAllBusiness } from "../../Redux/allBusinessSlice";
 import { useRouter } from "next/router";
-import Typist from "react-typist";
 import { ToastContainer, toast, TypeOptions } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
 import { useTranslation } from "next-i18next";
-import { useDispatch } from "react-redux";
 import { dataState } from "../../utils/dataState";
 import { dataCity } from "../../utils/dataCity";
 import { dataLocation } from "../../utils/dataLocation";
-import Typed from "react-typed";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDateTimePicker } from "@mui/x-date-pickers/DesktopDateTimePicker";
@@ -28,39 +23,21 @@ const Banner = () => {
 	const [error, setError] = useState(false);
 	const [stateName, setStateName] = useState("");
 	const [cityName, setCityName] = useState("");
-	const [selectedCity, setSelectedCity] = useState([]);
+	
 	const [locationName, setLocationName] = useState("");
 	const [selectedLocation, setSelectedLocation] = useState([]);
 	const [categoryName, setCategoryName] = useState("");
-	const [allBusinessDetail, setAllBusinessDetail] = useState([]);
-	const [allStates, setAllStates] = useState([]);
+	
 	const [allCities, setAllCities] = useState([]);
 	const [allLocations, setAllLocations] = useState([]);
-	const [run, setRun] = useState(false);
+	
 	const [token, setToken] = useState("");
 	const [userType, setUserType] = useState("");
 	const { t } = useTranslation("home");
 
 	let router = useRouter();
-	let dispatch = useDispatch();
+	
 
-	// Contact Form Function
-	// const contactFormShow = () => {
-	// 	if (userType == "Customer") {
-	// 		setContactForm(!contactForm);
-	// 	} else {
-	// 		toast.error("Please login as a customer", {
-	// 			theme: "light",
-	// 			position: "top-center",
-	// 			autoClose: 2000,
-	// 			hideProgressBar: false,
-	// 			closeOnClick: true,
-	// 			pauseOnHover: true,
-	// 			draggable: true,
-	// 			progress: undefined,
-	// 		});
-	// 	}
-	// };
 
 	useEffect(() => {
 		if (typeof window != "undefined") {
@@ -175,10 +152,10 @@ const Banner = () => {
 	};
 
 	// Category Change Function
-	const handleChangeCategory = (e) => {
-		console.log(e.target.value);
-		setCategoryName(e.target.value);
-	};
+	// const handleChangeCategory = (e) => {
+	// 	console.log(e.target.value);
+	// 	setCategoryName(e.target.value);
+	// };
 
 	// Location Change Function
 	const handleChangeLocation = (e) => {
@@ -267,12 +244,7 @@ const Banner = () => {
 
 	return (
 		<>
-			{/* <div className="row mx-1">
-				<div className="col-lg-1 col-sm-6 col-md-4">
-					<section></section>
-				</div>
-
-				<div className="col-lg-10 col-sm-12 col-md-12"> */}
+			
 			<section className="banner-wrapper-area-main-banner">
 				<ToastContainer />
 				<div className="mx-4">
@@ -281,23 +253,7 @@ const Banner = () => {
 							<div className="banner-content banner-form mt-4">
 								<h1 className="banner-two-heading">
 									<span className="typewrite">{t("Find Nearby")}</span>
-									{/* <Typist>
-										<span> </span>
-										<Typist.Backspace count={0} loop delay={1000} />
-										<span>{t("Pet Clinic")}</span>
-										<Typist.Backspace count={20} delay={750} />
-										<span> </span>
-										<Typist.Backspace count={20} delay={150} />
-										<span>{t("Pet Grooming")}</span>
-										<Typist.Backspace count={25} delay={750} />
-										<span> </span>
-										<Typist.Backspace count={25} delay={150} />
-										<span>{t("Pet Training")}</span>
-										<Typist.Backspace count={22} delay={750} />
-										<span> </span>
-										<Typist.Backspace count={22} delay={150} />
-										<span>{t("Pet Boarding")}</span>
-									</Typist> */}
+									
 									{/* <Typed
 												style={{ color: "white" }}
 												strings={[

@@ -86,7 +86,7 @@ const GridListingsWithLeftSidebar = () => {
 			setbusinessInterval(interval);
 			localStorage.setItem("interval", interval);
 		} else {
-			console.log("we area running server side")
+			console.log("we area running server side");
 		}
 	}, []);
 
