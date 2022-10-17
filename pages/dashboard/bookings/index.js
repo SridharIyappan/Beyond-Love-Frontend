@@ -21,14 +21,20 @@ const Bookings = () => {
   const [error, setError] = useState(false);
   const [token, setToken] = useState("")
   const [rescheduleId, setRescheduleId] = useState("")
-  console.log(appointment)
+  const [businessData, setBusinessData] = useState("");
+  const [timeSlots, setTimeSlots] = useState([]);
+  const [appointmentsData, setAppointmentsData] = useState([]);
+  const [bookingsPerSlot, setBookingsPerSlot] = useState("");
+  const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
+  const [appointmentFixed, setAppointmentFixed] = useState("")
+  const [appointemntId, setAppointmentId] = useState("");
 
   useEffect(() => {
     if (typeof window != "undefined") {
       const tok = localStorage.getItem("token")
       const user = JSON.parse(localStorage.getItem("user"));
       let category = user.category;
-      if (tok != null || cate != null) {
+      if (tok != null || category != null) {
         setToken(tok)
         getAppoitment(category, tok);
       }
@@ -38,12 +44,30 @@ const Bookings = () => {
     }
   }, []);
 
+  const getUniqueProfile = async (cate, id) => {
+    console.log({ cate }, { id });
+    console.log("get uinig adata")
+    try {
+      const { data } = await axios.get(
+        `${process.env.DOMAIN_NAME}/api/business/get-profile/${cate}/${id}`
+      );
+      console.log(data);
+      setBusinessData(data.business);
+      setTimeSlots(data.business.timeSlots);
+      setAvailableTimeSlots(data.business.timeSlots);
+      setAppointmentsData(data.fromPresentToPastAppointments);
+      setBookingsPerSlot(data.business.bookingPerSlot);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getAppoitment = async (category, token) => {
     try {
       const { data } = await axios.get(`${process.env.DOMAIN_NAME}/api/business/get-appointment/${category}/${token}`)
       console.log(data)
       setAppointment(data.appointments)
-      // setCategory(data.)
+      getUniqueProfile(category, data.appointments[0].businessId);
     } catch (error) {
       console.log(error)
     }
@@ -69,7 +93,7 @@ const Bookings = () => {
     e.preventDefault();
     const d = {
       date: selectedDate,
-      time: selectTime,
+      timeSlot: selectTime,
     };
     console.log(d)
     if (selectedDate == null || selectTime == "" || selectTime == undefined) {
@@ -80,6 +104,7 @@ const Bookings = () => {
         const { data } = await axios.put(`${process.env.DOMAIN_NAME}/api/business/reschedule-appointment/${category}/${id}/${token}`, d);
         console.log(data)
         if (data.success) {
+          getAppoitment(category, token);
           toast.success(data.msg, {
             theme: "light",
             position: "top-right",
@@ -113,6 +138,100 @@ const Bookings = () => {
     }
   }
 
+  const dateHandler = (value) => {
+    console.log(value);
+    let month;
+    let day;
+    let date;
+    console.log(typeof value.$M);
+    if (value.$M + 1 <= 9) {
+      console.log(value.$M, "month less than 9");
+      month = `0${value.$M + 1}`;
+      if (value.$D <= 9) {
+        day = `0${value.$D}`;
+        date = `${value.$y}-${month}-${day}`;
+        setSelectedDate(`${value.$y}-${month}-${day}`);
+      } else {
+        date = `${value.$y}-${month}-${value.$D}`;
+        setSelectedDate(`${value.$y}-${month}-${value.$D}`);
+      }
+    } else {
+      console.log("month greather than 9");
+      if (value.$D <= 9) {
+        day = `0${value.$D}`;
+        date = `${value.$y}-${value.$M + 1}-${day}`;
+        setSelectedDate(`${value.$y}-${value.$M + 1}-${day}`);
+      } else {
+        date = `${value.$y}-${value.$M + 1}-${value.$D}`;
+        setSelectedDate(`${value.$y}-${value.$M + 1}-${value.$D}`);
+      }
+      // setSelectedDate(`${value.$y}-${value.$M + 1}-${value.$D}`);
+    }
+
+    console.log({ appointmentsData }, { bookingsPerSlot });
+
+    let bookingsNumber = 0;
+
+    let available = [];
+
+    timeSlots.map((time) => {
+      available.push(time);
+      appointmentsData.map((appointment) => {
+        if (appointment.date == date && appointment.timeSlot == time.timeSlot) {
+          bookingsNumber++;
+        }
+      });
+      console.log({ bookingsNumber });
+      if (bookingsNumber >= bookingsPerSlot) {
+        available.pop(time);
+        // setAvailableTimeSlots(available);
+      }
+
+      console.log({ available });
+      bookingsNumber = 0;
+    });
+    setAvailableTimeSlots(available);
+
+    setDateTimeShow(true);
+  };
+
+  const confirmappointment = async (e, category, id) => {
+    setAppointmentId(id)
+    e.preventDefault();
+    console.log(token)
+    try {
+      const { data } = await axios.put(`${process.env.DOMAIN_NAME}/api/business/fix-appointemnt/${id}/${category}/${token}`);
+      setAppointmentFixed(data.appointment.appointmentFixed)
+      console.log(data)
+      if (data.success) {
+        toast.success(data.msg, {
+          theme: "light",
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else {
+        toast.error(data.msg, {
+          theme: "light",
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
   return (
     <>
       <div className={reschedule ? "body_overlay open" : "body_overlay"}></div>
@@ -123,7 +242,7 @@ const Bookings = () => {
         <div className='bookings-listings-box'>
           <ToastContainer />
 
-          {appointment.length > 0 ? (<div className='table-responsive'>
+          {appointment !== undefined && <> {appointment.length > 0 ? (<div className='table-responsive'>
             <h3>Your Appointment</h3>
             <table className='table'>
               <thead>
@@ -136,7 +255,7 @@ const Bookings = () => {
               </thead>
 
               <tbody>
-                {appointment.map((app) => {
+                {appointment !== undefined && <> {appointment.map((app) => {
                   console.log(app)
                   let day = app.date;
                   let day1 = new Date(day)
@@ -182,26 +301,26 @@ const Bookings = () => {
                             <span>Date :</span>{" "}{date[0]} {date[1]} {date[2]} {date[3]}
                           </li>
                           <li>
-                            <span>Time :</span>{" "}{app.time}
+                            <span>Time :</span>{" "}{app.timeSlot}
                           </li>
                         </ul>
                       </td>
                       <td className='action'>
-                        <a href='#' className='default-btn'>
-                          <i className='bx bx-check-circle'></i> Approve
-                        </a>
+                        <button
+                          className={appointmentFixed !== "true" && appointemntId === app._id ? "confirmHideBtn" : "default-btn"}
+                          onClick={(e) => confirmappointment(e, app.category, app._id)}>
+                          <i className='bx bx-check-circle'></i> Confirm
+                        </button>
                         <button className='default-btn danger' onClick={() => reschedulePopup(app._id)}>
                           <i className='bx bx-x-circle'></i> Reschedule
                         </button>
                       </td>
                     </tr>
                   )
-                })}
-
-
+                })}</>}
               </tbody>
             </table>
-          </div>) : (<h3>No Appointment</h3>)}
+          </div>) : (<h3>No Appointment</h3>)}</>}
         </div>
 
         <div className='flex-grow-1'></div>
@@ -232,7 +351,7 @@ const Bookings = () => {
             <button type="button" className="close" onClick={rescheduleClosePopup}>
               <i className="bx bx-x"></i>
             </button>
-            {appointment.map((app) => {
+            {appointment !== undefined && <> {appointment.map((app) => {
               return (
                 <>
                   {app._id == rescheduleId && (<div>
@@ -247,10 +366,11 @@ const Bookings = () => {
                               <DatePicker
                                 label="Date"
                                 value={selectedDate}
-                                onChange={(newValue) => {
-                                  setSelectedDate(newValue);
-                                  setDateTimeShow(true);
-                                }}
+                                onChange={(newValue) => dateHandler(newValue)}
+                                // onChange={(newValue) => {
+                                //   setSelectedDate(newValue);
+                                //   setDateTimeShow(true);
+                                // }}
                                 disablePast={true}
                                 renderInput={(params) => (
                                   <TextField {...params} />
@@ -268,7 +388,7 @@ const Bookings = () => {
                           </div>
                         </div>
 
-                        {dateTimeShow && (
+                        {/* {dateTimeShow && (
                           <div className="col-xl-12 col-lg-12 col-md-12">
                             <div className="form-group">
                               <label>Select time</label>
@@ -323,6 +443,35 @@ const Bookings = () => {
                               )}
                             </div>
                           </div>
+                        )} */}
+
+                        {dateTimeShow && (
+                          <div className="col-xl-12 col-lg-12 col-md-12">
+                            <div className="form-group">
+                              <label>Select time</label>
+                              <div className="selectTime">
+                                {availableTimeSlots.map((slot) => (
+                                  <p
+                                    className={
+                                      backGroundColor &&
+                                        selectTime === slot.timeSlot
+                                        ? "activeBackGround"
+                                        : ""
+                                    }
+                                    key={slot.id}
+                                    onClick={() =>
+                                      selectOnclickTime(slot.timeSlot)
+                                    }
+                                  >
+                                    {slot.timeSlot}
+                                  </p>
+                                ))}
+                                {availableTimeSlots.length <= 0 && (
+                                  <p>Slots are not availble.</p>
+                                )}
+                              </div>
+                            </div>
+                          </div>
                         )}
 
                         <div className="col-lg-12 col-md-12">
@@ -338,7 +487,7 @@ const Bookings = () => {
                   }
                 </>
               )
-            })}
+            })}</>}
           </div>
         </div>
       </div>

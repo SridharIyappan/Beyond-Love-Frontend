@@ -17512,3 +17512,7 @@ text-decoration: underline;
   display: flex !important;
   justify-content: center !important;
 }
+
+.confirmHideBtn {
+  display: none !important;
+}

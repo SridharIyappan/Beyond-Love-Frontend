@@ -48,7 +48,7 @@ const BookAppoinment = () => {
 
                 <section className='listing-area'>
                     <div className='row'>
-                        {appointment.map((app) => {
+                        {appointment !== undefined && <>  {appointment.map((app) => {
                             return (
                                 <div className='col-xl-4 col-lg-6 col-md-6' key={app._id}>
                                     <div className='single-listings-box'>
@@ -99,7 +99,7 @@ const BookAppoinment = () => {
                                     </div>
                                 </div>
                             )
-                        })}
+                        })}</>}
 
 
                     </div>
